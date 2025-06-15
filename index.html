@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savor by Sree - Full Menu</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fff; }
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+      color: #5e3a1a;
+    }
+    .menu-toggle {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem auto;
+      max-width: 1000px;
+      padding: 1rem 0;
+    }
+    .menu-toggle button {
+      background: white;
+      border: 2px solid #ccb5a0;
+      border-radius: 12px;
+      padding: 0.8rem 1.2rem;
+      cursor: pointer;
+      font-weight: bold;
+      color: #5e3a1a;
+    }
+    .menu-toggle button.active {
+      background-color: #5e3a1a;
+      color: white;
+    }
+    .menu-section { display: none; padding: 0 2rem 3rem; }
+    .menu-section.active { display: block; }
+    .item-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid #e5d8c6;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    .card strong {
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .price {
+      float: right;
+      color: #a0522d;
+      font-weight: bold;
+    }
+    .card p {
+      margin: 0.5rem 0 1rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+    .btn {
+      background: #a0522d;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .btn:hover { background: #87411f; }
+  </style>
+  <script>
+    function showMenu(event, id) {
+      document.querySelectorAll('.menu-section').forEach(sec => sec.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.add('active');
+      }
+      document.querySelectorAll('.menu-toggle button').forEach(btn => btn.classList.remove('active'));
+      if (event && event.target) {
+        event.target.classList.add('active');
+      }
+    }
+  </script>
+</head>
+<body>
+  <header style="text-align: center; padding: 1rem; background: #f8f0e8;">
+    <img src="https://cdn.jsdelivr.net/gh/user-images-openai/savor-assets@main/savor-logo.png" alt="Savor by Sree Logo" style="max-height: 80px;">
+  </header>
+  <div style="text-align: center; padding: 2rem; font-size: 1.4rem; color: #5e3a1a; font-weight: bold;">🌱 Your Destination for Egg-Free Treats and Vegan Delights🍰✨</div>
+  
+  <div class="menu-toggle">
+    <button class="active" onclick="showMenu(event, 'cheesecakes')">Cheesecakes</button>
+    <button onclick="showMenu(event, 'cookies')">Cookies</button>
+    <button onclick="showMenu(event, 'brownies')">Brownies</button>
+    <button onclick="showMenu(event, 'tresleches')">Tres Leches</button>
+    <button onclick="showMenu(event, 'cupcakes')">Cupcakes</button>
+    <button onclick="showMenu(event, 'bites')">Bites</button>
+    <button onclick="showMenu(event, 'savouries')">Savouries</button>
+    <button onclick="showMenu(event, 'cakes')">Cakes</button>
+  </div>
+
+<div id="cheesecakes" class="menu-section active"><div class="item-grid">
+  <div class="card"><strong>Biscoff <span class="price">€5.50</span></strong><p>Creamy cheesecake infused with Lotus Biscoff flavor.</p></div>
+  <div class="card"><strong>Gulab Jamun <span class="price">€6.00</span></strong><p>Fusion of Indian sweet gulab jamun with rich cheesecake base.</p></div>
+  <div class="card"><strong>Dubai Crunch <span class="price">€6.00</span></strong><p>Special Middle Eastern-inspired flavor with crunchy caramel bits.</p></div>
+  <div class="card"><strong>Kulfi <span class="price">€5.50</span></strong><p>Traditional kulfi flavor cheesecake topped with pista and saffron.</p></div>
+  <div class="card"><strong>Oreo <span class="price">€5.00</span></strong><p>Classic Oreo cheesecake topped with crushed cookies.</p></div>
+  <div class="card"><strong>Mango <span class="price">€5.50</span></strong><p>Fresh mango cheesecake with mango glaze topping.</p></div>
+  <div class="card"><strong>Nutella <span class="price">€5.50</span></strong><p>Nutella swirl cheesecake topped with hazelnut spread.</p></div>
+  <div class="card"><strong>Blueberry <span class="price">€5.50</span></strong><p>Blueberry compote swirled into creamy cheesecake.</p></div>
+  <div class="card"><strong>Strawberry <span class="price">€5.50</span></strong><p>Strawberry glaze over rich vanilla cheesecake base.</p></div>
+  <div class="card"><strong>Banoffee Pie <span class="price">€5.50</span></strong><p>Banana caramel cheesecake topped with biscuit crumble.</p></div>
+</div></div>
+
+<div id="cookies" class="menu-section"><div class="item-grid">
+  <div class="card"><strong>Brookies <span class="price">€4.00</span></strong><p>Brownie-cookie hybrid packed with chocolate flavor.</p></div>
+  <div class="card"><strong>Pistachio Overload <span class="price">€4.00</span></strong><p>Stuffed with pistachio filling and roasted nuts.</p></div>
+  <div class="card"><strong>Chocolate Chip <span class="price">€3.50</span></strong><p>Classic chewy cookie loaded with choc chips.</p></div>
+  <div class="card"><strong>Nutella Lava <span class="price">€4.00</span></strong><p>Molten Nutella-filled cookie, gooey inside.</p></div>
+  <div class="card"><strong>Cookie Crumble Biscoff <span class="price">€4.00</span></strong><p>Biscoff cream center with cookie crumble on top.</p></div>
+  <div class="card"><strong>Red Velvet White Choc Chip <span class="price">€4.00</span></strong><p>Red velvet cookie with white chocolate pieces.</p></div>
+  <div class="card"><strong>Pecan (ve) <span class="price">€4.00</span></strong><p>Vegan pecan cookie with nutty caramel undertones.</p></div>
+  <div class="card"><strong>Almond Bites <span class="price">€3.50</span></strong><p>Crunchy almond cookies perfect with tea.</p></div>
+  <div class="card"><strong>Ajwain <span class="price">€3.50</span></strong><p>Indian spiced savory ajwain cookies.</p></div>
+  <div class="card"><strong>Custom Butter Cookies <span class="price">€3.50</span></strong><p>Made to order decorative butter cookies.</p></div>
+  <div class="card"><strong>Granola <span class="price">€3.50</span></strong><p>Crunchy granola cookie with dried fruits & seeds.</p></div>
+  <div class="card"><strong>Breakfast <span class="price">€3.50</span></strong><p>Oats, banana, raisins — morning cookie.</p></div>
+  <div class="card"><strong>Oreo <span class="price">€3.50</span></strong><p>Classic Oreo flavor packed in soft cookie form.</p></div>
+  <div class="card"><strong>Dark Choc PB <span class="price">€4.00</span></strong><p>Dark chocolate with peanut butter swirl.</p></div>
+  <div class="card"><strong>Cookies & Cream <span class="price">€4.00</span></strong><p>Cookies & cream base with chocolate chunks.</p></div>
+</div></div>
+
+<div id="brownies" class="menu-section"><div class="item-grid">
+  <div class="card"><strong>Classic Walnut <span class="price">€4.00</span></strong><p>Fudgy brownie loaded with walnut crunch.</p></div>
+  <div class="card"><strong>Oreo <span class="price">€4.50</span></strong><p>Brownie base packed with Oreo bits.</p></div>
+  <div class="card"><strong>Nutella <span class="price">€4.50</span></strong><p>Rich brownie layered with Nutella.</p></div>
+  <div class="card"><strong>Biscoff <span class="price">€4.50</span></strong><p>Lotus spread swirled into the batter.</p></div>
+  <div class="card"><strong>Bueno <span class="price">€4.50</span></strong><p>Kinder Bueno-infused creamy brownie.</p></div>
+  <div class="card"><strong>Pistachio <span class="price">€4.50</span></strong><p>Pistachio brownie with nut topping.</p></div>
+</div></div>
+
+<div id="tresleches" class="menu-section"><div class="item-grid">
+  <div class="card"><strong>Classic <span class="price">€6.00</span></strong><p>Three-milk soaked sponge with fresh cream.</p></div>
+  <div class="card"><strong>Rose <span class="price">€6.50</span></strong><p>Delicate rose flavor with gulab jamun.</p></div>
+  <div class="card"><strong>Mango <span class="price">€6.50</span></strong><p>Mango puree-soaked milk sponge and cream.</p></div>
+  <div class="card"><strong>Mocha <span class="price">€6.50</span></strong><p>Coffee milk-soaked cake with cream.</p></div>
+  <div class="card"><strong>Pistachio <span class="price">€6.50</span></strong><p>Pistachio milk mix with whipped cream topping.</p></div>
+  <div class="card"><strong>Chocolate <span class="price">€6.50</span></strong><p>Decadent cocoa infused sponge and ganache.</p></div>
+  <div class="card"><strong>Rasmalai <span class="price">€6.50</span></strong><p>Cardamom milk mix with rasmalai garnish.</p></div>
+  <div class="card"><strong>Masala Chai <span class="price">€6.50</span></strong><p>Spiced chai soaked cake topped with cream.</p></div>
+  <div class="card"><strong>Strawberry <span class="price">€6.50</span></strong><p>Fresh strawberry milk infused sponge.</p></div>
+</div></div>
+
+<div id="cupcakes" class="menu-section"><div class="item-grid">
+  <div class="card"><strong>Oreo <span class="price">€3.00</span></strong><p>Oreo cupcake topped with whipped cream.</p></div>
+  <div class="card"><strong>Tiramisu <span class="price">€3.00</span></strong><p>Coffee and mascarpone infused mini delight.</p></div>
+  <div class="card"><strong>Kinder Bueno <span class="price">€3.00</span></strong><p>Bueno bar inspired flavor burst.</p></div>
+  <div class="card"><strong>Carrot Cake <span class="price">€3.00</span></strong><p>Spiced carrot cupcake with soft crumb.</p></div>
+  <div class="card"><strong>Funfetti <span class="price">€3.00</span></strong><p>Colorful sprinkle vanilla cupcake.</p></div>
+  <div class="card"><strong>Banana Cake <span class="price">€3.00</span></strong><p>Banana cupcake with nutty topping.</p></div>
+  <div class="card"><strong>Unicorn (Salted Caramel) <span class="price">€3.00</span></strong><p>Salted caramel swirl with rainbow cream.</p></div>
+  <div class="card"><strong>Strawberry Choco Bun <span class="price">€3.00</span></strong><p>Soft bun cupcake with strawberry chocolate topping.</p></div>
+</div></div>
+
+<div id="bites" class="menu-section"><div class="item-grid">
+  <div class="card"><strong>Cake Pops <span class="price">€3.50</span></strong><p>Bite-sized coated cake balls on a stick.</p></div>
+  <div class="card"><strong>Banana on a Stick <span class="price">€3.50</span></strong><p>Frozen banana coated in chocolate and sprinkles.</p></div>
+  <div class="card"><strong>Drip Drop Brownie <span class="price">€3.50</span></strong><p>Mini brownie with ganache drops and cream.</p></div>
+  <div class="card"><strong>Berry in a Bath <span class="price">€3.50</span></strong><p>Berry dipped in chocolate bath with coconut.</p></div>
+</div></div>
+
+<div id="savouries" class="menu-section"><div class="item-grid">
+  <div class="card"><strong>Spicy Korean Bun <span class="price">€4.00</span></strong><p>Filled with spicy vegetable mix, Korean style.</p></div>
+  <div class="card"><strong>Paneer Tikka Croissants <span class="price">€4.50</span></strong><p>Croissants filled with grilled paneer and spices.</p></div>
+</div></div>
+
+</div>
+
+<div id="cakes" class="menu-section">
+  <h2>Cakes</h2>
+  <div style="max-width: 700px; margin: 1rem auto 2rem; text-align: center; font-size: 1rem; line-height: 1.6; color: #5e3a1a; background: #fef5ea; padding: 1.2rem 1.5rem; border: 2px dashed #e0c3a0; border-radius: 12px;">
+    <strong>Please Note:</strong><br>
+    • Only standard cake orders are accepted for same-day requests and will incur an additional rush fee.<br>• Standard cake orders require at least <strong>48 hours</strong> notice.<br>• Custom cake designs require a minimum of <strong>2 weeks</strong> notice.
+  </div>
+  
+  <div class="item-grid">
+    <div class="card">
+      <strong>4 inch <span class="price">from €20 / Vegan: €25</span></strong>
+    </div>
+    <div class="card">
+      <strong>6 inch <span class="price">from €30 / Vegan: €35</span></strong>
+    </div>
+    <div class="card">
+      <strong>8 inch <span class="price">from €40 / Vegan: €45</span></strong>
+    </div>
+    <div class="card">
+      <strong>10 inch <span class="price">from €50 / Vegan: €55</span></strong>
+    </div>
+  </div>
+  <h3 style="margin-top:2rem; text-align:center; color:#5e3a1a">Available Flavours</h3>
+<ul style="max-width: 600px; margin: 1rem auto; padding: 1rem; background: #fff9f4; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem 1rem; list-style: none;">
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Vanilla</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Black Forest</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Red Velvet</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Tiramisu</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Fresh Fruit</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Rasmalai / Mango Rasmalai</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Pistachio</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Gulab Jamun</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Mango</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Biscoff</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Death by Chocolate</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Matilda</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Ferrero Rocher</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Butterscotch</li>
+  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Oreo</li>
+</ul>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+</div>
+  <section style="padding: 3rem 2rem; background: #fdf8f3; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+  <div style="flex: 1; min-width: 250px;">
+    <h2>About Us</h2>
+    <p>We’re passionate about serving handcrafted, eggless sweets and savory treats using the finest ingredients. Everything is made fresh with a fusion of Indian and global inspirations.</p>
+    <div class="social-links" style="margin-top: 1.5rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 30px;">
+      <a href="https://www.instagram.com/savorbysree" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" style="width: 40px;"></a>
+      <a href="https://www.facebook.com/savorbysree" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook" style="width: 40px;"></a>
+      <a href="https://wa.me/353899669496" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 40px;"></a>
+      <a href="https://www.snapchat.com/add/savorbysree" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Snapchat" style="width: 40px;"></a>
+      <a href="https://www.tiktok.com/@savorbysree" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" style="width: 40px;"></a>
+    </div>
+  </div>
+  <div style="flex: 1; min-width: 250px;">
+    <h2>Contact Us</h2>
+    <form action="https://formsubmit.co/mahisree1309@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+      <input type="text" name="name" placeholder="Your Name" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+      <input type="email" name="email" placeholder="Your Email" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+      <input type="tel" name="phone" placeholder="Your Phone Number" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;">
+      <textarea name="message" placeholder="Your Message" rows="4" required style="padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+      <button type="submit" style="background-color: #5e3a1a; color: #fff; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Send</button>
+    </form>
+  </div>
+</section>
+  <!-- Will insert actual HTML after confirmation -->
+
+</body>
+</html>
