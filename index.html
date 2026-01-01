@@ -1,261 +1,1005 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Savor by Sree</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fff; }
-    h2 {
-      text-align: center;
-      margin-top: 2rem;
-      color: #5e3a1a;
+    :root{
+      --cocoa:#4a2c1d;
+      --coffee:#6b3f2a;
+      --cream:#fffaf5;
+      --paper:#f7f1ea;
+      --ink:#1f1f1f;
+      --muted:#666;
+      --line:rgba(0,0,0,.10);
+      --shadow:0 14px 34px rgba(0,0,0,.08);
+      --shadow2:0 20px 48px rgba(0,0,0,.12);
+      --radius:18px;
     }
-    .menu-toggle {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1.5rem auto;
-      max-width: 1000px;
-      padding: 1rem 0;
+
+    *{box-sizing:border-box}
+    body{
+      font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 500px at 12% 0%, rgba(74,44,29,.10), transparent 55%),
+        radial-gradient(900px 480px at 88% 8%, rgba(107,63,42,.08), transparent 55%),
+        linear-gradient(180deg, var(--cream), #ffffff 45%, var(--paper));
     }
-    .menu-toggle button {
-      background: white;
-      border: 2px solid #ccb5a0;
-      border-radius: 12px;
-      padding: 0.8rem 1.2rem;
-      cursor: pointer;
-      font-weight: bold;
-      color: #5e3a1a;
+    a{color:inherit; text-decoration:none}
+    .wrap{padding:0 4vw}
+
+    header.site-header{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,250,245,.88);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
     }
-    .menu-toggle button.active {
-      background-color: #5e3a1a;
-      color: white;
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      padding:12px 0;
     }
-    .menu-section { display: none; padding: 0 2rem 3rem; }
-    .menu-section.active { display: block; }
-    .item-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
+    .brand{display:flex; align-items:center; gap:14px;}
+    .brand-logo{
+      width:82px; height:82px;
+      border-radius:20px;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
     }
-    .card {
-      background: #fff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      border: 1px solid #e5d8c6;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    .brand-logo img{width:100%; height:100%; object-fit:cover;}
+    .brand-title{display:flex; flex-direction:column; gap:4px; line-height:1.1;}
+    .brand-title .name{font-weight:700; letter-spacing:.2px; color:var(--cocoa); font-size:20px;}
+    .brand-title .tag{font-size:12.5px; color:var(--muted);}
+
+    nav.topnav{display:flex; flex-wrap:wrap; gap:10px; justify-content:flex-end;}
+    .navbtn{
+      padding:10px 16px;
+      border-radius:999px;
+      border:1.5px solid var(--cocoa);
+      background:#fff;
+      color:var(--cocoa);
+      font-weight:500;
+      cursor:pointer;
+      transition:.22s ease;
     }
-    .card strong {
-      font-size: 1.1rem;
-      display: block;
-      margin-bottom: 0.3rem;
+    .navbtn:hover{transform: translateY(-1px); box-shadow: 0 10px 20px rgba(0,0,0,.06);}
+    .navbtn.active{background:var(--cocoa); color:#fff;}
+
+    main{padding:22px 0 70px;}
+    .page{display:none;}
+    .page.active{display:block;}
+
+    h2.section-h2{
+      text-align:center;
+      margin: 1.6rem 0 .8rem;
+      color: var(--cocoa);
+      letter-spacing:.2px;
     }
-    .price {
-      float: right;
-      color: #a0522d;
-      font-weight: bold;
+
+    .panel{
+      margin-top:18px;
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:18px;
+      box-shadow: var(--shadow);
     }
-    .card p {
-      margin: 0.5rem 0 1rem;
-      font-size: 0.95rem;
-      color: #555;
+
+    /* ===== Home (Bakedonline-style) ===== */
+    .hero2{
+      margin-top: 12px;
+      background: linear-gradient(135deg, rgba(74,44,29,.14), rgba(255,250,245,.65));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
-    .btn {
-      background: #a0522d;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
+    .hero2-inner{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 22px;
+      padding: 28px;
+      align-items:center;
     }
-    .btn:hover { background: #87411f; }
+    .eyebrow{
+      margin:0 0 10px;
+      color: var(--coffee);
+      font-weight:600;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+      font-size:12px;
+    }
+    .hero2 h1{
+      margin:0;
+      font-size: 36px;
+      line-height: 1.15;
+      color: var(--cocoa);
+    }
+    .hero2 .sub{
+      margin: 12px 0 0;
+      color:#333;
+      line-height:1.7;
+      font-size:15px;
+    }
+    .cta-row{
+      margin-top: 18px;
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight:600;
+      border: 1.5px solid var(--cocoa);
+      transition:.2s ease;
+      cursor:pointer;
+      text-decoration:none;
+    }
+    .cta.primary{ background: var(--cocoa); color:#fff; }
+    .cta.primary:hover{ transform: translateY(-1px); box-shadow: 0 12px 24px rgba(0,0,0,.10); }
+    .cta.secondary{ background:#fff; color: var(--cocoa); }
+    .cta.secondary:hover{ background: rgba(74,44,29,.06); }
+    .cta.tiny{ padding:10px 14px; font-size:13px; }
+
+    .hero2-media{ display:flex; justify-content:flex-end; }
+    .hero2-photo{
+      width: min(420px, 100%);
+      border-radius: 20px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow: 0 16px 40px rgba(0,0,0,.12);
+      background:#fff;
+    }
+    .hero2-photo img{ width:100%; height: 320px; object-fit:cover; display:block; }
+
+    .home-section{ margin-top: 22px; }
+    .panel2{
+      background: rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 18px;
+      align-items:center;
+    }
+    .split-media{
+      border-radius: 18px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
+      box-shadow: 0 12px 26px rgba(0,0,0,.08);
+    }
+    .split-media img{ width:100%; height: 280px; object-fit:cover; }
+    .split-copy h2{
+      margin: 0;
+      color: var(--cocoa);
+      font-size: 22px;
+    }
+    .split-copy h3{
+      margin: 8px 0 10px;
+      color: #2b2b2b;
+      font-size: 16px;
+      font-weight:600;
+    }
+    .split-copy p{
+      margin:0;
+      color:#444;
+      line-height:1.75;
+      font-size:14.5px;
+    }
+    .mini-links{ margin-top: 12px; display:flex; gap: 14px; flex-wrap:wrap; }
+    .link{ color: var(--cocoa); font-weight:600; }
+    .link:hover{ text-decoration: underline; }
+
+    .section-head{
+      text-align:center;
+      margin-bottom: 14px;
+    }
+    .section-head h2{
+      margin:0;
+      color: var(--cocoa);
+      font-size: 24px;
+    }
+    .section-head p{
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height:1.6;
+      font-size:14px;
+    }
+
+    .featured-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .feat-card{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius: 18px;
+      overflow:hidden;
+      box-shadow: 0 12px 26px rgba(0,0,0,.08);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .feat-card:hover{ transform: translateY(-4px); box-shadow: var(--shadow2); }
+    .feat-img img{ width:100%; height: 210px; object-fit:cover; display:block; }
+    .feat-body{ padding: 14px 14px 16px; }
+    .feat-body h3{ margin:0 0 8px; font-size: 16px; color:#2a2a2a; }
+
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      text-align:center;
+    }
+    .stat{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      padding: 16px 10px;
+    }
+    .stat-kicker{ color: var(--muted); font-size: 12px; text-transform:uppercase; letter-spacing:.3px; }
+    .stat-title{ color: var(--cocoa); font-size: 18px; font-weight:700; margin-top: 6px; }
+
+    .locations{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 14px;
+    }
+    .loc-card{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.08);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      text-align:center;
+    }
+    .loc-card h3{ margin:0; color: var(--cocoa); }
+    .loc-card p{ margin:10px 0 14px; color: var(--muted); }
+
+    @media (max-width: 1000px){
+      .hero2-inner{ grid-template-columns: 1fr; }
+      .hero2-photo img{ height: 260px; }
+      .split{ grid-template-columns: 1fr; }
+      .split-media img{ height: 240px; }
+      .featured-grid{ grid-template-columns: repeat(2, 1fr); }
+      .stats{ grid-template-columns: repeat(2, 1fr); }
+      .locations{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px){
+      .hero2 h1{ font-size: 28px; }
+      .featured-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* ===== Menu cards + allergy pills ===== */
+    .menu-toggle{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap: .8rem;
+      margin: 1.2rem auto 1.2rem;
+      padding: .8rem 0;
+    }
+    .menu-toggle button{
+      background:#fff;
+      border:1.5px solid rgba(74,44,29,.35);
+      border-radius:999px;
+      padding:.75rem 1.1rem;
+      cursor:pointer;
+      font-weight:600;
+      color:var(--cocoa);
+      transition:.2s ease;
+    }
+    .menu-toggle button:hover{background: rgba(74,44,29,.06);}
+    .menu-toggle button.active{
+      background:var(--coffee);
+      border-color:var(--coffee);
+      color:#fff;
+    }
+
+    .menu-section{display:none; padding: 0 0 1.8rem;}
+    .menu-section.active{display:block;}
+    .item-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+    @media (max-width: 1200px) { .item-grid{grid-template-columns: repeat(3, 1fr);} }
+    @media (max-width: 900px)  { .item-grid{grid-template-columns: repeat(2, 1fr);} .brand-logo{width:72px;height:72px} }
+    @media (max-width: 600px)  { .item-grid{grid-template-columns: 1fr;} }
+
+    .card{
+      background:#fff;
+      border-radius:16px;
+      border:1px solid rgba(0,0,0,.08);
+      overflow:hidden;
+      box-shadow: 0 12px 26px rgba(0,0,0,.08);
+      transition: transform .22s ease, box-shadow .22s ease;
+      display:flex;
+      flex-direction:column;
+      min-height: 100%;
+    }
+    .card:hover{transform: translateY(-4px); box-shadow: var(--shadow2);}
+    .card img{width:100%; height:180px; object-fit:cover; background:#f2f2f2;}
+    .card .content{padding: 14px 14px 16px; display:flex; flex-direction:column; gap:8px; flex:1;}
+    .card strong{font-size:1rem; display:block; margin:0; color:#2a2a2a;}
+    .price{float:right; color: var(--coffee); font-weight:700;}
+    .card p{margin:0; font-size:.92rem; color:#555; line-height:1.45;}
+    .allergen-row{
+      margin-top:auto;
+      padding-top:8px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      align-items:center;
+    }
+    .pill{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#fffaf5;
+      border:1px solid rgba(0,0,0,.08);
+      color:#3a3a3a;
+      font-weight:500;
+    }
+    .pill.label{
+      background: rgba(74,44,29,.08);
+      border-color: rgba(74,44,29,.14);
+      color: var(--cocoa);
+      font-weight:600;
+    }
+
+    .warning{
+      background: rgba(74,44,29,.06);
+      border:1px solid rgba(74,44,29,.14);
+      border-left:5px solid var(--cocoa);
+      border-radius: 14px;
+      padding:14px;
+      color:#2a2a2a;
+      line-height:1.55;
+      font-size:14px;
+      margin-bottom:14px;
+    }
+    table.matrix{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      background:#fff;
+    }
+    table.matrix th, table.matrix td{
+      text-align:left;
+      padding:12px;
+      border-bottom:1px solid var(--line);
+      font-size:13.5px;
+      vertical-align:top;
+    }
+    table.matrix th{
+      background: rgba(74,44,29,.06);
+      color: var(--cocoa);
+      font-weight:600;
+    }
+    table.matrix tr:last-child td{border-bottom:none}
+
+    /* Allergy mode: show only allergy table */
+    body.allergy-mode .menu-toggle,
+    body.allergy-mode .menu-section{
+      display:none !important;
+    }
+    body.allergy-mode #allergyPanel{
+      display:block !important;
+    }
+
+    /* ===== Gallery ===== */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:16px;
+      margin-top:12px;
+    }
+    @media (max-width: 900px){ .gallery-grid{grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 600px){ .gallery-grid{grid-template-columns: 1fr;} }
+    .photo{
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      background:#fff;
+    }
+    .photo img{width:100%; height:220px; object-fit:cover; background:#f2f2f2;}
+
+    /* ===== About socials (inline SVG) ===== */
+    .socialbar{
+      margin-top:18px;
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .social{
+      width:46px;
+      height:46px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,.10);
+      background:#fff;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow: 0 10px 22px rgba(0,0,0,.08);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .social svg{width:22px; height:22px; fill: var(--cocoa);}
+    .social:hover{transform: translateY(-2px); box-shadow: 0 16px 34px rgba(0,0,0,.12);}
+
+    .footer{margin-top:36px; text-align:center; color:var(--muted); font-size:12.5px;}
   </style>
-  <script>
-    function showMenu(event, id) {
-      document.querySelectorAll('.menu-section').forEach(sec => sec.classList.remove('active'));
-      const target = document.getElementById(id);
-      if (target) {
-        target.classList.add('active');
-      }
-      document.querySelectorAll('.menu-toggle button').forEach(btn => btn.classList.remove('active'));
-      if (event && event.target) {
-        event.target.classList.add('active');
-      }
-    }
-  </script>
 </head>
+
 <body>
- <header style="background: var(--accent); text-align: center; padding: 0;">
-  <div style="height: 160px; display: flex; align-items: center; justify-content: center;">
-    <img src="images/new logo.png" alt="Savor by Sree Logo" style="height: 140px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.35));">
-  </div>
-</header>
-</header>
-  <div style="text-align: center; padding: 2rem; font-size: 1.4rem; color: #5e3a1a; font-weight: bold;">🌱 Your Destination for Egg-Free Treats and Vegan Delights🍰✨</div>
-  
-  <div class="menu-toggle">
-    <button class="active" onclick="showMenu(event, 'cheesecakes')">Cheesecakes</button>
-    <button onclick="showMenu(event, 'cookies')">Cookies</button>
-    <button onclick="showMenu(event, 'brownies')">Brownies</button>
-    <button onclick="showMenu(event, 'tresleches')">Tres Leches</button>
-    <button onclick="showMenu(event, 'cupcakes')">Cupcakes</button>
-    <button onclick="showMenu(event, 'bites')">Bites</button>
-    <button onclick="showMenu(event, 'savouries')">Savouries</button>
-    <button onclick="showMenu(event, 'cakes')">Cakes</button>
-  </div>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="images/branding/logo.jpg" alt="Savor by Sree Logo" onerror="this.style.display='none'">
+          </div>
+          <div class="brand-title">
+            <div class="name">Savor by Sree</div>
+            <div class="tag">Eggless • Vegetarian • Market Fresh</div>
+          </div>
+        </div>
 
-<div id="cheesecakes" class="menu-section active"><div class="item-grid">
-  <div class="card"><strong>Biscoff <span class="price">€5.50</span></strong><p>Creamy cheesecake infused with Lotus Biscoff flavor.</p></div>
-  <div class="card"><strong>Gulab Jamun <span class="price">€6.00</span></strong><p>Fusion of Indian sweet gulab jamun with rich cheesecake base.</p></div>
-  <div class="card"><strong>Dubai Crunch <span class="price">€6.00</span></strong><p>Special Middle Eastern-inspired flavor with crunchy caramel bits.</p></div>
-  <div class="card"><strong>Kulfi <span class="price">€5.50</span></strong><p>Traditional kulfi flavor cheesecake topped with pista and saffron.</p></div>
-  <div class="card"><strong>Oreo <span class="price">€5.00</span></strong><p>Classic Oreo cheesecake topped with crushed cookies.</p></div>
-  <div class="card"><strong>Mango <span class="price">€5.50</span></strong><p>Fresh mango cheesecake with mango glaze topping.</p></div>
-  <div class="card"><strong>Nutella <span class="price">€5.50</span></strong><p>Nutella swirl cheesecake topped with hazelnut spread.</p></div>
-  <div class="card"><strong>Blueberry <span class="price">€5.50</span></strong><p>Blueberry compote swirled into creamy cheesecake.</p></div>
-  <div class="card"><strong>Strawberry <span class="price">€5.50</span></strong><p>Strawberry glaze over rich vanilla cheesecake base.</p></div>
-  <div class="card"><strong>Banoffee Pie <span class="price">€5.50</span></strong><p>Banana caramel cheesecake topped with biscuit crumble.</p></div>
-</div></div>
-
-<div id="cookies" class="menu-section"><div class="item-grid">
-  <div class="card"><strong>Brookies <span class="price">€4.00</span></strong><p>Brownie-cookie hybrid packed with chocolate flavor.</p></div>
-  <div class="card"><strong>Pistachio Overload <span class="price">€4.00</span></strong><p>Stuffed with pistachio filling and roasted nuts.</p></div>
-  <div class="card"><strong>Chocolate Chip <span class="price">€3.50</span></strong><p>Classic chewy cookie loaded with choc chips.</p></div>
-  <div class="card"><strong>Nutella Lava <span class="price">€4.00</span></strong><p>Molten Nutella-filled cookie, gooey inside.</p></div>
-  <div class="card"><strong>Cookie Crumble Biscoff <span class="price">€4.00</span></strong><p>Biscoff cream center with cookie crumble on top.</p></div>
-  <div class="card"><strong>Red Velvet White Choc Chip <span class="price">€4.00</span></strong><p>Red velvet cookie with white chocolate pieces.</p></div>
-  <div class="card"><strong>Pecan (ve) <span class="price">€4.00</span></strong><p>Vegan pecan cookie with nutty caramel undertones.</p></div>
-  <div class="card"><strong>Almond Bites <span class="price">€3.50</span></strong><p>Crunchy almond cookies perfect with tea.</p></div>
-  <div class="card"><strong>Ajwain <span class="price">€3.50</span></strong><p>Indian spiced savory ajwain cookies.</p></div>
-  <div class="card"><strong>Custom Butter Cookies <span class="price">€3.50</span></strong><p>Made to order decorative butter cookies.</p></div>
-  <div class="card"><strong>Granola <span class="price">€3.50</span></strong><p>Crunchy granola cookie with dried fruits & seeds.</p></div>
-  <div class="card"><strong>Breakfast <span class="price">€3.50</span></strong><p>Oats, banana, raisins — morning cookie.</p></div>
-  <div class="card"><strong>Oreo <span class="price">€3.50</span></strong><p>Classic Oreo flavor packed in soft cookie form.</p></div>
-  <div class="card"><strong>Dark Choc PB <span class="price">€4.00</span></strong><p>Dark chocolate with peanut butter swirl.</p></div>
-  <div class="card"><strong>Cookies & Cream <span class="price">€4.00</span></strong><p>Cookies & cream base with chocolate chunks.</p></div>
-</div></div>
-
-<div id="brownies" class="menu-section"><div class="item-grid">
-  <div class="card"><strong>Classic Walnut <span class="price">€4.00</span></strong><p>Fudgy brownie loaded with walnut crunch.</p></div>
-  <div class="card"><strong>Oreo <span class="price">€4.50</span></strong><p>Brownie base packed with Oreo bits.</p></div>
-  <div class="card"><strong>Nutella <span class="price">€4.50</span></strong><p>Rich brownie layered with Nutella.</p></div>
-  <div class="card"><strong>Biscoff <span class="price">€4.50</span></strong><p>Lotus spread swirled into the batter.</p></div>
-  <div class="card"><strong>Bueno <span class="price">€4.50</span></strong><p>Kinder Bueno-infused creamy brownie.</p></div>
-  <div class="card"><strong>Pistachio <span class="price">€4.50</span></strong><p>Pistachio brownie with nut topping.</p></div>
-</div></div>
-
-<div id="tresleches" class="menu-section"><div class="item-grid">
-  <div class="card"><strong>Classic <span class="price">€6.00</span></strong><p>Three-milk soaked sponge with fresh cream.</p></div>
-  <div class="card"><strong>Rose <span class="price">€6.50</span></strong><p>Delicate rose flavor with gulab jamun.</p></div>
-  <div class="card"><strong>Mango <span class="price">€6.50</span></strong><p>Mango puree-soaked milk sponge and cream.</p></div>
-  <div class="card"><strong>Mocha <span class="price">€6.50</span></strong><p>Coffee milk-soaked cake with cream.</p></div>
-  <div class="card"><strong>Pistachio <span class="price">€6.50</span></strong><p>Pistachio milk mix with whipped cream topping.</p></div>
-  <div class="card"><strong>Chocolate <span class="price">€6.50</span></strong><p>Decadent cocoa infused sponge and ganache.</p></div>
-  <div class="card"><strong>Rasmalai <span class="price">€6.50</span></strong><p>Cardamom milk mix with rasmalai garnish.</p></div>
-  <div class="card"><strong>Masala Chai <span class="price">€6.50</span></strong><p>Spiced chai soaked cake topped with cream.</p></div>
-  <div class="card"><strong>Strawberry <span class="price">€6.50</span></strong><p>Fresh strawberry milk infused sponge.</p></div>
-</div></div>
-
-<div id="cupcakes" class="menu-section"><div class="item-grid">
-  <div class="card"><strong>Oreo <span class="price">€3.00</span></strong><p>Oreo cupcake topped with whipped cream.</p></div>
-  <div class="card"><strong>Tiramisu <span class="price">€3.00</span></strong><p>Coffee and mascarpone infused mini delight.</p></div>
-  <div class="card"><strong>Kinder Bueno <span class="price">€3.00</span></strong><p>Bueno bar inspired flavor burst.</p></div>
-  <div class="card"><strong>Carrot Cake <span class="price">€3.00</span></strong><p>Spiced carrot cupcake with soft crumb.</p></div>
-  <div class="card"><strong>Funfetti <span class="price">€3.00</span></strong><p>Colorful sprinkle vanilla cupcake.</p></div>
-  <div class="card"><strong>Banana Cake <span class="price">€3.00</span></strong><p>Banana cupcake with nutty topping.</p></div>
-  <div class="card"><strong>Unicorn (Salted Caramel) <span class="price">€3.00</span></strong><p>Salted caramel swirl with rainbow cream.</p></div>
-  <div class="card"><strong>Strawberry Choco Bun <span class="price">€3.00</span></strong><p>Soft bun cupcake with strawberry chocolate topping.</p></div>
-</div></div>
-
-<div id="bites" class="menu-section"><div class="item-grid">
-  <div class="card"><strong>Cake Pops <span class="price">€3.50</span></strong><p>Bite-sized coated cake balls on a stick.</p></div>
-  <div class="card"><strong>Banana on a Stick <span class="price">€3.50</span></strong><p>Frozen banana coated in chocolate and sprinkles.</p></div>
-  <div class="card"><strong>Drip Drop Brownie <span class="price">€3.50</span></strong><p>Mini brownie with ganache drops and cream.</p></div>
-  <div class="card"><strong>Berry in a Bath <span class="price">€3.50</span></strong><p>Berry dipped in chocolate bath with coconut.</p></div>
-</div></div>
-
-<div id="savouries" class="menu-section"><div class="item-grid">
-  <div class="card"><strong>Spicy Korean Bun <span class="price">€4.00</span></strong><p>Filled with spicy vegetable mix, Korean style.</p></div>
-  <div class="card"><strong>Paneer Tikka Croissants <span class="price">€4.50</span></strong><p>Croissants filled with grilled paneer and spices.</p></div>
-</div></div>
-
-</div>
-
-<div id="cakes" class="menu-section">
-  <h2>Cakes</h2>
-  <div style="max-width: 700px; margin: 1rem auto 2rem; text-align: center; font-size: 1rem; line-height: 1.6; color: #5e3a1a; background: #fef5ea; padding: 1.2rem 1.5rem; border: 2px dashed #e0c3a0; border-radius: 12px;">
-    <strong>Please Note:</strong><br>
-    • Only standard cake orders are accepted for same-day requests and will incur an additional rush fee.<br>• Standard cake orders require at least <strong>48 hours</strong> notice.<br>• Custom cake designs require a minimum of <strong>2 weeks</strong> notice.
-  </div>
-  
-  <div class="item-grid">
-    <div class="card">
-      <strong>4 inch <span class="price">from €20 / Vegan: €25</span></strong>
+        <nav class="topnav">
+          <button class="navbtn active" data-page="home" onclick="showPage('home')">Home</button>
+          <button class="navbtn" data-page="menu" onclick="showPage('menu')">Menu</button>
+          <button class="navbtn" data-page="gallery" onclick="showPage('gallery')">Gallery</button>
+          <button class="navbtn" data-page="about" onclick="showPage('about')">About Us</button>
+        </nav>
+      </div>
     </div>
-    <div class="card">
-      <strong>6 inch <span class="price">from €30 / Vegan: €35</span></strong>
-    </div>
-    <div class="card">
-      <strong>8 inch <span class="price">from €40 / Vegan: €45</span></strong>
-    </div>
-    <div class="card">
-      <strong>10 inch <span class="price">from €50 / Vegan: €55</span></strong>
-    </div>
-  </div>
-  <h3 style="margin-top:2rem; text-align:center; color:#5e3a1a">Available Flavours</h3>
-<ul style="max-width: 600px; margin: 1rem auto; padding: 1rem; background: #fff9f4; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.5rem 1rem; list-style: none;">
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Vanilla</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Black Forest</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Red Velvet</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Tiramisu</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Fresh Fruit</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Rasmalai / Mango Rasmalai</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Pistachio</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Gulab Jamun</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Mango</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Biscoff</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Death by Chocolate</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Matilda</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Ferrero Rocher</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Butterscotch</li>
-  <li style="padding: 0.5rem; text-align: center; color: #5e3a1a; font-weight: 500;">Oreo</li>
-</ul>
+  </header>
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</div>
-</div>
-  <section style="padding: 3rem 2rem; background: #fdf8f3; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
-  <div style="flex: 1; min-width: 250px;">
-    <h2>About Us</h2>
-    <p style="margin-bottom: 1rem; font-weight: bold; color: #5e3a1a; text-align: center;">📩 Reach out to us through our social media sites to place an order.</p>
-<p style="text-align: center;">We’re passionate about serving handcrafted, eggless sweets and savory treats using the finest ingredients. Everything is made fresh with a fusion of Indian and global inspirations.</p>
-    <div class="social-links" style="margin-top: 1.5rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 30px;">
-      <a href="https://www.instagram.com/savorbysree" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" style="width: 40px;"></a>
-      <a href="https://www.facebook.com/savorbysree" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384053.png" alt="Facebook" style="width: 40px;"></a>
-      <a href="https://wa.me/353899669496" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" style="width: 40px;"></a>
-      <a href="https://www.snapchat.com/add/savorbysree" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Snapchat" style="width: 40px;"></a>
-      <a href="https://www.tiktok.com/@savorbysree" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" style="width: 40px;"></a>
-    </div>
-  </div>
-  
-</section>
-  <!-- Will insert actual HTML after confirmation -->
+  <main class="wrap">
+    <!-- HOME -->
+    <section id="page-home" class="page active">
+      <div class="hero2">
+        <div class="hero2-inner">
+          <div class="hero2-copy">
+            <p class="eyebrow">Eggless bakery • Dublin</p>
+            <h1>Handcrafted eggless treats — baked fresh, served with love.</h1>
+            <p class="sub">
+              From cheesecakes and brownies to savoury bakes — made eggless by default and clearly labelled with allergens.
+            </p>
+            <div class="cta-row">
+              <a class="cta primary" href="#" onclick="showPage('menu');return false;">View Menu</a>
+              <a class="cta secondary" href="#" onclick="showPage('about');return false;">Contact / Socials</a>
+            </div>
+          </div>
+          <div class="hero2-media" aria-hidden="true">
+            <div class="hero2-photo">
+              <img src="images/backgrounds/home-hero.jpg" alt="" onerror="imgFallback(this)">
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="home-section panel2">
+        <div class="split">
+          <div class="split-media">
+            <img src="images/backgrounds/what-we-do.jpg" alt="Bakery counter" onerror="imgFallback(this)">
+          </div>
+          <div class="split-copy">
+            <h2>What We Do</h2>
+            <h3>Freshly prepared bakes & desserts</h3>
+            <p>
+              Savor by Sree is an eggless bakery brand creating market-ready desserts and savouries.
+              We focus on premium taste, clean presentation, and transparent allergen info so you can order with confidence.
+            </p>
+            <div class="mini-links">
+              <a class="link" href="#" onclick="showPage('menu');return false;">Featured Menu →</a>
+              <a class="link" href="#" onclick="showPage('gallery');return false;">See Photos →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-section">
+        <div class="section-head">
+          <h2>Featured Picks</h2>
+          <p>Some customer favourites — see the full range on the Menu.</p>
+        </div>
+        <div class="featured-grid">
+          <div class="feat-card">
+            <div class="feat-img"><img src="images/Gallery/cake1.png" alt="Featured" onerror="imgFallback(this)"></div>
+            <div class="feat-body">
+              <h3>Customer Favourite</h3>
+              <a class="link" href="#" onclick="showPage('menu');return false;">View on Menu →</a>
+            </div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-img"><img src="images/Gallery/cake2.png" alt="Featured" onerror="imgFallback(this)"></div>
+            <div class="feat-body">
+              <h3>Best Seller</h3>
+              <a class="link" href="#" onclick="showPage('menu');return false;">View on Menu →</a>
+            </div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-img"><img src="images/Gallery/cake3.png" alt="Featured" onerror="imgFallback(this)"></div>
+            <div class="feat-body">
+              <h3>Seasonal Pick</h3>
+              <a class="link" href="#" onclick="showPage('menu');return false;">View on Menu →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-section panel2">
+        <div class="stats">
+          <div class="stat"><div class="stat-kicker">Freshly</div><div class="stat-title">Baked</div></div>
+          <div class="stat"><div class="stat-kicker">Lovingly</div><div class="stat-title">Prepared</div></div>
+          <div class="stat"><div class="stat-kicker">Finest</div><div class="stat-title">Ingredients</div></div>
+          <div class="stat"><div class="stat-kicker">Creative</div><div class="stat-title">Flavours</div></div>
+        </div>
+      </div>
+
+      <div class="home-section">
+        <div class="section-head">
+          <h2>Where We’re At</h2>
+          <p>Find us at markets & pop-ups — follow socials for weekly locations.</p>
+        </div>
+        <div class="locations">
+          <div class="loc-card">
+            <h3>Market Stall</h3>
+            <p>Dublin • Weekend markets</p>
+            <a class="cta tiny" href="#" onclick="showPage('about');return false;">Get updates</a>
+          </div>
+          <div class="loc-card">
+            <h3>Custom Orders</h3>
+            <p>Collection / delivery slots (based on availability)</p>
+            <a class="cta tiny" href="#" onclick="showPage('menu');return false;">Browse menu</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section id="page-menu" class="page">
+      <div class="panel">
+        <h2 class="section-h2">Menu</h2>
+
+        <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; padding: 14px 6px 0;">
+          <button class="navbtn" id="allergyToggleBtn" onclick="toggleAllergyPanel()">Allergy Info</button>
+        </div>
+
+        <!-- Category buttons -->
+        <div class="menu-toggle">
+          <button class="active" onclick="showMenu(event,'cheesecakes')">Cheesecakes</button>
+          <button onclick="showMenu(event,'cookies')">Cookies</button>
+          <button onclick="showMenu(event,'brownies')">Brownies</button>
+          <button onclick="showMenu(event,'tresleches')">Tres Leches</button>
+          <button onclick="showMenu(event,'cupcakes')">Cupcakes</button>
+          <button onclick="showMenu(event,'bites')">Bites</button>
+          <button onclick="showMenu(event,'savouries')">Savouries</button>
+          <button onclick="showMenu(event,'cakes')">Cakes</button>
+        </div>
+
+        <!-- ====== SAMPLE SECTIONS ====== -->
+        <!-- IMPORTANT: Replace these cards with your full menu cards (your existing file already had them). -->
+        <!-- Below are a few sample items. You can keep adding more cards in each section. -->
+
+        <div id="cheesecakes" class="menu-section active">
+          <div class="item-grid">
+            <div class="card">
+              <img src="images/Products/biscoff_cheesecake.jpeg" alt="Biscoff Cheesecake" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Biscoff Cheesecake</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span><span class="pill">Soya</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <img src="images/Products/blueberry_cheesecake.jpeg" alt="Blueberry Cheesecake" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Blueberry Cheesecake</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <img src="images/Products/gulabgamun_cheesecake.jpeg" alt="Gulab Jamun Cheesecake" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Gulab Jamun Cheesecake</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="cookies" class="menu-section">
+          <div class="item-grid">
+            <div class="card">
+              <img src="images/Products/chocochip_cookies.jpeg" alt="Choco Chip Cookies" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Choco Chip Cookies</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Wheat</span><span class="pill">Milk</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/Products/darkchocolate_cookies.jpeg" alt="Dark Chocolate Cookies" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Dark Chocolate Cookies</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Wheat</span><span class="pill">Milk</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="brownies" class="menu-section">
+          <div class="item-grid">
+            <div class="card">
+              <img src="images/Products/biscoff_brownies.jpeg" alt="Biscoff Brownies" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Biscoff Brownies</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Wheat</span><span class="pill">Milk</span><span class="pill">Soya</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/Products/dripdropbrownie.jpeg" alt="Drip Drop Brownie" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Drip Drop Brownie</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Wheat</span><span class="pill">Milk</span><span class="pill">Soya</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="tresleches" class="menu-section">
+          <div class="item-grid">
+            <div class="card">
+              <img src="images/Products/classic_tressleaches.jpeg" alt="Classic Tres Leches" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Classic Tres Leches</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/Products/chocolate_tressleaches.jpeg" alt="Chocolate Tres Leches" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Chocolate Tres Leches</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span><span class="pill">Soya</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="cupcakes" class="menu-section">
+          <div class="item-grid">
+            <div class="card">
+              <img src="images/Products/banana_cupcakes.jpeg" alt="Banana Cupcakes" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Banana Cupcakes</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Wheat</span><span class="pill">Milk</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/Products/funfetti_cupcakes.jpeg" alt="Funfetti Cupcakes" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Funfetti Cupcakes</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Wheat</span><span class="pill">Milk</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/Products/carrot_cupcakes.jpeg" alt="Carrot Cupcakes" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Carrot Cupcakes</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Wheat</span><span class="pill">Milk</span><span class="pill">Nuts</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="bites" class="menu-section">
+          <div class="item-grid">
+            <div class="card">
+              <img src="images/Products/cakepops.jpeg" alt="Cake Pops" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Cake Pops</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="images/Products/cakepops2.jpeg" alt="Cake Pops (Assorted)" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Cake Pops (Assorted)</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="savouries" class="menu-section">
+          <div class="item-grid">
+            <div class="card">
+              <img src="images/Products/banoffe_pie.jpeg" alt="Banoffee Pie" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Banoffee Pie</strong>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="cakes" class="menu-section">
+          <div class="item-grid">
+            <div class="card">
+              <img src="images/Gallery/cake4.png" alt="Custom Cake" onerror="imgFallback(this)">
+              <div class="content">
+                <strong>Custom Cakes</strong>
+                <p>DM us on socials for flavours & sizes.</p>
+                <div class="allergen-row">
+                  <span class="pill label">Allergens</span>
+                  <span class="pill">Milk</span><span class="pill">Wheat</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Allergy panel (hidden unless toggled) -->
+        <div id="allergyPanel" style="display:none; margin-top: 14px;">
+          <div class="warning">
+            <b>Cross-contamination warning:</b> Produced in a shared kitchen handling all major allergens. If you have a severe allergy, please contact us before ordering.
+          </div>
+          <!-- Put your full allergy matrix table here -->
+          <table class="matrix">
+            <thead>
+              <tr><th>Item</th><th>Allergens</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Biscoff Cheesecake</td><td>Milk, Wheat, Soya</td></tr>
+              <tr><td>Blueberry Cheesecake</td><td>Milk, Wheat</td></tr>
+              <tr><td>Gulab Jamun Cheesecake</td><td>Milk, Wheat</td></tr>
+              <tr><td>Biscoff Brownies</td><td>Wheat, Milk, Soya</td></tr>
+              <tr><td>Choco Chip Cookies</td><td>Wheat, Milk</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="page-gallery" class="page">
+      <div class="panel">
+        <h2 class="section-h2">Gallery</h2>
+        <p style="text-align:center; color:var(--muted); margin:0;">
+          Auto-loaded from <b>images/Gallery/images.json</b> (recommended). If missing, it tries <b>cake1.png</b> to <b>cake200.png</b> and skips missing files.
+        </p>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="page-about" class="page">
+      <div class="panel">
+        <h2 class="section-h2">About Us</h2>
+        <p style="margin-bottom: 1rem; font-weight: 600; color: var(--cocoa); text-align: center;">
+          📩 Reach out to us through our social media sites to place an order.
+        </p>
+        <p style="text-align: center; max-width: 900px; margin: 0 auto; color:#333; line-height: 1.7;">
+          We’re passionate about serving handcrafted, eggless sweets and savoury treats using the finest ingredients.
+          Everything is made fresh with a fusion of Indian and global inspirations.
+        </p>
+
+        <div class="socialbar">
+          <a class="social" href="https://www.instagram.com/savorbysree" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2zM17.7 6.7a.9.9 0 1 1-.9-.9.9.9 0 0 1 .9.9z"/></svg>
+          </a>
+          <a class="social" href="https://wa.me/353899669496" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.9 9.9 0 0 0-8.6 14.8L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20zm4.6-5.3c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-1 .9-.4.1-.7-.1a6.5 6.5 0 0 1-1.9-1.2 7.4 7.4 0 0 1-1.3-1.7c-.1-.3 0-.5.1-.6l.4-.5c.1-.1.2-.3.3-.4s0-.3 0-.4-.7-1.6-1-2.2c-.3-.6-.5-.5-.7-.5H6.6c-.2 0-.4.1-.5.3a2.4 2.4 0 0 0-.8 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.3 12.5 12.5 0 0 0 1.2.4 2.9 2.9 0 0 0 1.3.1 2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1c-.1-.1-.3-.2-.6-.3z"/></svg>
+          </a>
+          <a class="social" href="https://www.facebook.com/savorbysree" target="_blank" rel="noopener" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3H13.5V9.1c0-.9.3-1.6 1.7-1.6h1.4V4.8c-.2 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.7V11H8.5v3H11v8h2.5z"/></svg>
+          </a>
+          <a class="social" href="https://www.snapchat.com/add/savorbysree" target="_blank" rel="noopener" aria-label="Snapchat">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.6 0 4.7 2.1 4.7 4.7v2.2c0 .5.3 1 .8 1.2l1 .4c.9.3 1.2 1.5.4 2.1l-.7.6c-.5.4-.6 1.2-.2 1.8.2.3.4.6.7.8.6.5.2 1.5-.6 1.5-.7 0-1.3.2-1.9.5-.6.4-1.3.6-2.1.6s-1.6-.2-2.2-.6c-.6-.3-1.2-.5-1.9-.5-.8 0-1.2-1-.6-1.5.3-.2.5-.5.7-.8.4-.6.3-1.4-.2-1.8l-.7-.6c-.8-.6-.5-1.8.4-2.1l1-.4c.5-.2.8-.7.8-1.2V6.7C7.3 4.1 9.4 2 12 2z"/></svg>
+          </a>
+          <a class="social" href="https://www.tiktok.com/@savorbysree" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3c.4 2.3 2 4.1 4.2 4.6v2.6c-1.6 0-3-.5-4.2-1.3v6.2c0 3-2.4 5.4-5.4 5.4S4.2 18.1 4.2 15.1s2.4-5.4 5.4-5.4c.4 0 .7 0 1.1.1v2.9c-.3-.1-.7-.2-1.1-.2-1.4 0-2.6 1.2-2.6 2.6s1.2 2.6 2.6 2.6 2.6-1.2 2.6-2.6V3h2.7z"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© <span id="year"></span> Savor by Sree</div>
+  </main>
+
+  <script>
+  (function(){
+    function q(sel, root=document){ return root.querySelector(sel); }
+    function qa(sel, root=document){ return Array.from(root.querySelectorAll(sel)); }
+
+    // Gallery: prefers images/Gallery/images.json, fallback tries cake1.png..cake200.png
+    function loadGallery(){
+      const grid = q('#galleryGrid');
+      if(!grid) return;
+      grid.innerHTML = '';
+
+      fetch('images/Gallery/images.json', { cache: 'no-store' })
+        .then(res => { if(!res.ok) throw new Error('No images.json'); return res.json(); })
+        .then(files => {
+          if(!Array.isArray(files) || files.length === 0) throw new Error('Empty images.json');
+          files.forEach((file) => {
+            const wrap = document.createElement('div');
+            wrap.className = 'photo';
+            const img = document.createElement('img');
+            img.src = `images/Gallery/${file}`;
+            img.alt = file.replace(/\.(png|jpg|jpeg|webp)$/i,'').replace(/[-_]/g,' ');
+            img.onerror = () => wrap.remove();
+            wrap.appendChild(img);
+            grid.appendChild(wrap);
+          });
+        })
+        .catch(() => {
+          const MAX = 200;
+          for(let i=1; i<=MAX; i++){
+            const wrap = document.createElement('div');
+            wrap.className = 'photo';
+            const img = document.createElement('img');
+            img.src = `images/Gallery/cake${i}.png`;
+            img.alt = `Cake ${i}`;
+            img.onerror = () => wrap.remove();
+            wrap.appendChild(img);
+            grid.appendChild(wrap);
+          }
+        });
+    }
+
+    window.showPage = function(page){
+      document.body.classList.remove('allergy-mode');
+
+      qa('.page').forEach(p => p.classList.remove('active'));
+      const target = q('#page-' + page);
+      if(target) target.classList.add('active');
+
+      qa('.navbtn[data-page]').forEach(b => b.classList.toggle('active', b.dataset.page === page));
+
+      if(page === 'gallery'){ loadGallery(); }
+
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+
+    window.showMenu = function(event, id){
+      document.body.classList.remove('allergy-mode');
+      const ap = q('#allergyPanel');
+      const btn = q('#allergyToggleBtn');
+      if(ap) ap.style.display = 'none';
+      if(btn) btn.textContent = 'Allergy Info';
+
+      qa('.menu-section').forEach(sec => sec.classList.remove('active'));
+      const target = q('#' + id);
+      if(target) target.classList.add('active');
+
+      qa('.menu-toggle button').forEach(b => b.classList.remove('active'));
+      if(event && event.target) event.target.classList.add('active');
+
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+
+    window.toggleAllergyPanel = function(){
+      const ap = q('#allergyPanel');
+      const btn = q('#allergyToggleBtn');
+      if(!ap || !btn) return;
+
+      const isOn = document.body.classList.contains('allergy-mode');
+
+      if(isOn){
+        document.body.classList.remove('allergy-mode');
+        ap.style.display = 'none';
+        btn.textContent = 'Allergy Info';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }else{
+        document.body.classList.add('allergy-mode');
+        ap.style.display = 'block';
+        btn.textContent = 'Menu';
+        ap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    window.imgFallback = function(img){
+      img.onerror = function(){
+        this.onerror = null;
+        this.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+          `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
+            <defs>
+              <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+                <stop offset='0' stop-color='#fffaf5'/>
+                <stop offset='1' stop-color='#f7f1ea'/>
+              </linearGradient>
+            </defs>
+            <rect width='100%' height='100%' fill='url(#g)'/>
+            <circle cx='180' cy='170' r='110' fill='rgba(74,44,29,.12)'/>
+            <rect x='80' y='330' width='1040' height='70' rx='18' fill='rgba(0,0,0,.06)'/>
+            <rect x='80' y='430' width='760' height='48' rx='14' fill='rgba(0,0,0,.05)'/>
+            <text x='80' y='620' fill='rgba(74,44,29,.55)' font-family='Poppins, Arial' font-size='52' font-weight='700'>Image coming soon</text>
+          </svg>`
+        );
+      };
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const y = q('#year');
+      if(y) y.textContent = new Date().getFullYear();
+    });
+  })();
+  </script>
 </body>
 </html>
+
