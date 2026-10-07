@@ -134,6 +134,48 @@
       padding: 6px 14px;
       border-radius: 999px;
     }
+
+    /* ---------- Animation ---------- */
+    /* Doodle background drifts slowly (560px = one tile, so the loop is seamless) */
+    body { animation: drift 70s linear infinite; }
+    @keyframes drift { to { background-position: 560px 560px; } }
+
+    /* Logo pops in with a bounce, then floats gently */
+    .logo { animation: pop .9s cubic-bezier(.34,1.56,.64,1) backwards, float 5s ease-in-out 1s infinite; }
+    @keyframes pop { from { opacity: 0; transform: scale(.4) rotate(-12deg); } }
+    @keyframes float { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-8px) rotate(1.5deg); } }
+
+    /* Card rises up, then its content follows one after another */
+    .card { animation: rise .8s cubic-bezier(.2,.8,.2,1) .25s backwards; }
+    @keyframes rise { from { opacity: 0; transform: translateY(40px); } }
+
+    h1, .lead, .cta, .number, .divider, .follow, .foot { animation: fadeUp .7s ease-out backwards; }
+    h1 { animation-delay: .6s; }
+    .lead:nth-of-type(1) { animation-delay: .75s; }
+    .lead:nth-of-type(2) { animation-delay: .9s; }
+    .cta { animation-delay: 1.05s, 2s; }
+    .number { animation-delay: 1.15s; }
+    .divider { animation-delay: 1.25s; }
+    .follow { animation-delay: 1.3s; }
+    .foot { animation-delay: 1.9s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } }
+
+    /* Social icons pop in one by one */
+    .social { animation: bubble .5s cubic-bezier(.34,1.56,.64,1) backwards; }
+    .social:nth-child(1) { animation-delay: 1.4s; }
+    .social:nth-child(2) { animation-delay: 1.48s; }
+    .social:nth-child(3) { animation-delay: 1.56s; }
+    .social:nth-child(4) { animation-delay: 1.64s; }
+    .social:nth-child(5) { animation-delay: 1.72s; }
+    @keyframes bubble { from { opacity: 0; transform: scale(0); } }
+
+    /* WhatsApp button gives a soft pulse to draw the eye */
+    .cta { animation: fadeUp .7s ease-out 1.05s backwards, pulse 2.6s ease-out 2s infinite; }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(109,59,0,.45); }
+      70%, 100% { box-shadow: 0 0 0 18px rgba(109,59,0,0); }
+    }
+
     @media (max-height: 820px) and (min-width: 700px) {
       body { padding: 20px; }
       .logo { width: 200px; margin-bottom: -44px; }
@@ -143,7 +185,7 @@
       .divider { margin: 20px auto 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
     }
   </style>
 </head>
