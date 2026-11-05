@@ -1,235 +1,1064 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Savor by Sree | Sweet Atelier – Back Soon</title>
-  <meta name="description" content="Savor by Sree is getting a new website. Message us on WhatsApp or social media to place an order." />
-  <meta name="theme-color" content="#ff9900" />
-  <link rel="icon" href="images/branding/logo.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Tan Pearl is the brand display font. It's a licensed font, so Baloo 2 is used as a stand-in until you add the font files (see @font-face note below). -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    /* To use the real Tan Pearl font, upload the file to /fonts and uncomment:
-    @font-face { font-family: 'Tan Pearl'; src: url('fonts/TanPearl.woff2') format('woff2'); font-display: swap; }
-    then change --display below to 'Tan Pearl', 'Baloo 2', sans-serif; */
-    :root {
-      --orange: #ff9900;
-      --brown: #6d3b00;
-      --white: #ffffff;
-      --display: 'Baloo 2', 'Trebuchet MS', sans-serif;
-      --body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: var(--body);
-      color: var(--brown);
-      background: var(--orange) url('images/branding/background.jpg') center top / 560px auto repeat;
-      display: flex;
-      padding: 32px 20px;
-      min-height: 100vh;
-      min-height: 100dvh;
-    }
-    main {
-      margin: auto; /* centres when there is room, never clips the top when content is taller than the screen */
-      width: 100%;
-      max-width: 560px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .logo {
-      width: min(260px, 62vw);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 6px solid var(--white);
-      box-shadow: 0 0 0 6px var(--brown);
-      margin-bottom: -56px;
-      position: relative;
-      z-index: 2;
-      background: var(--orange);
-    }
-    .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+<title>Savor by Sree | Artisan Sweet Atelier, Dublin</title>
+<meta name="description" content="Handmade cookies, brownies, cheesecakes, tiramisu, tres leches and celebration cakes, made fresh to order in small batches in Dublin. Order on WhatsApp.">
+<meta name="theme-color" content="#ff9900">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* Layout: the Savor by Sree site theme (deep brown hero, orange pattern bands, cream sections, Montserrat).
+   A pinned "film" opens from the brand video circle into full-screen Taste of Dublin shots, then returns to the brand. */
+:root{
+  --orange:#ff9900; --deep:#6d3b00; --ink:#2a1400; --paper:#f2dfbd; --cream:#fbf6ef; --muted:rgba(42,20,0,.66); --hair:rgba(42,20,0,.12); --white:#fff;
+  --font:'Montserrat',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{overflow-x:hidden}
+body{background:var(--cream);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--paper)}
+a{color:inherit}
+img,video{max-width:100%;display:block}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:8px}
+h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.045em;line-height:1.02;font-weight:800}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:14px 24px;font-weight:700;font-size:.92rem;text-decoration:none;transition:transform .3s var(--ease),box-shadow .3s}
+.btn:hover{transform:translateY(-2px)}
+.btn-orange{background:var(--orange);color:var(--ink);box-shadow:0 12px 26px -12px rgba(255,153,0,.8)}
+.btn-dark{background:var(--deep);color:var(--white)}
+.btn-ghost{background:rgba(255,255,255,.12);color:var(--white);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.pat{position:absolute;inset:0;background:url(pat.png) 0 0/260px;opacity:.09;pointer-events:none}
+.on-orange .pat{opacity:.18;mix-blend-mode:multiply}
 
-    .card {
-      width: 100%;
-      background: var(--white);
-      border-radius: 28px;
-      border: 4px solid var(--brown);
-      padding: 80px 28px 30px;
-      position: relative;
-    }
-    h1 {
-      font-family: var(--display);
-      font-weight: 800;
-      font-size: clamp(2rem, 7vw, 2.9rem);
-      line-height: 1.05;
-      margin: 0 0 14px;
-      color: var(--brown);
-    }
-    .lead {
-      margin: 0 auto;
-      max-width: 40ch;
-      font-size: 1.02rem;
-      line-height: 1.65;
-      font-weight: 500;
-    }
-    .lead + .lead { margin-top: 10px; }
+/* nav (as on the live site) */
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--hair)}
+.nav-in{max-width:1140px;margin:0 auto;display:flex;align-items:center;gap:18px;height:64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:1rem;white-space:nowrap}
+.brand img{width:42px;height:42px;border-radius:50%;box-shadow:0 0 0 2px var(--orange)}
+.links{display:flex;gap:4px;margin-left:auto}
+.links a{text-decoration:none;font-size:.88rem;font-weight:600;padding:8px 12px;border-radius:999px;transition:background .3s}
+.links a:hover{background:rgba(109,59,0,.08)}
+.cartbtn{display:flex;align-items:center;gap:8px;background:var(--deep);color:var(--white);border:0;border-radius:999px;padding:9px 15px;font-weight:700;font-size:.85rem}
+.cartbtn i{font-style:normal;min-width:22px;height:22px;border-radius:99px;background:var(--orange);color:var(--ink);display:grid;place-items:center;font-size:.74rem;font-weight:800;padding:0 6px}
+.burger{display:none;width:42px;height:42px;border:0;background:none;position:relative}
+.burger span{position:absolute;left:10px;right:10px;height:2.5px;border-radius:2px;background:var(--ink);transition:transform .4s var(--ease),top .4s var(--ease)}
+.burger span:nth-child(1){top:16px}.burger span:nth-child(2){top:25px}
+.menu-open .burger span:nth-child(1){top:20px;transform:rotate(45deg)}
+.menu-open .burger span:nth-child(2){top:20px;transform:rotate(-45deg)}
+.overlay{position:fixed;inset:0;z-index:45;background:var(--deep);color:var(--white);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:90px max(28px,env(safe-area-inset-right,0px)) 40px max(28px,env(safe-area-inset-left,0px));visibility:hidden;opacity:0;transition:opacity .4s,visibility .4s;overflow:hidden}
+.menu-open .overlay{visibility:visible;opacity:1}
+.overlay a{position:relative;text-decoration:none;font-weight:800;letter-spacing:-.04em;font-size:clamp(1.9rem,8.5vw,3.4rem);line-height:1.15}
+.overlay a:hover{color:var(--orange)}
+@media(max-width:860px){.links{display:none}.burger{display:block;margin-left:auto}.cartbtn{margin-left:auto}.cartbtn+.burger{margin-left:0}}
 
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 24px;
-      padding: 15px 26px;
-      border-radius: 999px;
-      background: var(--brown);
-      color: var(--white);
-      font-family: var(--body);
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      border: 3px solid var(--brown);
-      transition: background .2s ease, color .2s ease, transform .2s ease;
-    }
-    .cta svg { width: 22px; height: 22px; fill: currentColor; }
-    .cta:hover { background: var(--orange); color: var(--brown); transform: translateY(-2px); }
-    .number { margin: 10px 0 0; font-size: .9rem; font-weight: 500; }
-    .number a { color: var(--brown); font-weight: 600; }
+/* marquee */
+.marq{position:relative;background:var(--orange);color:var(--ink);overflow:hidden;padding:9px 0}
+.marq-t{position:relative;display:flex;width:max-content;will-change:transform}
+.marq-t span{font-weight:800;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:18px;padding-right:18px;white-space:nowrap}
+.marq-t span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--deep)}
 
-    .divider {
-      height: 0;
-      border-top: 3px dotted var(--orange);
-      margin: 28px auto 20px;
-      width: 70%;
-    }
-    .follow { margin: 0 0 14px; font-weight: 600; font-size: .95rem; }
-    .socialbar { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
-    .social {
-      width: 50px; height: 50px;
-      border-radius: 50%;
-      background: var(--orange);
-      border: 3px solid var(--brown);
-      display: inline-flex; align-items: center; justify-content: center;
-      transition: transform .2s ease, background .2s ease;
-    }
-    .social svg { width: 23px; height: 23px; fill: var(--brown); transition: fill .2s ease; }
-    .social:hover { background: var(--brown); transform: translateY(-3px) rotate(-6deg); }
-    .social:hover svg { fill: var(--white); }
+/* sections */
+.sec{position:relative;padding-block:clamp(72px,10vw,120px)}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:34px}
+.sec-head h2{font-size:clamp(2.4rem,6vw,4.2rem)}
+.sec-head p{max-width:440px;margin:0;color:var(--muted);font-weight:500}
+.sec-head .eyebrow{display:block;color:var(--deep);margin-bottom:10px}
+.ln-r{display:block;overflow:hidden;padding-bottom:.08em}
+.ln-r>span{display:block}
 
-    a:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
-    .cta:focus-visible { outline-color: var(--brown); }
+/* menu */
+.tabs{position:relative;display:flex;gap:4px;flex-wrap:wrap;padding:6px;border-radius:26px;background:var(--paper)}
+.tab{position:relative;z-index:1;border:0;background:none;color:var(--ink);padding:10px 16px;border-radius:999px;font-weight:700;font-size:.86rem}
+.tab-ind{position:absolute;z-index:0;top:0;left:0;border-radius:999px;background:var(--orange)}
+.mgrid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,5vw,60px);margin-top:34px;align-items:start}
+@media(max-width:860px){.mgrid{grid-template-columns:1fr}}
+.mvis{position:sticky;top:96px;aspect-ratio:4/5;border-radius:30px;overflow:hidden;background:var(--orange);box-shadow:0 30px 60px -30px rgba(42,20,0,.55)}
+.mvis img{width:100%;height:100%;object-fit:cover}
+.mvis .pblock{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--ink);text-align:center;padding:24px}
+.mvis .pblock img{width:42%;height:auto;border-radius:50%;box-shadow:0 0 0 6px rgba(255,255,255,.45)}
+.mvis .pblock b{font-size:1.6rem;letter-spacing:-.03em}
+@media(max-width:860px){.mvis{position:relative;top:0;aspect-ratio:16/10}}
+.mhead h3{font-size:clamp(2rem,5vw,3rem)}
+.mhead p{color:var(--muted);margin:8px 0 0;font-weight:500}
+.mprice{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.mprice span{background:var(--paper);border-radius:99px;padding:6px 14px;font-weight:700;font-size:.82rem}
+.mlist{list-style:none;padding:0;margin:18px 0 0;display:grid}
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 16px;align-items:center;padding:15px 0;border-bottom:1px solid var(--hair)}
+.mrow h4{margin:0;font-size:1.02rem;font-weight:800;display:flex;gap:8px;align-items:center;flex-wrap:wrap;letter-spacing:-.01em}
+.badge{background:var(--orange);color:var(--ink);border-radius:99px;padding:2px 10px;font-size:.68rem;font-weight:800}
+.badge.al{background:transparent;box-shadow:inset 0 0 0 1.5px var(--deep);color:var(--deep)}
+.alg{font-size:.78rem;color:var(--muted);font-weight:600;margin-top:2px}
+.seg{display:inline-flex;flex-wrap:wrap;border-radius:18px;background:var(--paper);padding:3px;margin-top:8px}
+.seg button{border:0;background:none;color:var(--ink);border-radius:99px;padding:6px 12px;font-size:.75rem;font-weight:700;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--deep);color:var(--white)}
+.add{border:0;border-radius:99px;padding:10px 16px;font-weight:800;font-size:.8rem;background:var(--deep);color:var(--white);white-space:nowrap;transition:transform .25s var(--ease)}
+.add:hover{transform:scale(1.04)}
+.add.need{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1.5px var(--hair)}
+.add.on{background:var(--orange);color:var(--ink)}
+@media(max-width:520px){.mrow{grid-template-columns:1fr}.add{justify-self:start}}
+.cb{margin-top:18px;display:grid;gap:16px}
+.cb fieldset{border:0;padding:0;margin:0}
+.cb legend{font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.opt{position:relative;border-radius:16px;padding:12px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--hair);cursor:pointer}
+.opt input{position:absolute;opacity:0}
+.opt b{display:block;font-size:.92rem}
+.opt small{color:var(--muted);font-weight:600;display:block}
+.opt em{font-style:normal;font-weight:800;color:var(--deep)}
+.opt:has(input:checked){box-shadow:inset 0 0 0 2.5px var(--orange);background:#fff6e6}
+.opt:has(input:focus-visible){outline:3px solid var(--orange);outline-offset:2px}
+.cb select{width:100%;padding:11px 13px;border-radius:14px;border:1.5px solid var(--hair);background:var(--white);color:var(--ink);font:inherit;font-weight:600}
+.checks{display:flex;gap:8px;flex-wrap:wrap}
+.checks label{display:flex;gap:8px;align-items:center;font-weight:600;font-size:.84rem;padding:7px 12px;border-radius:99px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--hair)}
+.cbtotal{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--deep);color:var(--white);border-radius:20px;padding:14px 18px}
+.cbtotal b{font-size:1.8rem;font-weight:800;letter-spacing:-.03em}
+.cbtotal small{display:block;opacity:.75;font-weight:600}
 
-    .foot {
-      margin-top: 18px;
-      font-size: .8rem;
-      font-weight: 600;
-      color: var(--brown);
-      background: rgba(255,255,255,.85);
-      padding: 6px 14px;
-      border-radius: 999px;
-    }
+/* bundles */
+.bund{background:var(--deep);color:var(--white);overflow:hidden}
+.bund .sec-head p{color:rgba(255,255,255,.75)}
+.bund .sec-head .eyebrow{color:var(--orange)}
+.bgrid{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.bcard{position:relative;border-radius:26px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);padding:22px;display:flex;flex-direction:column;gap:12px;min-height:290px;transition:transform .4s var(--ease),background .4s}
+.bcard:hover{transform:translateY(-6px);background:rgba(255,255,255,.12)}
+.bcard.hamper{background:var(--orange);color:var(--ink);box-shadow:none}
+.bcard .bt{font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;opacity:.75}
+.bcard h3{font-size:1.8rem}
+.bcard ul{list-style:none;padding:0;margin:0;display:grid;gap:7px;font-weight:600;font-size:.88rem}
+.bcard li{display:flex;gap:10px}
+.bcard li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--orange);margin-top:7px}
+.bcard.hamper li::before{background:var(--deep)}
+.bcard .bfoot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
+.bcard .bp{font-weight:800;font-size:2.6rem;letter-spacing:-.04em;line-height:1}
+.bcard .save{position:absolute;right:18px;top:18px;background:var(--orange);color:var(--ink);border-radius:99px;padding:4px 11px;font-weight:800;font-size:.72rem}
+.bcard .add{background:var(--white);color:var(--ink)}
+.bcard .add.on{background:var(--orange)}
+.bcard.hamper .add{background:var(--deep);color:var(--white)}
 
-    /* ---------- Animation ---------- */
-    /* Doodle background drifts slowly (560px = one tile, so the loop is seamless) */
-    body { animation: drift 70s linear infinite; }
-    @keyframes drift { to { background-position: 560px 560px; } }
+/* taste of dublin gallery */
+.gal{overflow:hidden;background:var(--cream)}
+.gal-t{display:flex;gap:16px;width:max-content;will-change:transform}
+.gal-t img{height:clamp(240px,36vw,380px);width:auto;aspect-ratio:4/5;object-fit:cover;border-radius:24px;flex:none}
+.gal-t img.w{aspect-ratio:3/2}
 
-    /* Logo pops in with a bounce, then floats gently */
-    .logo { animation: pop .9s cubic-bezier(.34,1.56,.64,1) backwards, float 5s ease-in-out 1s infinite; }
-    @keyframes pop { from { opacity: 0; transform: scale(.4) rotate(-12deg); } }
-    @keyframes float { 0%,100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-8px) rotate(1.5deg); } }
+/* markets */
+.mk{background:var(--orange);color:var(--ink);overflow:hidden}
+.mk .sec-head p{color:rgba(42,20,0,.75)}
+.mkgrid{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px;align-items:start}
+@media(max-width:860px){.mkgrid{grid-template-columns:1fr}}
+.next{background:var(--deep);color:var(--white);border-radius:28px;padding:24px;display:grid;gap:14px}
+.next .when{display:flex;gap:16px;align-items:center}
+.next .d{width:84px;height:84px;flex:none;border-radius:22px;background:var(--orange);color:var(--ink);display:grid;place-items:center;text-align:center;line-height:1}
+.next .d b{font-size:2.2rem;font-weight:800;display:block;letter-spacing:-.04em}
+.next .d small{font-weight:800;letter-spacing:.14em;font-size:.68rem}
+.next h3{font-size:1.15rem;letter-spacing:-.02em}
+.next p{margin:0;opacity:.8;font-weight:500;font-size:.9rem}
+.cd{display:flex;gap:8px}
+.cd div{flex:1;background:rgba(255,255,255,.08);border-radius:14px;padding:10px;text-align:center}
+.cd b{display:block;font-size:1.8rem;font-weight:800;font-variant-numeric:tabular-nums}
+.cd small{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.next .btns{display:flex;gap:10px;flex-wrap:wrap}
+.dates{display:grid;gap:12px}
+.date{display:flex;gap:14px;align-items:center;background:var(--cream);border-radius:20px;padding:12px 16px}
+.date .dd{width:54px;height:54px;flex:none;border-radius:14px;background:var(--deep);color:var(--white);display:grid;place-items:center;text-align:center;line-height:1}
+.date .dd b{font-size:1.35rem;font-weight:800;display:block}
+.date .dd small{font-size:.6rem;font-weight:800;letter-spacing:.12em;color:var(--orange)}
+.date h4{margin:0;font-size:.95rem}
+.date p{margin:2px 0 0;font-size:.8rem;font-weight:600;opacity:.7}
+.tagset{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tagset span{background:var(--deep);color:var(--white);border-radius:99px;padding:6px 12px;font-weight:700;font-size:.8rem}
 
-    /* Card rises up, then its content follows one after another */
-    .card { animation: rise .8s cubic-bezier(.2,.8,.2,1) .25s backwards; }
-    @keyframes rise { from { opacity: 0; transform: translateY(40px); } }
+/* faq */
+.faq{max-width:860px;margin:0 auto}
+.qa{border-bottom:1px solid var(--hair)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:18px;text-align:left;background:none;border:0;color:var(--ink);padding:20px 0;font-weight:700;font-size:1.02rem}
+.qa .pm{width:32px;height:32px;flex:none;border-radius:50%;background:var(--orange);position:relative;transition:transform .4s var(--ease)}
+.qa .pm::before,.qa .pm::after{content:"";position:absolute;left:9px;right:9px;top:15px;height:2.5px;border-radius:2px;background:var(--ink)}
+.qa .pm::after{transform:rotate(90deg);transition:transform .4s var(--ease)}
+.qa.open .pm{transform:rotate(180deg)}
+.qa.open .pm::after{transform:rotate(0)}
+.qa .ans{height:0;overflow:hidden}
+.qa .ans>div{padding:0 0 20px;color:var(--muted);font-weight:500}
+.qa .ans p{margin:0 0 8px}.qa .ans ul{margin:0;padding-left:20px}
+.faq-more{margin-top:24px;text-align:center}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
 
-    h1, .lead, .cta, .number, .divider, .follow, .foot { animation: fadeUp .7s ease-out backwards; }
-    h1 { animation-delay: .6s; }
-    .lead:nth-of-type(1) { animation-delay: .75s; }
-    .lead:nth-of-type(2) { animation-delay: .9s; }
-    .cta { animation-delay: 1.05s, 2s; }
-    .number { animation-delay: 1.15s; }
-    .divider { animation-delay: 1.25s; }
-    .follow { animation-delay: 1.3s; }
-    .foot { animation-delay: 1.9s; }
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } }
+/* footer */
+.foot{position:relative;background:var(--deep);color:var(--white);padding-top:80px;overflow:hidden;padding-bottom:max(30px,env(safe-area-inset-bottom,0px))}
+.foot .row{position:relative;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.foot h3{font-size:clamp(2rem,5vw,3.2rem);max-width:14ch}
+.foot .contact{display:grid;gap:8px;font-weight:600}
+.foot .contact b{font-size:1.3rem;user-select:all}
+.mega{position:relative;font-weight:900;letter-spacing:-.06em;font-size:clamp(2.6rem,12.5vw,13rem);color:var(--orange);margin-top:50px;white-space:nowrap;text-align:center;line-height:1}
+.small{position:relative;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:.78rem;opacity:.7;font-weight:600;margin-top:16px}
 
-    /* Social icons pop in one by one */
-    .social { animation: bubble .5s cubic-bezier(.34,1.56,.64,1) backwards; }
-    .social:nth-child(1) { animation-delay: 1.4s; }
-    .social:nth-child(2) { animation-delay: 1.48s; }
-    .social:nth-child(3) { animation-delay: 1.56s; }
-    .social:nth-child(4) { animation-delay: 1.64s; }
-    .social:nth-child(5) { animation-delay: 1.72s; }
-    @keyframes bubble { from { opacity: 0; transform: scale(0); } }
+/* menu showcase (horizontal, scroll-driven) */
+.show{position:relative;background:var(--deep);color:var(--white);overflow:hidden}
+.show-in{height:100vh;height:100svh;min-height:560px;display:flex;flex-direction:column;justify-content:center;gap:26px;padding-top:70px}
+.show-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.show-head h2{font-size:clamp(2.4rem,6vw,4.4rem)}
+.show-head .eyebrow{color:var(--orange);display:block;margin-bottom:10px}
+.show-head p{margin:0;max-width:380px;color:rgba(255,255,255,.75);font-weight:500}
+.strack{display:flex;gap:20px;width:max-content;padding-left:max(20px,calc((100vw - 1140px)/2 + 20px));padding-right:20px;will-change:transform}
+.scard{position:relative;flex:none;width:min(78vw,520px);height:min(56vh,440px);border-radius:30px;overflow:hidden;background:var(--orange);color:var(--white)}
+.scard>img{position:absolute;inset:-6% -12%;width:124%;height:112%;max-width:none;object-fit:cover;will-change:transform}
+.scard .pb{position:absolute;inset:0;background:var(--orange);display:grid;place-items:center}
+.scard .pb img{width:38%;border-radius:50%;box-shadow:0 0 0 8px rgba(255,255,255,.45);position:relative}
+.scard .sh{position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(20,8,0,.82))}
+.scard .st{position:absolute;left:24px;right:24px;bottom:22px;display:grid;gap:6px}
+.scard .st small{font-weight:800;letter-spacing:.16em;font-size:.7rem;color:var(--orange)}
+.scard .st b{font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-.04em;line-height:1}
+.scard .st span{font-weight:500;color:rgba(255,255,255,.85);font-size:.92rem}
+.scard .st .row{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:8px}
+.scard .st .from{font-weight:800}
+.scard .go{border:0;border-radius:99px;background:var(--orange);color:var(--ink);font-weight:800;padding:10px 16px;font-size:.84rem}
+.scard .num{position:absolute;right:18px;top:16px;font-weight:900;font-size:3.4rem;letter-spacing:-.05em;color:rgba(255,255,255,.22);line-height:1}
+.show-prog{height:3px;background:rgba(255,255,255,.15);border-radius:3px;overflow:hidden;max-width:1100px}
+.show-prog i{display:block;height:100%;background:var(--orange);transform-origin:0 50%;transform:scaleX(0)}
+.show.rm .strack{overflow-x:auto;width:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+.show.rm .scard{scroll-snap-align:start}
+.show.rm .show-in{height:auto}
+/* gifting */
+.gift{background:var(--paper)}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.gcard{position:relative;background:var(--white);border-radius:26px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 50px -34px rgba(42,20,0,.6)}
+.gcard .ic{width:52px;height:52px;border-radius:16px;background:var(--orange);display:grid;place-items:center}
+.gcard .ic svg{width:28px;height:28px}
+.gcard h3{font-size:1.5rem}
+.gcard p{margin:0;color:var(--muted);font-weight:500}
+.gcard ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-weight:600;font-size:.9rem}
+.gcard li{display:flex;gap:10px}.gcard li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange);margin-top:8px;flex:none}
+.gcard .btn{margin-top:auto;align-self:flex-start}
+.gnote{margin-top:20px;color:var(--muted);font-weight:600;font-size:.9rem}
+.gbanner{position:relative;height:clamp(220px,34vw,380px);border-radius:30px;overflow:hidden;margin-bottom:30px}
+.gbanner img{position:absolute;inset:-15% 0;width:100%;height:130%;object-fit:cover;max-width:none}
+/* how to order */
+.how{background:var(--cream)}
+.steps3{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-bottom:34px}
+.steps3 svg.line{position:absolute;left:8%;right:8%;top:34px;width:84%;height:20px;overflow:visible;pointer-events:none}
+.step{position:relative;background:var(--white);border-radius:24px;padding:24px;box-shadow:0 24px 50px -34px rgba(42,20,0,.6)}
+.step .n{width:68px;height:68px;border-radius:50%;background:var(--orange);color:var(--ink);display:grid;place-items:center;font-weight:900;font-size:1.8rem;margin-bottom:14px;box-shadow:0 0 0 8px var(--cream)}
+.step h3{font-size:1.3rem}
+.step p{margin:8px 0 0;color:var(--muted);font-weight:500;font-size:.92rem}
+@media(max-width:760px){.steps3{grid-template-columns:1fr}.steps3 svg.line{display:none}}
+.oform{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;background:var(--deep);color:var(--white);border-radius:30px;padding:clamp(20px,4vw,34px)}
+@media(max-width:860px){.oform{grid-template-columns:1fr}}
+.oform h3{font-size:1.6rem}
+.oform .sum{display:grid;gap:8px;margin-top:12px}
+.oform .sum div{display:flex;justify-content:space-between;gap:10px;background:rgba(255,255,255,.08);border-radius:14px;padding:10px 14px;font-weight:600;font-size:.9rem}
+.oform .empty{color:rgba(255,255,255,.7);font-weight:500;margin-top:10px}
+.oform form{display:grid;gap:12px}
+.oform label{display:grid;gap:6px;font-weight:700;font-size:.82rem}
+.oform input,.oform textarea{font:inherit;padding:12px 14px;border-radius:14px;border:0;background:var(--cream);color:var(--ink);font-weight:600}
+.oform textarea{min-height:90px;resize:vertical}
+.radios{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.radios label{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.08);border-radius:14px;padding:12px;cursor:pointer}
+.radios label:has(input:checked){background:var(--orange);color:var(--ink)}
+.oform small{color:rgba(255,255,255,.7);font-weight:500}
+/* story timeline */
+.story2{background:var(--cream)}
+.count{display:flex;align-items:baseline;gap:12px;margin-bottom:22px}
+.count b{font-size:clamp(3.6rem,10vw,6rem);font-weight:900;letter-spacing:-.05em;color:var(--orange);line-height:1;font-variant-numeric:tabular-nums}
+.count span{font-weight:700;color:var(--muted);max-width:200px}
+.filt{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filt button{border:0;border-radius:99px;padding:9px 16px;font-weight:700;font-size:.84rem;background:var(--paper);color:var(--ink)}
+.filt button[aria-pressed="true"]{background:var(--deep);color:var(--white)}
+.tline{position:relative;display:grid;gap:16px;padding-left:44px}
+.tline .rail{position:absolute;left:14px;top:6px;bottom:6px;width:3px;background:var(--hair);border-radius:3px;overflow:hidden}
+.tline .rail i{display:block;width:100%;height:100%;background:var(--orange);transform-origin:50% 0;transform:scaleY(0)}
+.ev{position:relative;background:var(--white);border-radius:22px;padding:18px 20px;box-shadow:0 20px 40px -32px rgba(42,20,0,.6)}
+.ev::before{content:"";position:absolute;left:-37px;top:22px;width:17px;height:17px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 5px var(--cream)}
+.ev small{font-weight:800;letter-spacing:.14em;font-size:.68rem;color:var(--deep)}
+.ev h3{font-size:1.2rem;margin-top:4px}
+.ev .pl{font-weight:600;font-size:.84rem;color:var(--muted)}
+.ev p{margin:6px 0 0;color:var(--muted);font-weight:500;font-size:.9rem}
+.tgrid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:start}
+@media(max-width:860px){.tgrid{grid-template-columns:1fr}.tgrid>div:first-child{position:static!important}}
+/* about */
+.about{background:var(--deep);color:var(--white);overflow:hidden}
+.agrid{position:relative;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,6vw,80px);align-items:center}
+@media(max-width:860px){.agrid{grid-template-columns:1fr}}
+.alogo{position:relative;width:min(100%,380px);aspect-ratio:1;margin:auto}
+.alogo img{position:absolute;inset:14%;width:72%;border-radius:50%;box-shadow:0 0 0 10px rgba(255,153,0,.35),0 40px 70px -30px rgba(0,0,0,.6)}
+.alogo svg{position:absolute;inset:0;width:100%;height:100%}
+.alogo text{font:800 13px var(--font);letter-spacing:4px;fill:var(--orange);text-transform:uppercase}
+.about .eyebrow{color:var(--orange)}
+.about h2{font-size:clamp(2.4rem,5.5vw,4rem);margin:10px 0 18px}
+.about p{color:rgba(255,255,255,.82);font-weight:500;margin:0 0 14px;max-width:62ch}
+.feats{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.feats span{background:var(--cream);color:var(--deep);border-radius:99px;padding:8px 14px;font-weight:700;font-size:.82rem}
 
-    /* WhatsApp button gives a soft pulse to draw the eye */
-    .cta { animation: fadeUp .7s ease-out 1.05s backwards, pulse 2.6s ease-out 2s infinite; }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(109,59,0,.45); }
-      70%, 100% { box-shadow: 0 0 0 18px rgba(109,59,0,0); }
-    }
+/* menu (mobile-first, one continuous list with a sticky category bar) */
+.menu2{background:var(--cream);padding-top:clamp(56px,9vw,100px);padding-bottom:30px}
+.mhead2 .eyebrow{color:var(--deep);display:block;margin-bottom:10px}
+.mhead2 h2{font-size:clamp(2.2rem,7vw,4rem)}
+.mhead2 p{color:var(--muted);font-weight:500;margin:12px 0 0;max-width:52ch}
+.catbar{position:sticky;top:calc(64px + env(safe-area-inset-top,0px));z-index:30;background:var(--cream);border-bottom:1px solid var(--hair);margin-top:22px}
+.cat-in{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;max-width:1140px;margin:0 auto;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.cat-in::-webkit-scrollbar{display:none}
+.cat-in button{position:relative;z-index:1;flex:none;border:0;background:transparent;border-radius:99px;padding:9px 15px;font-weight:700;font-size:.88rem;color:var(--ink);white-space:nowrap}
+.cat-ind{position:absolute;z-index:0;top:10px;left:0;height:calc(100% - 20px);width:0;border-radius:99px;background:var(--orange);transition:transform .35s var(--ease),width .35s var(--ease)}
+.mcat{padding-top:30px;scroll-margin-top:136px}
+.mban{position:relative;height:clamp(140px,32vw,230px);border-radius:22px;overflow:hidden;background:var(--orange)}
+.mban img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.2s var(--ease)}
+.mcat.seen .mban img{transform:scale(1)}
+.mban .ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 25%,rgba(20,8,0,.78))}
+.mban .tx{position:absolute;left:18px;right:18px;bottom:14px;color:#fff}
+.mban .tx h3{font-size:clamp(1.7rem,6.5vw,2.6rem)}
+.mban .tx span{font-weight:600;font-size:.88rem;opacity:.92}
+.mban.nop .ov{background:none}.mban.nop .tx{color:var(--ink)}
+.mban.nop img.lg{position:absolute;right:16px;top:50%;width:clamp(76px,22vw,120px);height:auto;aspect-ratio:1;object-fit:cover;transform:translateY(-50%);border-radius:50%;box-shadow:0 0 0 5px rgba(255,255,255,.5)}
+.mban.nop .tx{right:calc(clamp(76px,22vw,120px) + 30px)}
+.mban img.cake{object-position:50% 92%}
+.prices{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 0}
+.prices span{background:var(--paper);border-radius:99px;padding:5px 12px;font-weight:700;font-size:.8rem}
+.ilist{display:grid}
+@media(min-width:900px){.ilist{grid-template-columns:1fr 1fr;column-gap:44px}}
+.irow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 14px;align-items:center;padding:15px 0;border-bottom:1px solid var(--hair)}
+.irow h4{margin:0;font-size:1rem;font-weight:800;display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.sz{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.sz button{border:0;border-radius:99px;background:var(--paper);color:var(--ink);padding:7px 12px;font-weight:700;font-size:.76rem}
+.sz button[aria-pressed="true"]{background:var(--deep);color:#fff}
+.addb{min-width:92px;height:44px;border:0;border-radius:99px;background:var(--deep);color:#fff;font-weight:800;font-size:.82rem;padding:0 16px;white-space:nowrap}
+.addb.need{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1.5px var(--hair)}
+.stp{display:inline-flex;align-items:center;height:44px;border-radius:99px;background:var(--orange)}
+.stp button{width:44px;height:44px;border:0;background:transparent;font-weight:900;font-size:1.15rem;color:var(--ink)}
+.stp span{min-width:20px;text-align:center;font-weight:800}
+.cakebox{margin-top:6px}
+.obar{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px max(14px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));transform:translateY(130%);transition:transform .45s var(--ease);pointer-events:none}
+.obar.show{transform:none}
+.obar button{pointer-events:auto;width:100%;max-width:560px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--deep);color:#fff;border:0;border-radius:18px;padding:15px 18px;font-weight:800;font-size:.95rem;box-shadow:0 18px 40px -16px rgba(42,20,0,.7)}
+.obar .n{display:inline-block;background:var(--orange);color:var(--ink);border-radius:9px;padding:1px 8px;margin-right:6px}
+body.has-bar .foot{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+@media(max-width:700px){.bgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 calc(-1*max(20px,env(safe-area-inset-left,0px)));padding:4px max(20px,env(safe-area-inset-left,0px)) 10px;scrollbar-width:none}.bgrid::-webkit-scrollbar{display:none}.bcard{flex:none;width:80vw;scroll-snap-align:center;min-height:270px}}
 
-    @media (max-height: 820px) and (min-width: 700px) {
-      body { padding: 20px; }
-      .logo { width: 200px; margin-bottom: -44px; }
-      .card { padding: 62px 28px 22px; }
-      h1 { font-size: 2.3rem; margin-bottom: 10px; }
-      .cta { margin-top: 18px; }
-      .divider { margin: 20px auto 14px; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { transition: none !important; animation: none !important; }
-    }
-  </style>
-</head>
-<body>
-  <main>
-    <div class="logo">
-      <img src="images/branding/logo.jpg" alt="Savor by Sree – Sweet Atelier logo" />
+/* hero (static, as on the live site) */
+.hero2{position:relative;overflow:hidden;color:var(--white);text-align:center;padding:calc(64px + 40px) 0 50px;background:radial-gradient(70% 55% at 50% 0%,rgba(255,153,0,.38),transparent 70%),radial-gradient(60% 50% at 50% 100%,rgba(255,153,0,.22),transparent 70%),var(--deep)}
+.hero2-in{position:relative;display:flex;flex-direction:column;align-items:center;gap:18px}
+.hlogo{width:min(64vw,280px);aspect-ratio:1;border-radius:50%;box-shadow:0 0 0 6px rgba(255,153,0,.3),0 30px 60px -20px rgba(0,0,0,.6)}
+.hchips{display:inline-block;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);border-radius:999px;padding:8px 16px;font-size:.7rem;font-weight:800;letter-spacing:.12em}
+.hero2 h1{font-size:clamp(2.4rem,9vw,4.6rem);max-width:13ch}
+.hero2 h1 em{font-style:normal;color:var(--orange)}
+.hero2 p{margin:0;max-width:56ch;color:rgba(255,255,255,.82);font-weight:500}
+.hbtns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.hstrip{width:100%;max-width:560px;display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);border-radius:22px;padding:12px 14px;text-align:left;text-decoration:none;color:inherit}
+.hstrip .d{width:56px;height:56px;flex:none;border-radius:16px;background:var(--orange);color:var(--ink);display:grid;place-items:center;line-height:1;text-align:center}
+.hstrip .d b{font-size:1.5rem;font-weight:800;display:block}.hstrip .d small{font-size:.6rem;font-weight:800;letter-spacing:.12em}
+.hstrip .t{flex:1;min-width:0}.hstrip .t small{display:block;font-size:.66rem;font-weight:800;letter-spacing:.14em;color:var(--orange)}
+.hstrip .t b{display:block;font-size:.92rem;line-height:1.25}.hstrip .t span{font-size:.8rem;opacity:.75}
+.hstrip .cdn{font-weight:800;font-size:.95rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.spr{position:absolute;inset:0;pointer-events:none}
+.spr i{position:absolute;top:-20px;width:7px;height:20px;border-radius:5px;background:var(--orange);opacity:.75;animation:fall linear infinite}
+.spr i:nth-child(1){left:8%;animation-duration:11s}.spr i:nth-child(2){left:22%;background:#fff4df;animation-duration:14s;animation-delay:-4s}.spr i:nth-child(3){left:38%;animation-duration:12s;animation-delay:-8s}.spr i:nth-child(4){left:55%;background:#d9304f;animation-duration:16s;animation-delay:-2s}
+.spr i:nth-child(5){left:68%;animation-duration:13s;animation-delay:-6s}.spr i:nth-child(6){left:80%;background:#fff4df;animation-duration:15s;animation-delay:-10s}.spr i:nth-child(7){left:91%;animation-duration:12s;animation-delay:-3s}.spr i:nth-child(8){left:46%;background:#8a521f;animation-duration:17s;animation-delay:-12s}
+@keyframes fall{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(120vh) rotate(540deg)}}
+@media (prefers-reduced-motion: reduce){.spr{display:none}}
+
+/* brand pattern on cream sections + illustrations */
+.cpat{position:absolute;inset:0;background:url(pat-b.png) 0 0/240px;opacity:.07;pointer-events:none}
+.deco{position:absolute;width:clamp(90px,22vw,170px);pointer-events:none;opacity:.95;z-index:0}
+.deco svg{width:100%;height:auto}
+.menu2,.gift,.how,.story2,#faq{position:relative;overflow:clip}
+.menu2>.wrap,.gift>.wrap,.how>.wrap,.story2>.wrap,#faq>.wrap{position:relative;z-index:1}
+
+/* themed category headers */
+.mhd{position:relative;overflow:hidden;border-radius:22px;background:var(--orange);color:var(--ink);text-align:center;padding:30px 18px 26px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.mhd.dk{background:var(--deep);color:var(--white)}
+.mhd .pat{opacity:.3;mix-blend-mode:normal}.mhd.dk .pat{opacity:.1;mix-blend-mode:normal}
+.mhd .ill{position:relative;width:min(46vw,210px);margin:-6px 0 -10px}
+.mhd .ill svg{width:100%;height:auto;display:block}
+.mhd h3{position:relative;font-size:clamp(1.8rem,7vw,2.6rem)}
+.mhd span{position:relative;font-weight:600;font-size:.9rem;opacity:.85}
+.mhd .cnt{position:absolute;top:12px;right:14px;font-size:.66rem;font-weight:800;letter-spacing:.14em;background:rgba(255,255,255,.25);border-radius:99px;padding:4px 10px}
+.mhd.dk .cnt{background:rgba(255,255,255,.12)}
+
+/* cake finishes with pictures */
+.fins{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+.fin{position:relative;border-radius:16px;overflow:hidden;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--hair);cursor:pointer;display:flex;flex-direction:column}
+.fin input{position:absolute;opacity:0}
+.fin img{width:100%;aspect-ratio:1;object-fit:cover}
+.fin b{display:block;padding:8px 10px 2px;font-size:.86rem}
+.fin small{display:block;padding:0 10px 8px;color:var(--muted);font-weight:600;font-size:.72rem;min-height:1em}
+.fin:has(input:checked){box-shadow:inset 0 0 0 3px var(--orange)}
+.fin:has(input:checked)::after{content:"✓";position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--orange);color:var(--ink);font-weight:900;display:grid;place-items:center;font-size:.8rem}
+.fin:has(input:focus-visible){outline:3px solid var(--orange);outline-offset:2px}
+.two{display:flex;gap:10px;align-items:center;margin-top:10px;padding:12px 14px;border-radius:14px;background:var(--white);box-shadow:inset 0 0 0 1.5px var(--hair);font-weight:700;font-size:.9rem;cursor:pointer}
+.two:has(input:checked){box-shadow:inset 0 0 0 2.5px var(--orange);background:#fff6e6}
+.two em{font-style:normal;color:var(--deep);margin-left:auto}
+#cbfl2w{margin-top:10px}
+
+/* order request card */
+.cdnote{margin:-4px 0 0;display:flex;gap:10px;align-items:flex-start;background:#fff6e6;border:1px solid rgba(255,153,0,.35);border-radius:12px;padding:10px 12px;font-size:.84rem;font-weight:600;color:var(--ink);line-height:1.45}
+.cdnote b{color:var(--deep)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slots label{position:relative;cursor:pointer}
+.slots input{position:absolute;opacity:0;pointer-events:none}
+.slots span{display:block;text-align:center;padding:10px 4px;border-radius:12px;border:1.5px solid var(--hair);background:var(--cream);font-weight:700;font-size:.82rem;white-space:nowrap}
+.slots input:checked+span{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.slots input:focus-visible+span{outline:3px solid var(--orange);outline-offset:2px}
+.slots input:disabled+span{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.oerr{color:#b3261e;font-weight:700;font-size:.82rem;text-align:center}
+.cartbtn[hidden]{display:none!important}
+.cartbtn[hidden]+.burger{margin-left:auto}
+
+.oreq{position:relative;background:var(--white);color:var(--ink);border-radius:26px;padding:clamp(18px,4vw,26px);display:grid;gap:16px;max-width:620px;margin:0 auto;box-shadow:0 30px 60px -36px rgba(42,20,0,.55);border-top:6px solid var(--orange)}
+.oreq .top{display:flex;align-items:center;gap:12px}
+.oreq .top img{width:48px;height:48px;border-radius:50%;box-shadow:0 0 0 3px var(--orange)}
+.oreq .top h3{font-size:1.35rem}
+.oreq .top small{display:block;color:var(--muted);font-weight:600;font-size:.82rem}
+.obox{background:var(--paper);border-radius:18px;padding:14px 16px}
+.obox .hd{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);margin-bottom:6px}
+.obox .ln{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px dashed rgba(109,59,0,.25);font-weight:600;font-size:.9rem}
+.obox .ln:last-of-type{border-bottom:0}
+.obox .tt{display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:2px solid var(--deep);font-weight:800}
+.obox .em{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;font-weight:600;font-size:.9rem;color:var(--muted)}
+.obox .em a{background:var(--orange);color:var(--ink);text-decoration:none;border-radius:99px;padding:8px 14px;font-weight:800;font-size:.82rem;white-space:nowrap}
+.oreq form{display:grid;gap:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.row2{grid-template-columns:1fr}}
+.oreq .lbl{display:grid;gap:6px}
+.oreq .lbl>span,.seg2 legend{font-size:.76rem;font-weight:800;letter-spacing:.06em;color:var(--deep)}
+.oreq input[type=text],.oreq input:not([type]),.oreq input[type=date],.oreq textarea{width:100%;font:inherit;font-weight:600;font-size:.95rem;padding:13px 14px;border-radius:14px;border:1.5px solid var(--hair);background:var(--cream);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+.oreq input:focus,.oreq textarea:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,153,0,.18)}
+.oreq textarea{resize:vertical;min-height:62px}
+.oreq select{width:100%;font:inherit;font-weight:600;font-size:.95rem;padding:13px 40px 13px 14px;border-radius:14px;border:1.5px solid var(--hair);background:var(--cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236d3b00' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/18px;color:var(--ink);appearance:none;-webkit-appearance:none;outline:none}
+.oreq select:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,153,0,.18)}
+.oreq select:invalid{color:var(--muted)}
+.seg2{border:0;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg2 legend{margin-bottom:6px;padding:0}
+.seg2 label{position:relative;display:flex;align-items:center;gap:10px;padding:12px;border-radius:16px;background:var(--cream);border:1.5px solid var(--hair);cursor:pointer;transition:border-color .2s,background .2s}
+.seg2 input{position:absolute;opacity:0;pointer-events:none}
+.seg2 .ic{width:36px;height:36px;flex:none;border-radius:11px;background:var(--paper);display:grid;place-items:center;color:var(--deep)}
+.seg2 .ic svg{width:20px;height:20px}
+.seg2 b{display:block;font-size:.92rem}.seg2 small{display:block;font-size:.72rem;color:var(--muted);font-weight:600}
+.seg2 label:has(input:checked){border-color:var(--orange);background:#fff6e6}
+.seg2 label:has(input:checked) .ic{background:var(--orange);color:var(--ink)}
+.seg2 label:has(input:focus-visible){outline:3px solid var(--orange);outline-offset:2px}
+.send{display:flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:16px;background:var(--deep);color:#fff;font-weight:800;font-size:1rem;padding:16px;transition:transform .2s}
+.send:hover{transform:translateY(-2px)}.send svg{width:22px;height:22px;color:#25d366}
+.oreq .fine{color:var(--muted);font-weight:500;font-size:.74rem;text-align:center}
+
+/* footer (as on the live site) */
+.fgrid{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr);gap:30px}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr}}
+.fbrand img{width:84px;height:84px;border-radius:50%;box-shadow:0 0 0 3px var(--orange)}
+.fbrand p{margin:14px 0 16px;color:rgba(255,255,255,.8);font-weight:500;max-width:34ch}
+.soc{display:flex;gap:10px;flex-wrap:wrap}
+.soc a{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22);color:#fff;transition:background .3s,transform .3s}
+.soc a:hover{background:var(--orange);color:var(--ink);transform:translateY(-3px)}
+.soc svg{width:20px;height:20px;fill:currentColor}
+.fcol h4{margin:0 0 12px;font-size:.74rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--orange)}
+.fcol a,.fcol span{display:block;text-decoration:none;font-weight:600;padding:5px 0;color:rgba(255,255,255,.88)}
+.fcol a:hover{color:var(--orange)}
+.fbot{position:relative;margin-top:40px;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.78rem;color:rgba(255,255,255,.65);font-weight:600}
+
+/* festive top bar + greeting (from the live site) */
+.topbar{background:var(--deep);color:rgba(255,255,255,.88);text-align:center;font-size:.76rem;font-weight:600;letter-spacing:.03em;height:32px;line-height:32px;padding:0 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topbar a{color:var(--orange);font-weight:700;text-decoration:none}
+.hero2{padding-top:calc(96px + 40px)}
+.catbar{top:calc(96px + env(safe-area-inset-top,0px))!important}
+.mcat{scroll-margin-top:168px}
+/* ---------- seasonal greeting tag (the only festive element) ---------- */
+.hatbat,.acc{display:none}
+.greet{display:flex;width:fit-content;max-width:100%;align-items:center;gap:12px;margin:0 0 18px;padding:7px 22px 7px 14px;border-radius:999px;font-weight:800;font-size:clamp(1rem,2.3vw,1.5rem);letter-spacing:.01em;line-height:1.2;color:#fff;background:linear-gradient(90deg,var(--g1,#d62828),var(--g2,#ff9900));box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 3px rgba(255,255,255,.26);position:relative;overflow:hidden;animation:gIn .8s cubic-bezier(.2,1.4,.4,1) both}
+.greet::after{content:"";position:absolute;top:0;bottom:0;width:38%;left:-50%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:gShine 4.2s ease-in-out 1.4s infinite}
+.greet b{font-weight:800;white-space:nowrap}
+.gi{display:inline-flex;flex:none;width:38px;height:38px;position:relative;z-index:1}
+.gi svg{display:block;width:100%;height:100%;overflow:visible}
+@keyframes gIn{from{opacity:0;transform:translateY(-12px) scale(.85)}to{opacity:1;transform:none}}
+@keyframes gShine{0%{left:-50%}55%,100%{left:130%}}
+@keyframes gFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-4px) rotate(4deg)}}
+@keyframes gSpin{to{transform:rotate(360deg)}}
+@keyframes gTw{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes gFlap{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(16deg)}}
+@keyframes gFlapR{0%,100%{transform:rotate(14deg)}50%{transform:rotate(-16deg)}}
+@keyframes gFlick{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.35)}}
+@keyframes gPulse{0%,100%{transform:scale(.85)}50%{transform:scale(1.12)}}
+@keyframes gSway{0%,100%{transform:rotate(-9deg)}50%{transform:rotate(9deg)}}
+@keyframes gSteam{0%{opacity:0;transform:translateY(4px)}40%{opacity:.9}100%{opacity:0;transform:translateY(-9px)}}
+.gi.float{animation:gFloat 2.6s ease-in-out infinite}
+.gi.spin svg{animation:gSpin .5s linear infinite}
+.gi.slow svg{animation:gSpin 9s linear infinite}
+.gi.sway{animation:gSway 2.2s ease-in-out infinite;transform-origin:50% 30%}
+.gi.pulse svg{animation:gPulse 1.4s ease-in-out infinite}
+.gi .tw{animation:gTw 1.1s ease-in-out infinite}.gi .tw2{animation-delay:-.4s}.gi .tw3{animation-delay:-.8s}
+.gi .wl{transform-box:view-box;transform-origin:28px 17px;animation:gFlap .32s ease-in-out infinite}
+.gi .wr{transform-box:view-box;transform-origin:32px 17px;animation:gFlapR .32s ease-in-out infinite}
+.gi .flm{transform-box:fill-box;transform-origin:50% 0;animation:gFlick .25s ease-in-out infinite}
+.gi .stm{animation:gSteam 1.8s ease-out infinite}.gi .stm2{animation-delay:-.9s}
+.gi .tl{transform-box:fill-box;transform-origin:50% 0;animation:gSway 1s ease-in-out infinite}
+
+.greet{position:relative;overflow:hidden;animation:gIn .7s var(--ease) both}
+
+/* order + mascot */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:40;transform:translateY(160%);transition:transform .5s var(--ease)}
+.fab.show{transform:none}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);z-index:70;background:var(--cream);box-shadow:-30px 0 60px -30px rgba(42,20,0,.6);transform:translateX(105%);transition:transform .5s var(--ease);display:flex;flex-direction:column;padding:calc(22px + env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) 20px}
+.drawer.open{transform:none}
+.scrim2{position:fixed;inset:0;z-index:65;background:rgba(42,20,0,.45);opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+.scrim2.open{opacity:1;visibility:visible}
+.drawer h3{font-size:2rem}
+.dh{display:flex;justify-content:space-between;align-items:center}
+.x{width:40px;height:40px;border-radius:50%;border:0;background:var(--paper);color:var(--ink);font-size:1.3rem}
+.dlist{list-style:none;padding:0;margin:18px 0;overflow:auto;flex:1;display:grid;align-content:start;gap:10px}
+.dlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--white)}
+.dlist small{color:var(--muted);font-weight:600;display:block}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:30px;height:30px;border-radius:50%;border:0;background:var(--paper);color:var(--ink);font-weight:800}
+.dfoot{display:grid;gap:10px}
+.dtot{display:flex;justify-content:space-between;font-weight:800;font-size:1.05rem}
+.dfoot small{color:var(--muted);font-weight:500}
+.chip{position:fixed;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:42;width:76px;border:0;background:none;padding:0;cursor:pointer;transition:bottom .45s var(--ease)}
+body.has-bar .chip{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.chip svg{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 14px rgba(42,20,0,.35))}
+.chip .witch,.chip .hatbat{display:none}
+.chip .mc-svg .arm-r{transform-box:view-box;transform-origin:98px 92px;transform:rotate(-8deg);transition:transform .35s var(--ease)}
+.chip.wave .mc-svg .arm-r{animation:mcWave .55s ease-in-out 6}
+@keyframes mcWave{0%,100%{transform:rotate(-150deg)}50%{transform:rotate(-115deg)}}
+.chip .mc-svg .blink{transform-box:fill-box;transform-origin:center;animation:mcBlink 5s infinite}
+@keyframes mcBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.chip-b{position:fixed;left:calc(max(12px,env(safe-area-inset-left,0px)) + 82px);bottom:calc(52px + env(safe-area-inset-bottom,0px));z-index:42;background:var(--deep);color:#fff;font-weight:700;font-size:.86rem;padding:10px 14px;border-radius:16px 16px 16px 4px;box-shadow:0 14px 30px -14px rgba(42,20,0,.6);max-width:220px;opacity:0;transform:translateY(8px) scale(.9);transform-origin:0 100%;transition:opacity .3s,transform .35s var(--ease),bottom .45s var(--ease);pointer-events:none}
+.chip-b.on{opacity:1;transform:none;pointer-events:auto;cursor:pointer}
+body.has-bar .chip-b{bottom:calc(124px + env(safe-area-inset-bottom,0px))}
+.help{position:fixed;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(100px + env(safe-area-inset-bottom,0px));z-index:66;max-width:380px;max-height:min(70vh,560px);display:flex;flex-direction:column;background:var(--cream);border-radius:24px;box-shadow:0 30px 70px -20px rgba(42,20,0,.6);overflow:hidden;opacity:0;transform:translateY(16px) scale(.96);transform-origin:0 100%;pointer-events:none;visibility:hidden;transition:opacity .3s,transform .35s var(--ease),visibility .3s}
+body.has-bar .help{bottom:calc(172px + env(safe-area-inset-bottom,0px))}
+.help.open{opacity:1;transform:none;pointer-events:auto;visibility:visible}
+.help .hh{display:flex;align-items:center;gap:10px;background:var(--deep);color:#fff;padding:14px 16px}
+.help .hh img{width:36px;height:36px;border-radius:50%;box-shadow:0 0 0 2px var(--orange)}
+.help .hh b{display:block;font-size:1rem}.help .hh small{display:block;font-size:.74rem;opacity:.75;font-weight:600}
+.help .hh button{margin-left:auto;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:1.1rem}
+.help .hb{overflow:auto;padding:14px;display:grid;gap:10px;align-content:start}
+.msg{max-width:88%;padding:10px 13px;border-radius:16px;font-size:.88rem;font-weight:500;line-height:1.45}
+.msg.bot{background:var(--white);border-bottom-left-radius:4px;box-shadow:0 6px 16px -12px rgba(42,20,0,.5)}
+.msg.me{background:var(--orange);color:var(--ink);font-weight:700;justify-self:end;border-bottom-right-radius:4px}
+.msg p{margin:0 0 6px}.msg p:last-child{margin:0}.msg ul{margin:4px 0;padding-left:18px}
+.msg .go2{display:inline-flex;margin-top:8px;background:var(--deep);color:#fff;border-radius:99px;padding:7px 12px;font-weight:800;font-size:.78rem;text-decoration:none}
+.qs{display:flex;flex-wrap:wrap;gap:6px}
+.qs button{border:1.5px solid var(--deep);background:transparent;color:var(--deep);border-radius:99px;padding:7px 12px;font-weight:700;font-size:.8rem;text-align:left}
+.qs button:hover{background:var(--deep);color:#fff}
+.help form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--hair);background:var(--white)}
+.help input{flex:1;min-width:0;font:inherit;font-weight:600;font-size:.9rem;padding:10px 12px;border-radius:12px;border:1.5px solid var(--hair);background:var(--cream);color:var(--ink)}
+.help form button{border:0;border-radius:12px;background:var(--orange);color:var(--ink);font-weight:800;padding:0 14px}
+@media(max-width:700px){.chip{width:62px}.chip-b{left:calc(max(12px,env(safe-area-inset-left,0px)) + 66px);bottom:calc(46px + env(safe-area-inset-bottom,0px))}body.has-bar .chip-b{bottom:calc(118px + env(safe-area-inset-bottom,0px))}.help{bottom:calc(84px + env(safe-area-inset-bottom,0px))}body.has-bar .help{bottom:calc(156px + env(safe-area-inset-bottom,0px))}}
+@media (prefers-reduced-motion: reduce){.chip.wave .mc-svg .arm-r,.chip .mc-svg .blink{animation:none}}
+@media (prefers-reduced-motion: reduce){.hint i::after{animation:none}}
+[hidden]{display:none!important}
+/* offers from the order app */
+.deals{display:grid;gap:12px;margin:0 0 26px}
+.deal{position:relative;background:var(--white);color:var(--ink);border-radius:20px;padding:16px 18px;display:flex;gap:14px;align-items:center;box-shadow:0 18px 40px -30px rgba(42,20,0,.6)}
+.deal .lab{flex:none;background:var(--orange);color:var(--ink);font-weight:900;border-radius:14px;padding:10px 12px;text-align:center;min-width:76px;line-height:1.1;font-size:.95rem}
+.deal h3{margin:0;font-size:1.02rem;font-weight:800}
+.deal p{margin:3px 0 0;font-size:.86rem;color:var(--muted);font-weight:600}
+.deal small{display:block;margin-top:4px;font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--brown)}
+s.was{opacity:.6;font-weight:600;margin-right:4px}
+.paused{background:#fff6e6;border:1px solid rgba(255,153,0,.45);border-radius:18px;padding:16px 18px;display:grid;gap:12px;font-weight:600;line-height:1.5}
+.paused b{font-size:1.05rem}
+.nomk{display:grid;gap:8px;font-weight:600}
+@media (min-width:760px){.deals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+
+<header class="nav">
+  <div class="topbar" id="topbar">Handcrafted in small batches · Made fresh to order · Dublin</div>
+  <div class="nav-in">
+    <a class="brand" href="#top"><img src="logo.jpg" alt="">Savor by Sree</a>
+    <nav class="links" aria-label="Main"><a href="#bundles">Hampers</a><a href="#menu">Menu</a><a href="#gifting">Gifting</a><a href="#markets">Find us</a><a href="#how">How to order</a><a href="#about">About us</a></nav>
+    <button class="cartbtn" id="cartTop" type="button" hidden>Order <i id="cnt1">0</i></button>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="pat"></div><a href="#bundles">Hampers</a><a href="#menu">Menu</a><a href="#gifting">Gifting</a><a href="#markets">Find us</a><a href="#how">How to order</a><a href="#story2">Our story</a><a href="#tod">Albums</a><a href="#about">About us</a><a href="#faq">FAQ</a></div>
+
+<main id="top">
+<section class="hero2" id="hero" aria-label="Savor by Sree">
+  <div class="pat"></div>
+  <div class="spr" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="wrap hero2-in">
+    <img class="hlogo" src="logo.jpg" alt="Savor by Sree, Sweet Atelier logo">
+    <span class="hchips">ARTISAN · HANDMADE · SMALL BATCHES · DUBLIN</span>
+    <h1>Bakes made <em>fresh,</em> just for you.</h1>
+    <p>A Dublin-based artisan sweet atelier, where creativity meets indulgence. From handcrafted cakes and decadent desserts to chunky cookies and savoury delights, we bring together timeless classics and globally inspired flavours with a modern twist.</p>
+    <div class="hbtns"><a class="btn btn-orange" href="#menu">Explore the menu</a><a class="btn btn-ghost" id="waHero" href="#" target="_blank" rel="noopener">Order on WhatsApp</a></div>
+    <div class="hstrip" id="hstrip"></div>
+  </div>
+</section>
+
+<div class="marq" aria-hidden="true"><div class="pat" style="opacity:.18;mix-blend-mode:multiply"></div><div class="marq-t" id="marq"></div></div>
+
+<section class="sec bund" id="bundles">
+  <div class="pat"></div>
+  <div class="wrap" style="position:relative">
+    <div class="sec-head"><div><span class="eyebrow">Bundles &amp; hampers</span><h2><span class="ln-r"><span>Better together</span></span></h2></div><p id="bintro">Our favourite combinations at a better price, plus the Diwali Delights hamper.</p></div>
+    <div class="deals" id="offers" hidden></div>
+    <div class="bgrid" id="bgrid"></div>
+  </div>
+</section>
+
+<section class="menu2" id="menu">
+  <div class="wrap mhead2"><span class="eyebrow">The menu</span><h2>Made by hand. Made for you.</h2><p>Everything is handmade and made fresh to order. Add what you like, then send your order to us on WhatsApp.</p></div>
+  <nav class="catbar" id="catbar" aria-label="Menu categories"><div class="cat-in" id="catIn"><span class="cat-ind" id="catInd"></span></div></nav>
+  <div class="wrap" id="cats"></div>
+</section>
+
+<section class="sec gift" id="gifting">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">For teams and events</span><h2><span class="ln-r"><span>Corporate gifting, dessert</span></span><span class="ln-r"><span>tables &amp; catering</span></span></h2></div><p>Handmade, small-batch desserts for offices, weddings, parties and celebrations of every size.</p></div>
+    <div class="gbanner"><img src="img/s-tubs.webp" alt="Savor by Sree dessert tubs at Taste of Dublin" id="gimg"></div>
+    <div class="ggrid" id="ggrid"></div>
+    <p class="gnote">Corporate, table and catering orders need extra notice, so please message us as early as you can. Pricing is quoted for each event.</p>
+  </div>
+</section>
+<section class="sec mk" id="markets">
+  <div class="pat" style="opacity:.16;mix-blend-mode:multiply"></div>
+  <div class="wrap" style="position:relative">
+    <div class="sec-head"><div><span class="eyebrow">Where we're trading</span><h2><span class="ln-r"><span>Come say hi</span></span></h2></div><p id="mkintro">Find our stall every Saturday in Temple Bar, and at the We Love Market markets around Dublin.</p></div>
+    <div class="mkgrid">
+      <div class="next" id="next"></div>
+      <div><div class="dates" id="dates"></div><div style="margin-top:22px" id="soonW" hidden><span class="eyebrow">Coming up</span><div class="dates" id="soon"></div></div><div style="margin-top:22px" id="alsoW"><span class="eyebrow">Also find us at</span><div class="tagset" id="also"><span>Portobello Market</span><span>Boland's Mills Market</span><span>The Digital Hub Market</span></div></div></div>
     </div>
+  </div>
+</section>
 
-    <section class="card">
-      <h1>We're baking something new</h1>
-      <p class="lead">Our new website is on its way and we'll be back very soon.</p>
-      <p class="lead">Want to place an order in the meantime? Message us on WhatsApp or on any of our social pages and we'll take care of you.</p>
+<section class="sec how" id="how">
+  <div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">How to order</span><h2><span class="ln-r"><span>Three simple steps</span></span></h2></div><p>Choose, message, confirm. We take it from there.</p></div>
+    <div class="steps3" id="steps3">
+      <svg class="line" viewBox="0 0 100 4" preserveAspectRatio="none" aria-hidden="true"><path id="hline" d="M0,2 H100" stroke="#ff9900" stroke-width="3" stroke-dasharray="4 3" fill="none" vector-effect="non-scaling-stroke"/></svg>
+      <div class="step"><div class="n">1</div><h3>Choose your bakes</h3><p>Browse the menu and tap Add on what you'd like.</p></div>
+      <div class="step"><div class="n">2</div><h3>Message us</h3><p>Send quantities, your date and collection or delivery. Allow 48 hours for desserts, cookies and savoury bakes, 24 to 48 hours for regular cakes and 2 weeks for custom cakes.</p></div>
+      <div class="step"><div class="n">3</div><h3>We confirm</h3><p>We check availability and confirm everything with you on WhatsApp.</p></div>
+    </div>
+    <div class="oreq">
+      <div class="top"><img src="logo.jpg" alt=""><div><h3>Your order request</h3><small>Fill this in and we'll confirm on WhatsApp</small></div></div>
+      <div class="obox" id="osum"></div>
+      <div class="paused" id="paused" hidden></div>
+      <form id="oform" novalidate>
+        <label class="lbl" for="oname"><span>Your name *</span><input id="oname" required autocomplete="name" placeholder="e.g. Aoife"></label>
+        <label class="lbl" for="ophone"><span>Mobile number *</span><input id="ophone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="e.g. 087 123 4567"></label>
+        <fieldset class="seg2"><legend>Collection or delivery</legend>
+          <label><input type="radio" name="ocd" value="Collection" checked><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></span><span><b>Collection</b><small>Pick up from us</small></span></label>
+          <label><input type="radio" name="ocd" value="Delivery"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span><span><b>Delivery</b><small>Across Dublin, fee applies</small></span></label>
+        </fieldset>
+        <p class="cdnote" id="cdnote"></p>
+        <div class="row2">
+          <label class="lbl" for="odate"><span id="odateL">Collection date *</span><input id="odate" type="date" required></label>
+          <label class="lbl" for="oslot"><span id="oslotL">Collection time *</span><select id="oslot" required><option value="">Choose a time</option></select></label>
+        </div>
+        <label class="lbl" for="oaddr" id="oaddrW" hidden><span>Delivery address or Eircode *</span><input id="oaddr" autocomplete="street-address" placeholder="e.g. D08 XY12 or street and area"></label>
+        <label class="lbl" for="onotes"><span>Notes</span><textarea id="onotes" rows="2" placeholder="Allergies, occasion, message on the cake…"></textarea></label>
+        <button class="send" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Continue on WhatsApp</button>
+        <span class="fine">Opens WhatsApp with your order written out. Nothing is sent until you press send.</span>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="sec story2" id="story2">
+  <div class="wrap tgrid">
+    <div style="position:sticky;top:100px">
+      <span class="eyebrow" style="color:var(--deep)">From our first stall to today</span>
+      <h2 style="font-size:clamp(2.4rem,6vw,4.2rem);margin:10px 0 16px"><span class="ln-r"><span>Our story</span></span></h2>
+      <p style="color:var(--muted);font-weight:500;margin:0 0 22px">Every market and festival has been a chapter. Here is where we have set up the stall so far.</p>
+      <div class="count"><b id="evCount">0</b><span>markets, festivals and events so far</span></div>
+      <div class="filt" id="filt"><button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="Festival" aria-pressed="false">Festivals</button><button type="button" data-f="Market" aria-pressed="false">Markets</button><button type="button" data-f="Community" aria-pressed="false">Community</button></div>
+    </div>
+    <div class="tline" id="tline"><div class="rail"><i id="rail"></i></div></div>
+  </div>
+</section>
+<section class="sec gal" id="tod">
+  <div class="wrap"><div class="sec-head"><div><span class="eyebrow">Albums · Taste of Dublin</span><h2><span class="ln-r"><span>Our stall, our bakes</span></span></h2></div><p>A few moments from our stall at Taste of Dublin.</p></div></div>
+  <div class="gal-t" id="galt"></div>
+</section>
 
-      <a class="cta" href="https://wa.me/353899669496?text=Hi%20Savor%20by%20Sree%2C%20I'd%20like%20to%20place%20an%20order." target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.9 9.9 0 0 0-8.6 14.8L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20zm4.6-5.3c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-1 .9-.4.1-.7-.1a6.5 6.5 0 0 1-1.9-1.2 7.4 7.4 0 0 1-1.3-1.7c-.1-.3 0-.5.1-.6l.4-.5c.1-.1.2-.3.3-.4s0-.3 0-.4-.7-1.6-1-2.2c-.3-.6-.5-.5-.7-.5H6.6c-.2 0-.4.1-.5.3a2.4 2.4 0 0 0-.8 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.3 12.5 12.5 0 0 0 1.2.4 2.9 2.9 0 0 0 1.3.1 2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1c-.1-.1-.3-.2-.6-.3z"/></svg>
-        Order on WhatsApp
-      </a>
-      <p class="number">or call / message <a href="https://wa.me/353899669496" target="_blank" rel="noopener">+353 89 966 9496</a></p>
+<section class="sec about" id="about">
+  <div class="pat"></div>
+  <div class="wrap agrid">
+    <div class="alogo"><svg viewBox="0 0 300 300" aria-hidden="true" id="aring"><defs><path id="acirc" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs><text><textPath href="#acirc">Sweet atelier · Dublin · Handmade · Small batches · Fusion flavours ·</textPath></text></svg><img src="logo.jpg" alt="Savor by Sree logo"></div>
+    <div>
+      <span class="eyebrow">About us</span>
+      <h2><span class="ln-r"><span>A sweet atelier with a</span></span><span class="ln-r"><span>little extra spice</span></span></h2>
+      <p>Savor by Sree is a Dublin-based artisan sweet atelier, where creativity meets indulgence. From handcrafted cakes and decadent desserts to chunky cookies and savoury delights, we bring together timeless classics and globally inspired flavours with a modern twist.</p>
+      <p>Everything is made fresh to order, in small batches, so your bakes are made for you and not for a shelf.</p>
+      <p><b style="color:var(--orange)">Our journey.</b> Savor by Sree began as a small home kitchen with a simple idea: take the desserts people love and give them the flavours we grew up with. From our first market stall to Taste of Dublin and our regular Saturday spot at Meeting House Square, every bake has been made by hand and shared with people who became regulars, and then friends.</p>
+      <div class="feats"><span>Artisan</span><span>Handmade</span><span>Small batches</span><span>Dublin</span><span>Fusion flavours</span></div>
+    </div>
+  </div>
+</section>
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head" style="justify-content:center;text-align:center"><div><span class="eyebrow">FAQ</span><h2><span class="ln-r"><span>Good to know</span></span></h2></div></div>
+    <div class="faq" id="faqList"></div>
+    <div class="faq-more"><button class="btn btn-line" id="faqMore" type="button">Show all questions</button></div>
+  </div>
+</section>
+</main>
 
-      <div class="divider" role="presentation"></div>
+<footer class="foot">
+  <div class="pat"></div>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand"><img src="logo.jpg" alt="Savor by Sree logo"><p>Artisan sweet atelier, handmade in small batches and made fresh to order in Dublin.</p><div class="soc" id="soc"></div></div>
+      <div class="fcol"><h4>Explore</h4><a href="#bundles">Hampers</a><a href="#gifting">Corporate gifting &amp; catering</a><a href="#menu">Menu</a><a href="#markets">Where we're trading</a><a href="#how">How to order</a><a href="#story2">Our story</a><a href="#about">About us</a><a href="#faq">FAQ</a></div>
+      <div class="fcol"><h4>Get in touch</h4><span>Dublin, Ireland</span><a id="waFoot" href="#" target="_blank" rel="noopener">WhatsApp +353 89 966 9496</a><span>Saturdays · Meeting House Square, Temple Bar</span><span style="font-weight:500;color:rgba(255,255,255,.7)">Message us on WhatsApp or any of our socials to place an order.</span></div>
+    </div>
+    <div class="fbot"><span>© 2026 Savor by Sree. All rights reserved.</span><span>Allergens are a guide. All our products are made in the same kitchen and space, so cross-contamination might happen.</span></div>
+  </div>
+</footer>
 
-      <p class="follow">Follow us for updates</p>
-      <div class="socialbar">
-        <a class="social" href="https://www.instagram.com/savorbysree" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 2A1.8 1.8 0 1 0 13.8 12 1.8 1.8 0 0 0 12 10.2zM17.7 6.7a.9.9 0 1 1-.9-.9.9.9 0 0 1 .9.9z"/></svg>
-        </a>
-        <a class="social" href="https://wa.me/353899669496" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.9 9.9 0 0 0-8.6 14.8L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20zm4.6-5.3c-.3-.1-1.7-.8-2-.9s-.5-.1-.7.2-.8.9-1 .9-.4.1-.7-.1a6.5 6.5 0 0 1-1.9-1.2 7.4 7.4 0 0 1-1.3-1.7c-.1-.3 0-.5.1-.6l.4-.5c.1-.1.2-.3.3-.4s0-.3 0-.4-.7-1.6-1-2.2c-.3-.6-.5-.5-.7-.5H6.6c-.2 0-.4.1-.5.3a2.4 2.4 0 0 0-.8 1.8 4.2 4.2 0 0 0 .9 2.2 9.6 9.6 0 0 0 3.7 3.3 12.5 12.5 0 0 0 1.2.4 2.9 2.9 0 0 0 1.3.1 2.3 2.3 0 0 0 1.5-1.1 1.9 1.9 0 0 0 .1-1.1c-.1-.1-.3-.2-.6-.3z"/></svg>
-        </a>
-        <a class="social" href="https://www.facebook.com/savorbysree" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3H13.5V9.1c0-.9.3-1.6 1.7-1.6h1.4V4.8c-.2 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.7V11H8.5v3H11v8h2.5z"/></svg>
-        </a>
-        <a class="social" href="https://www.snapchat.com/add/savorbysree" target="_blank" rel="noopener" aria-label="Snapchat">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2.6 0 4.7 2.1 4.7 4.7v2.2c0 .5.3 1 .8 1.2l1 .4c.9.3 1.2 1.5.4 2.1l-.7.6c-.5.4-.6 1.2-.2 1.8.2.3.4.6.7.8.6.5.2 1.5-.6 1.5-.7 0-1.3.2-1.9.5-.6.4-1.3.6-2.1.6s-1.6-.2-2.2-.6c-.6-.3-1.2-.5-1.9-.5-.8 0-1.2-1-.6-1.5.3-.2.5-.5.7-.8.4-.6.3-1.4-.2-1.8l-.7-.6c-.8-.6-.5-1.8.4-2.1l1-.4c.5-.2.8-.7.8-1.2V6.7C7.3 4.1 9.4 2 12 2z"/></svg>
-        </a>
-        <a class="social" href="https://www.tiktok.com/@savorbysree" target="_blank" rel="noopener" aria-label="TikTok">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3c.4 2.3 2 4.1 4.2 4.6v2.6c-1.6 0-3-.5-4.2-1.3v6.2c0 3-2.4 5.4-5.4 5.4S4.2 18.1 4.2 15.1s2.4-5.4 5.4-5.4c.4 0 .7 0 1.1.1v2.9c-.3-.1-.7-.2-1.1-.2-1.4 0-2.6 1.2-2.6 2.6s1.2 2.6 2.6 2.6 2.6-1.2 2.6-2.6V3h2.7z"/></svg>
-        </a>
-      </div>
-    </section>
+<button class="chip" id="chip" type="button" aria-label="Chip, our cookie helper. Ask a question" aria-expanded="false" aria-controls="help"></button>
+<div class="chip-b" id="chipB">Hi! How can I help you? 👋</div>
+<div class="help" id="help" role="dialog" aria-label="Ask Chip">
+  <div class="hh"><img src="logo.jpg" alt=""><div><b>Chip from Savor by Sree</b><small>Quick answers from our site</small></div><button type="button" id="helpX" aria-label="Close">×</button></div>
+  <div class="hb" id="hb" aria-live="polite"></div>
+  <form id="hf"><input id="hq" placeholder="Ask about delivery, cakes, allergies…" aria-label="Your question" autocomplete="off"><button type="submit">Ask</button></form>
+</div>
+<div class="obar" id="obar"><button type="button" id="obarBtn"><span><span class="n" id="cnt2">0</span> View your order</span><span id="obarTot">€0</span></button></div>
+<div class="scrim2" id="scrim2"></div>
+<aside class="drawer" id="drawer" aria-label="Your order" aria-hidden="true">
+  <div class="dh"><h3>Your order</h3><button class="x" id="dclose" type="button" aria-label="Close">×</button></div>
+  <ul class="dlist" id="dlist"></ul>
+  <div class="dfoot"><div class="dtot"><span>Estimated total</span><span id="dtot">€0</span></div><small>Next, add your name, date and collection or delivery. We confirm the final price on WhatsApp.</small><a class="btn btn-orange" id="wa" href="#how">Continue to your details</a></div>
+</aside>
 
-    <div class="foot">© <span id="year">2026</span> Savor by Sree · Eggless &amp; vegetarian · Dublin</div>
-  </main>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</body>
-</html>
+<script src="data.js?v=2026-11-05"></script>
+<script src="live.js?v=2026-11-05"></script>
+<script src="mascot.js?v=2026-11-05"></script>
+<script src="svgs.js?v=2026-11-05"></script>
+<script src="social.js?v=2026-11-05"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+/* Wait (up to 2.5 s) for the live menu, offers, markets and notices from the order app, then build the page.
+   If they don't arrive in time, the built-in copy in data.js is used. */
+(function(){var started=false;function start(L){if(started)return;started=true;window.SBS_LIVE=L;SBS_PAGE()}
+  setTimeout(function(){start(null)},2500);
+  try{window.SBS_load().then(start,function(){start(null)})}catch(e){start(null)}})();
+function SBS_PAGE(){
+var D=window.SBS_merge(window.SBS,window.SBS_LIVE),$=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var RM=window.matchMedia('(prefers-reduced-motion: reduce)').matches,hasG=typeof gsap!=='undefined';
+if(hasG)gsap.registerPlugin(ScrollTrigger);
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function eur(n){return '€'+(Math.round(n*100)%100===0?String(Math.round(n)):n.toFixed(2))}
+var WA='https://wa.me/'+D.WHATSAPP;
+$('#chip').innerHTML=window.SBS_MASCOT||'';
+
+var lenis=null;
+function go(t,off){window.scrollTo({top:(typeof t==='number'?t:t.getBoundingClientRect().top+scrollY-(off==null?96:off)),behavior:RM?'auto':'smooth'})}
+var body=document.body,ov=$('#overlay'),bg=$('#burger');
+function closeMenu(){body.classList.remove('menu-open');bg.setAttribute('aria-expanded','false');ov.setAttribute('aria-hidden','true');if(lenis)lenis.start()}
+bg.addEventListener('click',function(){var o=!body.classList.contains('menu-open');body.classList.toggle('menu-open',o);bg.setAttribute('aria-expanded',o);ov.setAttribute('aria-hidden',!o);if(lenis){o?lenis.stop():lenis.start()}
+  if(o&&hasG&&!RM)gsap.fromTo('#overlay a',{yPercent:60,opacity:0},{yPercent:0,opacity:1,stagger:.06,duration:.6,ease:'power3.out'})});
+document.addEventListener('click',function(e){var a=e.target.closest('a[href^="#"]');if(!a)return;var id=a.getAttribute('href').slice(1);e.preventDefault();closeMenu();closeCart();go(id==='top'?0:document.getElementById(id))});
+
+var mon=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function isoD(x){return x.getFullYear()+'-'+String(x.getMonth()+1).padStart(2,'0')+'-'+String(x.getDate()).padStart(2,'0')}
+/* Markets: from the order app when available, otherwise the built-in Saturday market. UP = upcoming {d:Date, m:market}. */
+var DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+var MK=D.MARKETS?D.MARKETS.map(function(r){var dd=Array.isArray(r.days)&&r.days.length?r.days.map(Number):(r.repeat==='weekly'&&r.weekday!=null?[+r.weekday]:[]);
+    var once=r.repeat==='once'&&r.market_date;return {name:r.name,place:r.place||'',maps:r.maps_url||(r.address?'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(r.address):''),
+    status:r.status||(once?(r.market_date>=isoD(new Date())?'upcoming':'past'):'active'),days:dd,from:r.starts_on||(once?r.market_date:''),until:r.ends_on||(once?r.market_date:''),skip:r.skip_dates||[],start:r.start_time||'',end:r.end_time||'',note:r.notes||''}})
+  :[{name:D.MARKET.name,place:D.MARKET.place,maps:D.MARKET.maps,status:'active',days:[D.MARKET.day],from:'',until:'',skip:D.MARKET.skip,start:'10:00',end:'',note:'Pre-order on WhatsApp'}];
+/* the next dates a market is on: any of its days, inside its from/until dates, minus skipped dates */
+function occ(m,n){var t=new Date();t.setHours(0,0,0,0);var ti=isoD(t),out=[];
+  if(!m.days.length){if(m.from&&m.from>=ti&&(!m.until||m.until===m.from))out.push(new Date(m.from+'T00:00:00'));return out}
+  var d=new Date((m.from&&m.from>ti?m.from:ti)+'T00:00:00');for(var k=0;k<180&&out.length<n;k++){var i=isoD(d);if(m.until&&i>m.until)break;if(m.days.indexOf(d.getDay())>=0&&m.skip.indexOf(i)<0)out.push(new Date(d));d.setDate(d.getDate()+1)}return out}
+function dayList(ds){var o=[1,2,3,4,5,6,0].filter(function(x){return ds.indexOf(x)>=0}).map(function(x){return DN[x]});return o.length>1?o.slice(0,-1).join(', ')+' and '+o[o.length-1]:o[0]||''}
+var UP=(function(){var out=[];MK.filter(function(m){return m.status==='active'}).forEach(function(m){occ(m,5).forEach(function(d){out.push({d:d,m:m})})});return out.sort(function(a,b){return a.d-b.d}).slice(0,5)})();
+var dates=UP.map(function(u){return u.d});
+function hm(s){if(!s)return '';var h=+s.split(':')[0],mi=s.split(':')[1];return (h%12||12)+(mi&&mi!=='00'?':'+mi:'')+(h<12?'am':'pm')}
+function opensAt(u){var s=new Date(u.d),p=(u.m.start||'10:00').split(':');s.setHours(+p[0],+p[1]||0,0,0);return s}
+
+/* ---------- hero ---------- */
+$('#waHero').href=WA+'?text='+encodeURIComponent("Hi Savor by Sree, I'd like to place an order.");
+(function(){var h=$('#hstrip');if(!UP.length){h.remove();return}var u=UP[0],n=u.d;h.outerHTML='<a class="hstrip" id="hstrip" href="#markets"><div class="d"><div><b>'+n.getDate()+'</b><small>'+mon[n.getMonth()].toUpperCase()+'</small></div></div><div class="t"><small>NEXT MARKET</small><b>'+esc(u.m.name)+'</b><span>'+days[n.getDay()]+' '+n.getDate()+' '+mon[n.getMonth()]+(u.m.start?' · '+hm(u.m.start):'')+'</span></div><div class="cdn" id="hcd"></div></a>';
+  function cd(){var s=opensAt(u);var ms=Math.max(0,s-new Date()),d=Math.floor(ms/864e5),hh=Math.floor(ms%864e5/36e5);$('#hcd').textContent=d+'d '+hh+'h'}cd();setInterval(cd,60000)})();
+if(hasG&&!RM){gsap.from('.hlogo',{scale:.7,rotation:-12,opacity:0,duration:1,ease:'back.out(1.6)'});gsap.from('.hero2-in>*:not(.hlogo)',{y:24,opacity:0,stagger:.08,duration:.7,delay:.25,ease:'power3.out'})}
+$('#waFoot').href=WA;
+$('#soc').innerHTML=(window.SBS_SOC||[]).map(function(x){return '<a href="'+x[0]+'" target="_blank" rel="noopener" aria-label="'+esc(x[1])+'">'+x[2]+'</a>'}).join('');
+/* brand pattern on cream sections */
+['#menu','#gifting','#how','#story2','#faq'].forEach(function(id){var sec=$(id);if(sec)sec.insertAdjacentHTML('afterbegin','<div class="cpat"></div>')});
+
+/* festive greeting */
+/* The only festive element on the site: a "Happy ..." tag at the top of the hero with two small animated icons.
+   Nothing else on the page changes. */
+(function(){
+  /* Which greeting shows when: ['name','from MM-DD','up to (not including) MM-DD']. A range may cross the new year. Edit the dates here. */
+  /*SEASONS_START*/
+  var SEASONS=[['halloween','10-01','11-01'],['diwali','11-01','11-11'],['christmas','11-11','12-27'],['newyear','12-27','01-03'],['sankranti','01-03','01-18']];
+  /*SEASONS_END*/
+  var q;try{q=new URLSearchParams(location.search)}catch(e){q=null}
+  var th=q&&q.get('theme'),now=new Date(),md=('0'+(now.getMonth()+1)).slice(-2)+'-'+('0'+now.getDate()).slice(-2);
+  if(th==='off')return;
+  if(!th){for(var si=0;si<SEASONS.length;si++){var f=SEASONS[si][1],u=SEASONS[si][2],on=f<u?(md>=f&&md<u):(md>=f||md<u);if(on){th=SEASONS[si][0];break}}}
+  if(!th)return;
+  /* New Year shows the coming year (from June on), so 27 Dec shows next year. */
+  var yr=now.getMonth()>=5?now.getFullYear()+1:now.getFullYear();
+  /* ---- the small icons. Each is a tiny drawing; the class on the wrapper decides how it moves. ---- */
+  var wing='M28 17 C22 8 12 4 1 8 C4 11 4 14 3 17 C6 15 9 16 10 20 C12 17 15 18 16 22 C19 19 22 20 24 24 C25 22 27 20 28 17Z';
+  var ICON={
+    ghost:'<svg viewBox="0 0 54 70"><path d="M27 2 c-14 0 -22 10 -22 24 v38 l8 -7 l7 7 l7 -7 l7 7 l7 -7 l8 7 v-38 c0 -14 -8 -24 -22 -24z" fill="#fff"/><ellipse cx="20" cy="26" rx="3.4" ry="5" fill="#2a1038"/><ellipse cx="34" cy="26" rx="3.4" ry="5" fill="#2a1038"/><ellipse cx="27" cy="40" rx="4" ry="5.5" fill="#2a1038"/><ellipse cx="13" cy="35" rx="3.6" ry="2.2" fill="#ffb3c7" opacity=".7"/><ellipse cx="41" cy="35" rx="3.6" ry="2.2" fill="#ffb3c7" opacity=".7"/></svg>',
+    bat:'<svg viewBox="0 0 60 34"><g class="wl"><path d="'+wing+'" fill="#160a23" stroke="#b58cf0" stroke-width=".8" stroke-linejoin="round"/></g><g class="wr"><g transform="translate(60 0) scale(-1 1)"><path d="'+wing+'" fill="#160a23" stroke="#b58cf0" stroke-width=".8" stroke-linejoin="round"/></g></g><ellipse cx="30" cy="19" rx="3.8" ry="7" fill="#1d0d2e" stroke="#b58cf0" stroke-width=".6"/><circle cx="30" cy="11.2" r="3.6" fill="#1d0d2e" stroke="#b58cf0" stroke-width=".6"/><path d="M27.3 9.4 L26.4 3.4 L29.6 8.2z M32.7 9.4 L33.6 3.4 L30.4 8.2z" fill="#1d0d2e"/><circle cx="28.8" cy="11" r="1" fill="#ffb347"/><circle cx="31.2" cy="11" r="1" fill="#ffb347"/></svg>',
+    chakram:'<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#ffb300" opacity=".25"/>'+[0,1,2,3,4,5,6,7].map(function(k){var a=k*Math.PI/4;return '<path d="M20 20 L'+(20+Math.cos(a)*18).toFixed(1)+' '+(20+Math.sin(a)*18).toFixed(1)+'" stroke="'+(k%2?'#ffd23f':'#ff7a00')+'" stroke-width="2.6" stroke-linecap="round"/><circle cx="'+(20+Math.cos(a+.35)*16).toFixed(1)+'" cy="'+(20+Math.sin(a+.35)*16).toFixed(1)+'" r="1.6" fill="#fff"/>'}).join('')+'<circle cx="20" cy="20" r="4.5" fill="#fff6c9"/></svg>',
+    rocket:'<svg viewBox="0 0 40 40"><g transform="rotate(38 20 22)"><path class="flm" d="M20 31 q-5 9 0 14 q5 -5 0 -14z" fill="#ff9900"/><path class="flm" d="M20 31 q-2.6 5 0 8 q2.6 -3 0 -8z" fill="#fff3a0"/><rect x="15.5" y="8" width="9" height="24" rx="2.4" fill="#ffd23f"/><rect x="15.5" y="14" width="9" height="3" fill="#d62828"/><path d="M15.5 8 L20 -1 L24.5 8z" fill="#d62828"/></g><circle class="tw" cx="6" cy="8" r="1.8" fill="#fff"/><circle class="tw tw2" cx="34" cy="6" r="1.8" fill="#ffd23f"/><circle class="tw tw3" cx="35" cy="26" r="1.6" fill="#fff"/></svg>',
+    tree:'<svg viewBox="0 0 40 44"><path d="M20 2 L32 20 H26 L36 34 H4 L14 20 H8Z" fill="#2e7d32"/><path d="M20 2 L32 20 H8Z" fill="#43a047" opacity=".7"/><rect x="17" y="34" width="6" height="7" fill="#6d4c41"/><circle class="tw" cx="17" cy="16" r="1.9" fill="#ff5252"/><circle class="tw tw2" cx="24" cy="25" r="1.9" fill="#ffd23f"/><circle class="tw tw3" cx="14" cy="29" r="1.9" fill="#4fc3f7"/><circle class="tw" cx="26" cy="31" r="1.9" fill="#ff5252"/><path d="M20 -2 l1.8 3.8 4 .4 -3 2.7 .9 4 -3.7 -2 -3.7 2 .9 -4 -3 -2.7 4 -.4z" fill="#ffd23f" transform="translate(0 3) scale(.9) translate(2 0)"/></svg>',
+    flake:'<svg viewBox="0 0 24 24"><g stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"><path d="M12 2v20M3.3 7l17.4 10M3.3 17L20.7 7"/><path d="M9 4l3 3 3-3M9 20l3-3 3 3M2 9.5l4.2 .6 -1 -4.2M22 9.5l-4.2 .6 1 -4.2M2 14.5l4.2 -.6 -1 4.2M22 14.5l-4.2 -.6 1 4.2"/></g></svg>',
+    burst:'<svg viewBox="0 0 40 40">'+[0,1,2,3,4,5,6,7,8,9].map(function(k){var a=k*Math.PI/5,c=['#ffd23f','#ff7aa8','#4fc3f7','#fff'][k%4];return '<line x1="'+(20+Math.cos(a)*5).toFixed(1)+'" y1="'+(20+Math.sin(a)*5).toFixed(1)+'" x2="'+(20+Math.cos(a)*(k%2?13:18)).toFixed(1)+'" y2="'+(20+Math.sin(a)*(k%2?13:18)).toFixed(1)+'" stroke="'+c+'" stroke-width="2.6" stroke-linecap="round"/>'}).join('')+'<circle cx="20" cy="20" r="3" fill="#fff"/></svg>',
+    balloon:'<svg viewBox="0 0 40 44"><path d="M20 2 C8 2 4 14 7 22 C9 28 15 32 20 33 C25 32 31 28 33 22 C36 14 32 2 20 2Z" fill="#ff7aa8"/><path d="M12 10 q3 -6 9 -6" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".6"/><path d="M20 33 l-2.6 4 h5.2z" fill="#ff7aa8"/><path d="M20 37 q-4 3 0 6" stroke="#fff" stroke-width="1.2" fill="none"/></svg>',
+    kite:'<svg viewBox="0 0 40 52"><g class="tl"><path d="M20 28 q-6 7 0 12 q6 5 0 10" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/><path d="M20 35 l-4 -2 v4z M20 44 l4 -2 v4z" fill="#ffd23f"/></g><path d="M20 0 L38 17 L20 34 L2 17Z" fill="#e53935"/><path d="M20 0 L38 17 L20 17Z M20 34 L2 17 L20 17Z" fill="#ffd23f"/><path d="M20 0 V34 M2 17 H38" stroke="#fff" stroke-width="1.2"/><circle cx="20" cy="17" r="2.6" fill="#1e88e5"/></svg>',
+    pot:'<svg viewBox="0 0 40 44"><path class="stm" d="M14 14 q-3 -4 0 -8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/><path class="stm stm2" d="M22 14 q-3 -4 0 -8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/><path class="stm" d="M29 14 q-3 -4 0 -8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" style="animation-delay:-.5s"/><path d="M6 18 Q4 12 12 13 Q16 8 22 12 Q30 9 31 15 Q36 17 34 20Z" fill="#fff"/><path d="M5 19 H35 Q36 38 20 40 Q4 38 5 19Z" fill="#b5651d"/><path d="M5 19 H35" stroke="#8a4a10" stroke-width="2.4"/><path d="M9 28 Q20 34 31 28" stroke="#ffd23f" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>'
+  };
+  /* ---- EDIT HERE: the words, the two icons (a = left, b = right, with how each moves) and the two colours of the tag. ----
+     Icon movement classes: float, spin, slow (slow turn), sway, pulse, or '' for none. */
+  var G={
+    halloween:{text:'Happy Halloween',a:['ghost','float'],b:['bat',''],g1:'#3b1d5e',g2:'#e8700a',bar:'🎃 Happy Halloween · <a href="#offers">See our offers</a>'},
+    diwali:{text:'Happy Diwali',a:['chakram','spin'],b:['rocket','float'],g1:'#a8102c',g2:'#ff9900',bar:'🪔 Happy Diwali · <a href="#offers">See our offers</a>'},
+    christmas:{text:'Merry Christmas',a:['tree','float'],b:['flake','slow'],g1:'#b71c1c',g2:'#2e7d32',bar:'🎄 Merry Christmas · <a href="#offers">See our offers</a>'},
+    newyear:{text:'Happy New Year '+yr,a:['burst','pulse'],b:['balloon','float'],g1:'#283593',g2:'#8e24aa',bar:'🎆 Happy New Year '+yr+' · <a href="#offers">See our offers</a>'},
+    sankranti:{text:'Happy Makar Sankranti',a:['kite','sway'],b:['pot',''],g1:'#1b5e20',g2:'#f9a825',bar:'🪁 Happy Makar Sankranti · <a href="#offers">See our offers</a>'}
+  };
+  var c=G[th];if(!c)return;
+  var wrap=document.querySelector('.hero2-in');
+  if(wrap&&!wrap.querySelector('.greet')){
+    var g=document.createElement('div');g.className='greet';g.setAttribute('role','text');g.style.setProperty('--g1',c.g1);g.style.setProperty('--g2',c.g2);
+    g.innerHTML='<span class="gi '+c.a[1]+'" aria-hidden="true">'+ICON[c.a[0]]+'</span><b>'+c.text+'</b><span class="gi '+c.b[1]+'" aria-hidden="true">'+ICON[c.b[0]]+'</span>';
+    wrap.insertBefore(g,wrap.querySelector('.hchips'));
+  }
+  var tb=document.getElementById('topbar');if(tb&&c.bar)tb.innerHTML=c.bar;
+})();
+
+
+/* Notices from the order app: top bar message, offers link */
+(function(){var N=D.NOTICES||{},tb=$('#topbar');
+  if(N.topbar&&(!N.topbarUntil||N.topbarUntil>=isoD(new Date())))tb.textContent=N.topbar;
+  if(!D.DEALS.length)$$('#topbar a[href="#offers"]').forEach(function(a){a.setAttribute('href','#bundles')})})();
+
+/* ---------- Chip the mascot helper ---------- */
+(function(){
+var chip=$('#chip'),bub=$('#chipB'),help=$('#help'),hb=$('#hb'),started=false;
+function wave(){chip.classList.remove('wave');void chip.offsetWidth;chip.classList.add('wave')}
+function sayHi(){if(help.classList.contains('open'))return;wave();bub.classList.add('on');setTimeout(function(){bub.classList.remove('on')},4500)}
+setTimeout(sayHi,1600);setInterval(sayHi,30000);
+var faq=function(re){var f=D.FAQ.filter(function(x){return re.test(x.q)})[0];return f?f.a:''};
+var Q=[
+ {q:"What's on your menu?",a:function(){return '<p>We make '+D.MENU.map(function(c){return c.short.toLowerCase()}).join(', ')+'. Everything is handmade and made fresh to order.</p>'},go:'#menu',btn:'See the menu'},
+ {q:'Can I get it delivered?',a:function(){return faq(/collection or delivery/i)+faq(/how much is delivery/i)},go:'#how',btn:'Place an order'},
+ {q:'How do I order?',a:function(){return faq(/how do i place/i)},go:'#how',btn:'How to order'},
+ {q:'Where can I find you?',a:function(){if(!UP.length)return '<p>New market dates are coming soon. Follow us on Instagram for updates.</p>';var u=UP[0],n=u.d;return '<p>Our next market is '+esc(u.m.name)+(u.m.place?', '+esc(u.m.place):'')+' on '+days[n.getDay()]+' '+n.getDate()+' '+mon[n.getMonth()]+(u.m.start?' from '+hm(u.m.start):'')+'.</p>'},go:'#markets',btn:'See market dates'},
+ {q:'Do you make custom cakes?',a:function(){return faq(/custom cakes/i)},go:'#cat-cakes',btn:'Build your cake'},
+ {q:'Bundles and hampers',a:function(){return '<p>'+D.OFFERS.map(function(o){return esc(o.title.replace(/^Hamper \d+: /,''))+' '+eur(o.price)}).join(' · ')+'</p>'},go:'#bundles',btn:'See bundles'},
+ {q:'What about allergies?',a:function(){return faq(/allergies/i)},go:'#faq',btn:'Read more'}
+];
+function add(cls,html){var d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;hb.appendChild(d);if(hasG&&!RM)gsap.from(d,{y:10,opacity:0,duration:.3});return d}
+function chips(){var w=document.createElement('div');w.className='qs';if(started&&hb.querySelector('.msg.me'))hb.insertAdjacentHTML('beforeend','<div style="font-size:.72rem;font-weight:800;letter-spacing:.12em;color:var(--muted);margin-top:4px">ASK SOMETHING ELSE</div>');w.innerHTML=Q.map(function(x,i){return '<button type="button" data-q="'+i+'">'+esc(x.q)+'</button>'}).join('');hb.appendChild(w)}
+function showFrom(el){var top=hb.scrollTop+el.getBoundingClientRect().top-hb.getBoundingClientRect().top-10;if(hb.scrollTo)hb.scrollTo({top:top,behavior:RM?'auto':'smooth'});else hb.scrollTop=top}
+function answer(x){var me=add('me',esc(x.q));setTimeout(function(){add('bot',(x.a()||'<p>Message us on WhatsApp and we will help.</p>')+(x.go?'<a class="go2" href="'+x.go+'" data-close="1">'+esc(x.btn)+' →</a>':''));var old=hb.querySelector('.qs');if(old)old.remove();chips();showFrom(me)},350)}
+function open(){help.classList.add('open');chip.setAttribute('aria-expanded','true');bub.classList.remove('on');wave();
+  if(!started){started=true;add('bot','<p>Hi, I\'m Chip! 👋 How can I help you? Pick a question or type your own.</p>');chips()}setTimeout(function(){$('#hq').focus({preventScroll:true})},300)}
+function close(){help.classList.remove('open');chip.setAttribute('aria-expanded','false')}
+chip.addEventListener('click',function(){help.classList.contains('open')?close():open()});bub.addEventListener('click',open);$('#helpX').addEventListener('click',close);
+hb.addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(b){answer(Q[+b.dataset.q]);return}var a=e.target.closest('[data-close]');if(a){close()}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+/* free text: match against the FAQ and the quick questions */
+$('#hf').addEventListener('submit',function(e){e.preventDefault();var t=$('#hq').value.trim();if(!t)return;$('#hq').value='';var me2=add('me',esc(t));
+  var words=t.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w.length>2&&['the','and','you','can','your','what','how','for','are','with','does','have'].indexOf(w)<0});
+  var best=null,bs=0;D.FAQ.forEach(function(f,i){var h=(f.q+' '+f.a.replace(/<[^>]+>/g,' ')).toLowerCase(),sc=0;words.forEach(function(w){if(f.q.toLowerCase().indexOf(w)>=0)sc+=3;else if(h.indexOf(w)>=0)sc+=1});if(sc>bs){bs=sc;best=i}});
+  setTimeout(function(){if(best!=null&&bs>=2){var f=D.FAQ[best];add('bot','<p><b>'+esc(f.q)+'</b></p>'+f.a+'<a class="go2" href="#faq" data-close="1" data-faq="'+best+'">Open in FAQ →</a>')}
+    else add('bot','<p>I couldn\'t find that on our site. Message us on WhatsApp and we\'ll answer you directly.</p><a class="go2" target="_blank" rel="noopener" href="'+WA+'?text='+encodeURIComponent(t)+'">Ask on WhatsApp →</a>');showFrom(me2)},350)});
+/* opening a FAQ answer from Chip */
+document.addEventListener('click',function(e){var a=e.target.closest('[data-faq]');if(!a)return;var q=$('#q'+a.dataset.faq);if(q){var w=q.closest('.qa');if(w.hidden)w.hidden=false;setTimeout(function(){if(!w.classList.contains('open'))q.click();go(w,120)},700)}});
+})();
+
+/* marquee */
+var mq=$('#marq'),words=['Artisan','Handmade','Small batches','Eggless','Made to order','Dublin'];
+mq.innerHTML='<div style="display:flex">'+words.map(function(w){return '<span>'+w+'</span>'}).join('')+'</div><div style="display:flex">'+words.map(function(w){return '<span>'+w+'</span>'}).join('')+'</div>';
+if(hasG&&!RM){var mqt=gsap.to(mq,{xPercent:-50,duration:24,ease:'none',repeat:-1});ScrollTrigger.create({trigger:'.marq',start:'top bottom',end:'bottom top',onUpdate:function(s){gsap.to(mqt,{timeScale:(s.direction||1)*(1+Math.min(4,Math.abs(s.getVelocity())/500)),duration:.4,overwrite:true})}})}
+
+/* order */
+var basket={},meta={};
+function count(){var n=0;for(var k in basket)n+=basket[k];return n}
+function total(){var t=0;for(var k in basket)t+=(meta[k].price||0)*basket[k];return t}
+function renderCart(){var n=count();$('#cnt1').textContent=n;$('#cartTop').hidden=n===0;$('#cnt2').textContent=n;$('#obar').classList.toggle('show',n>0);document.body.classList.toggle('has-bar',n>0);var keys=Object.keys(basket);
+  $('#dlist').innerHTML=keys.length?keys.map(function(k){var m=meta[k];return '<li><div><b>'+esc(m.name)+'</b><small>'+esc(m.sub)+'</small></div><div class="qty"><button type="button" data-k="'+esc(k)+'" data-d="-1" aria-label="Fewer">−</button><span>'+basket[k]+'</span><button type="button" data-k="'+esc(k)+'" data-d="1" aria-label="More">+</button></div></li>'}).join(''):'<li style="background:none;color:var(--muted);font-weight:600">Nothing here yet. Add a few treats from the menu.</li>';
+  var tt=eur(total())+(keys.some(function(k){return meta[k].from})?'+':'');$('#dtot').textContent=tt;$('#obarTot').textContent=tt;
+  var L=['Hi Savor by Sree, I\'d like to order:'];keys.forEach(function(k){L.push('• '+basket[k]+' × '+meta[k].name+' ('+meta[k].sub+')')});L.push('Estimated total: '+tt);
+  syncAdds();if(window.__renderSum)window.__renderSum()}
+$('#dlist').addEventListener('click',function(e){var b=e.target.closest('button[data-k]');if(!b)return;var k=b.getAttribute('data-k');basket[k]+=+b.getAttribute('data-d');if(basket[k]<=0){delete basket[k];delete meta[k]}renderCart()});
+function bump(){if(hasG&&!RM){gsap.fromTo(['#obarBtn','#cartTop'],{scale:1.06},{scale:1,duration:.5,ease:'elastic.out(1,.4)'});gsap.fromTo('#chip',{y:0},{y:-24,duration:.25,yoyo:true,repeat:1,ease:'power2.out'})}}
+function addItem(k,m){if(basket[k]){delete basket[k];delete meta[k]}else{basket[k]=1;meta[k]=m;bump()}renderCart()}
+function openCart(){$('#drawer').classList.add('open');$('#scrim2').classList.add('open');$('#drawer').setAttribute('aria-hidden','false');if(lenis)lenis.stop()}
+function closeCart(){$('#drawer').classList.remove('open');$('#scrim2').classList.remove('open');$('#drawer').setAttribute('aria-hidden','true');if(lenis)lenis.start()}
+$('#obarBtn').addEventListener('click',openCart);$('#cartTop').addEventListener('click',openCart);$('#dclose').addEventListener('click',closeCart);$('#scrim2').addEventListener('click',closeCart);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeCart();closeMenu()}});
+
+/* menu */
+var FIMG={cream:'img/f-fresh.webp',buttercream:'img/f-buttercream.webp',naked:'img/f-naked.webp',ganache:'img/f-ganache.webp',fondant:'img/f-fondant.webp'};
+var PH={cookies:'img/c-cookies.webp',brownies:'img/c-brownies.webp',tiramisu:'img/c-tiramisu.webp',tresleches:'img/c-tres.webp',cakes:'img/c-cakes.webp',savoury:'img/c-savoury.webp'};
+var LINE={cookies:'Gooey in the middle, crisp at the edges.',brownies:'Fudgy, rich and made to order.',cheesecakes:'Creamy, baked fresh, never from a shelf.',basque:'Burnt on top, silky inside.',tiramisu:'Layered by hand and set overnight.',tresleches:'Soaked in three milks, topped with fruit.',savoury:'Savoury bakes with an Indian and global twist.',cakes:'Celebration cakes, made your way.'};
+var sel={};
+function optsOf(c,it){return it.opts||c.opts||[]}
+function catOf(id){return D.MENU.filter(function(x){return x.id===id})[0]}
+function itemOf(c,n){return c.items.filter(function(x){return x.name===n})[0]}
+function keyOf(c,it){var o=optsOf(c,it),i=o.length===1?0:sel[it.name];return i==null?null:it.name+'|'+o[i].l}
+var catIn=$('#catIn'),ind=$('#catInd');
+catIn.insertAdjacentHTML('beforeend',D.MENU.map(function(c){return '<button type="button" data-c="'+c.id+'">'+esc(c.short)+'</button>'}).join(''));
+var ILL={cookies:'cookie',brownies:'brownie',cheesecakes:'cheese',basque:'cheese',tiramisu:'tiramisu',tresleches:'tres',savoury:'savoury',cakes:'cake'};
+$('#cats').innerHTML=D.MENU.map(function(c,ci){var SV=window.SBS_SVG||{};
+  var ban='<div class="mhd'+(ci%2?' dk':'')+'"><div class="pat"></div><h3>'+esc(c.name)+'</h3><span>'+esc(c.line||LINE[c.id]||'')+'</span></div>';
+  if(c.sizes)return '<section class="mcat" id="cat-'+c.id+'">'+ban+'<div class="cakebox" id="cakeB">'+cakeBuilder(c)+'</div></section>';
+  var pr='<div class="prices">'+(c.opts||[]).map(function(o){return '<span>'+esc(o.l)+' · '+eur(o.p)+'</span>'}).join('')+'</div>';
+  return '<section class="mcat" id="cat-'+c.id+'">'+ban+pr+'<div class="ilist">'+c.items.map(function(it){var io=optsOf(c,it);
+    return '<div class="irow"><div><h4>'+esc(it.name)+(it.b?'<span class="badge">'+esc(it.b)+'</span>':'')+(it.tag?'<span class="badge al">'+esc(it.tag)+'</span>':'')+'</h4><div class="alg">'+esc(it.a.split(',').map(function(x){return x.trim()}).join(' · '))+'</div>'+
+      (io.length>1?'<div class="sz" role="group" aria-label="Size for '+esc(it.name)+'">'+io.map(function(x,i){return '<button type="button" data-c="'+c.id+'" data-item="'+esc(it.name)+'" data-i="'+i+'" aria-pressed="false">'+esc(x.l.replace(/ tray$/i,''))+' · '+(x.was?'<s class="was">'+eur(x.was)+'</s>':'')+eur(x.p)+'</button>'}).join('')+'</div>':'')+
+      '</div><div class="ctl" data-c="'+c.id+'" data-item="'+esc(it.name)+'"></div></div>'}).join('')+'</div></section>'}).join('');
+function syncAdds(){
+  $$('.ctl').forEach(function(el){var c=catOf(el.dataset.c),it=itemOf(c,el.dataset.item),o=optsOf(c,it),k=keyOf(c,it),h;
+    if(!k)h='<button type="button" class="addb need" data-act="need">Pick a size</button>';
+    else if(basket[k])h='<div class="stp"><button type="button" data-act="-" aria-label="One fewer '+esc(it.name)+'">−</button><span>'+basket[k]+'</span><button type="button" data-act="+" aria-label="One more '+esc(it.name)+'">+</button></div>';
+    else{var i=o.length===1?0:sel[it.name];h='<button type="button" class="addb" data-act="add">Add · '+(o[i].was?'<s class="was">'+eur(o[i].was)+'</s>':'')+eur(o[i].p)+'</button>'}
+    if(el.innerHTML!==h)el.innerHTML=h});
+  $$('.bcard .add').forEach(function(b){var k='offer|'+b.dataset.id;b.classList.toggle('on',!!basket[k]);b.textContent=basket[k]?'✓ Added':'+ Add'})}
+$('#cats').addEventListener('click',function(e){
+  var z=e.target.closest('.sz button');if(z){sel[z.dataset.item]=+z.dataset.i;$$('button',z.parentNode).forEach(function(x){x.setAttribute('aria-pressed',x===z?'true':'false')});syncAdds();return}
+  var b=e.target.closest('[data-act]');if(!b)return;var el=b.closest('.ctl'),c=catOf(el.dataset.c),it=itemOf(c,el.dataset.item),act=b.dataset.act;
+  if(act==='need'){var sz=el.parentNode.querySelector('.sz');if(sz&&hasG&&!RM)gsap.fromTo(sz,{x:-8},{x:0,duration:.5,ease:'elastic.out(1,.3)'});return}
+  var k=keyOf(c,it),o=optsOf(c,it),i=o.length===1?0:sel[it.name];
+  if(act==='add'){basket[k]=1;meta[k]={id:it.id,opt:o[i].l,name:it.name,sub:o[i].l+(o[i].d?' ('+o[i].d+')':'')+' · '+eur(o[i].p),price:o[i].p};bump()}
+  else if(act==='+'){basket[k]++}
+  else if(act==='-'){basket[k]--;if(basket[k]<=0){delete basket[k];delete meta[k]}}
+  renderCart();
+  if(hasG&&!RM&&act==='add'){var st=el.querySelector('.stp');if(st)gsap.fromTo(st,{scale:.7},{scale:1,duration:.45,ease:'back.out(2.4)'})}});
+function cakeBuilder(c){var z=D.CAKE_SIZES,st=D.CAKE_STYLES,fl=c.items.map(function(it){return '<option>'+esc(it.name)+'</option>'}).join('');
+  return '<div class="cb">'+
+  '<fieldset><legend>Flavour</legend><select id="cbfl" aria-label="Cake flavour">'+fl+'</select>'+
+  '<label class="two"><input type="checkbox" id="cbtwo"> Make it a two-flavour cake <em>+'+eur(D.TWO_FLAVOUR||5)+'</em></label>'+
+  '<div id="cbfl2w" hidden><select id="cbfl2" aria-label="Second flavour">'+fl+'</select></div>'+
+  '<div class="alg" id="cbal" style="margin-top:6px"></div></fieldset>'+
+  '<fieldset><legend>Size</legend><div class="opts">'+z.map(function(s,i){return '<label class="opt"><input type="radio" name="cbs" value="'+i+'"'+(i===0?' checked':'')+'><b>'+esc(s.custom?'Custom cake':s.size+(s.detail?', '+s.detail:''))+'</b><small>'+esc(s.custom?'Tell us your idea':s.weight+' · '+s.serves)+'</small><em>'+(s.custom?'Quote':'From '+eur(s.price))+'</em></label>'}).join('')+'</div></fieldset>'+
+  '<fieldset><legend>Finish</legend><div class="fins">'+st.map(function(s,i){return '<label class="fin"><input type="radio" name="cbf" value="'+i+'"'+(i===0?' checked':'')+'>'+(FIMG[s.id]?'<img src="'+FIMG[s.id]+'" alt="" loading="lazy">':'')+'<b>'+esc(s.name.replace(/ cake$/i,''))+'</b><small>'+(s.id==='fondant'?'+'+eur(D.FONDANT||5)+' per 0.5 kg':'&nbsp;')+'</small></label>'}).join('')+'</div></fieldset>'+
+  '<fieldset><legend>Add-ons</legend><div class="checks">'+D.CAKE_ADDONS.map(function(a){return '<label><input type="checkbox" id="cba_'+a.id+'"> '+esc(a.name)+' +'+eur(a.price)+'</label>'}).join('')+'</div></fieldset>'+
+  '<div class="cbtotal"><div><small>Estimated price</small><b id="cbp">€35</b></div><button type="button" class="add" id="cbadd" style="background:var(--orange);color:var(--ink)">+ Add cake</button></div></div>'}
+function initBuilder(c){var mb=$('#cakeB');function alg(n){var it=c.items.filter(function(x){return x.name===n})[0];return it?it.a.split(',').map(function(s){return s.trim()}):[]}
+  function calc(){var s=D.CAKE_SIZES[+$('input[name=cbs]:checked',mb).value],f=D.CAKE_STYLES[+$('input[name=cbf]:checked',mb).value],two=$('#cbtwo').checked,p=s.custom?0:s.price;$('#cbfl2w').hidden=!two;
+    if(!s.custom&&f.id==='fondant')p+=(D.FONDANT||5)*Math.round(s.kg/.5);if(two)p+=(D.TWO_FLAVOUR||5);D.CAKE_ADDONS.forEach(function(a){if($('#cba_'+a.id).checked)p+=a.price});
+    var fl=$('#cbfl').value+(two?' + '+$('#cbfl2').value:''),al=alg($('#cbfl').value);if(two)alg($('#cbfl2').value).forEach(function(x){if(al.indexOf(x)<0)al.push(x)});
+    $('#cbal').textContent='Contains: '+al.join(' · ');$('#cbp').textContent=s.custom?'Quote':eur(p);return {s:s,f:f,p:p,fl:fl}}
+  mb.addEventListener('change',calc);calc();
+  $('#cbadd').addEventListener('click',function(e){var x=calc(),k='cake|'+Date.now();basket[k]=1;meta[k]={id:null,opt:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name,name:x.fl+' cake',sub:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name+(x.s.custom?' · to be quoted':' · from '+eur(x.p)),price:x.p,from:true};bump();renderCart();var b=e.currentTarget;b.textContent='✓ Added';setTimeout(function(){b.textContent='+ Add another cake'},1200)})}
+if(catOf('cakes'))initBuilder(catOf('cakes'));
+/* category bar: tap to jump, highlight while scrolling */
+function setCat(id){var b=catIn.querySelector('[data-c="'+id+'"]');if(!b)return;$$('button',catIn).forEach(function(x){x.setAttribute('aria-current',x===b?'true':'false')});
+  ind.style.width=b.offsetWidth+'px';ind.style.transform='translateX('+b.offsetLeft+'px)';
+  var tgt=b.offsetLeft-(catIn.clientWidth-b.offsetWidth)/2;catIn.scrollTo({left:tgt,behavior:RM?'auto':'smooth'})}
+catIn.addEventListener('click',function(e){var b=e.target.closest('button[data-c]');if(!b)return;curCat=b.dataset.c;setCat(b.dataset.c);var el=document.getElementById('cat-'+b.dataset.c);go(el,$('#catbar').offsetHeight+96+6)});
+var curCat=null,catTick=false,mcats=$$('.mcat');
+function spyCat(){catTick=false;var line=$('#catbar').getBoundingClientRect().bottom+24,id=mcats[0].id;mcats.forEach(function(m){var r=m.getBoundingClientRect();if(r.top<=line)id=m.id;if(r.top<innerHeight*.9)m.classList.add('seen')});id=id.slice(4);if(id!==curCat){curCat=id;setCat(id)}}
+window.addEventListener('scroll',function(){if(!catTick){catTick=true;requestAnimationFrame(spyCat)}},{passive:true});spyCat();
+requestAnimationFrame(function(){setCat('cookies')});
+window.addEventListener('resize',function(){var b=catIn.querySelector('[aria-current="true"]');if(b)setCat(b.dataset.c)});
+document.addEventListener('click',function(e){var b=e.target.closest('[data-tab]');if(!b)return;setCat(b.dataset.tab)});
+
+/* gifting */
+var GI={gift:'<svg viewBox="0 0 24 24" fill="none" stroke="#2a1400" stroke-width="2" stroke-linecap="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M3 13h18M12 9v12M12 9C9 9 7 4 10 4s2 5 2 5 0-5 2-5 1 5-2 5"/></svg>',table:'<svg viewBox="0 0 24 24" fill="none" stroke="#2a1400" stroke-width="2" stroke-linecap="round"><path d="M4 11h16M6 11v9M18 11v9M8 11V7a4 4 0 0 1 8 0v4"/></svg>',cater:'<svg viewBox="0 0 24 24" fill="none" stroke="#2a1400" stroke-width="2" stroke-linecap="round"><path d="M3 16h18M5 16a7 7 0 0 1 14 0M12 6v3M3 19h18"/></svg>'};
+var GIFT=[['gift','Corporate gifting','Branded or personalised gift boxes and hampers for clients, teams and festive seasons, with a card for your message.',['Custom boxes for any budget','Personalised greeting cards','Delivery across Dublin'],'Enquire about gifting','corporate gifting'],
+ ['table','Dessert tables','A styled spread of cakes, cookies, cheesecakes and tiramisu, designed around your theme and colours.',['Weddings, birthdays and baby showers','Themed styling and signage','Tailored to your guest numbers'],'Plan a dessert table','a dessert table'],
+ ['cater','Dessert catering','Trays and individual desserts for events, meetings and parties, made fresh in small batches.',['Sharing and celebration trays','Sweet and savoury options','Allergen information on request'],'Ask about catering','dessert catering']];
+$('#ggrid').innerHTML=GIFT.map(function(g){return '<article class="gcard"><div class="ic">'+GI[g[0]]+'</div><h3>'+g[1]+'</h3><p>'+g[2]+'</p><ul>'+g[3].map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul><a class="btn btn-dark" target="_blank" rel="noopener" href="'+WA+'?text='+encodeURIComponent('Hi Savor by Sree, I\'d like to ask about '+g[5]+'.')+'">'+g[4]+' →</a></article>'}).join('');
+if(hasG&&!RM){gsap.from('.gcard',{y:80,rotation:function(i){return [-4,0,4][i]},stagger:.12,duration:.9,ease:'power3.out',scrollTrigger:{trigger:'#ggrid',start:'top 88%'}});
+  gsap.fromTo('#gimg',{yPercent:-8},{yPercent:8,ease:'none',scrollTrigger:{trigger:'.gbanner',start:'top bottom',end:'bottom top',scrub:true}});
+  gsap.fromTo('.gbanner',{clipPath:'inset(8% 8% 8% 8% round 30px)'},{clipPath:'inset(0% 0% 0% 0% round 30px)',ease:'none',scrollTrigger:{trigger:'.gbanner',start:'top bottom',end:'center center',scrub:true}})}
+
+/* order form (how to order) */
+window.__renderSum=renderSum;function renderSum(){var keys=Object.keys(basket);$('#osum').innerHTML=keys.length?'<div class="hd"><span>Your order</span><span>'+count()+' item'+(count()>1?'s':'')+'</span></div>'+keys.map(function(k){return '<div class="ln"><span>'+basket[k]+' × '+esc(meta[k].name)+'</span><span>'+esc(eur(meta[k].price*basket[k]))+(meta[k].from?'+':'')+'</span></div>'}).join('')+'<div class="tt"><span>Estimated total</span><span>'+esc($('#dtot').textContent)+'</span></div>':'<div class="em"><span>Nothing added yet. Add from the menu, or describe your order in the notes.</span><a href="#menu">Browse the menu</a></div>'}
+var SLOTS=['5–6 pm','6–7 pm','7–8 pm','8–9 pm','9–10 pm','10–11 pm'];
+var NOTE={Collection:'<span>📍</span><span><b>Collection:</b> pick your date and a time slot. We share the exact collection address on WhatsApp once your order is confirmed. Please bring your order message with you.</span>',
+  Delivery:'<span>🚚</span><span><b>Delivery:</b> we deliver across Dublin in the evening. The fee depends on your address, and we confirm it on WhatsApp before you pay. Someone needs to be home to receive it.</span>'};
+function iso(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+var NT=D.NOTICES||{},ND=NT.noticeDays==null?2:+NT.noticeDays,CLOSED=NT.closedDates||[];
+(function(){var d=new Date();d.setDate(d.getDate()+ND);$('#odate').min=iso(d)})();
+if(NT.paused){var pz=$('#paused');pz.hidden=false;pz.innerHTML='<b>We’re not taking new orders right now</b><span>'+esc(NT.pauseMessage||'Message us on WhatsApp and we’ll let you know when we reopen.')+'</span><a class="btn btn-orange" href="'+WA+'" target="_blank" rel="noopener">Message us on WhatsApp</a>';$('#oform').hidden=true}
+$('#oslot').insertAdjacentHTML('beforeend',SLOTS.map(function(t){return '<option>'+t+'</option>'}).join(''));
+function cdMode(){var m=$('input[name=ocd]:checked').value,del=m==='Delivery';$('#cdnote').innerHTML=NOTE[m];
+  $('#odateL').textContent=(del?'Delivery':'Collection')+' date *';$('#oslotL').textContent=(del?'Delivery':'Collection')+' time *';
+  $('#oaddrW').hidden=!del;$('#oaddr').required=del;if(hasG&&!RM)gsap.fromTo('#cdnote',{opacity:0,y:-6},{opacity:1,y:0,duration:.3})}
+$$('input[name=ocd]').forEach(function(r){r.addEventListener('change',cdMode)});cdMode();
+['input','change'].forEach(function(ev){$('#oform').addEventListener(ev,function(){var er=$('#oform .oerr');if(er)er.remove()})});
+$('#oform').addEventListener('submit',function(e){e.preventDefault();var f=e.currentTarget,er=f.querySelector('.oerr');if(er)er.remove();
+  var m=$('input[name=ocd]:checked').value,slot=$('#oslot').value?{value:$('#oslot').value}:null;
+  var ph=$('#ophone').value.replace(/[^\d+]/g,'');
+  if(!$('#oname').value.trim()||ph.length<7||!$('#odate').value||!slot||(m==='Delivery'&&!$('#oaddr').value.trim())){f.querySelector('.send').insertAdjacentHTML('beforebegin','<p class="oerr">Please add your name, mobile number, a date and a time slot'+(m==='Delivery'?', and your delivery address':'')+'.</p>');return}
+  if($('#odate').value<$('#odate').min){f.querySelector('.send').insertAdjacentHTML('beforebegin','<p class="oerr">Please choose a date at least '+ND+' day'+(ND===1?'':'s')+' from today.</p>');return}
+  if(CLOSED.indexOf($('#odate').value)>=0){f.querySelector('.send').insertAdjacentHTML('beforebegin','<p class="oerr">Sorry, we’re closed on that date. Please choose another day.</p>');return}
+  var dd=new Date($('#odate').value+'T00:00:00'),ds=days[dd.getDay()]+' '+dd.getDate()+' '+mon[dd.getMonth()];
+  var keys=Object.keys(basket),L=['Hi Savor by Sree, I\'d like to place an order.','Name: '+$('#oname').value.trim(),m+': '+ds+', '+slot.value];
+  if(m==='Delivery')L.push('Delivery address: '+$('#oaddr').value.trim());
+  if(keys.length){L.push('Order:');keys.forEach(function(k){L.push('• '+basket[k]+' × '+meta[k].name+' ('+meta[k].sub+')')});L.push('Estimated total: '+$('#dtot').textContent+(m==='Delivery'?' + delivery fee':''))}
+  if($('#onotes').value.trim())L.push('Notes: '+$('#onotes').value.trim());
+  /* also save the order in the order app, so it appears under "To confirm" */
+  window.SBS_sendOrder({name:$('#oname').value.trim(),phone:$('#ophone').value.trim(),mode:m==='Delivery'?'delivery':'collection',order_date:$('#odate').value,slot:slot.value,
+    address:m==='Delivery'?$('#oaddr').value.trim():null,notes:$('#onotes').value.trim()||null,
+    items:keys.map(function(k){return {menuId:meta[k].id||null,name:meta[k].name,option:meta[k].opt||'',price:meta[k].price||0,qty:basket[k]}})});
+  var a=document.createElement('a');a.href=WA+'?text='+encodeURIComponent(L.join('\n'));a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()});
+if(hasG&&!RM){var hl=$('#hline');gsap.fromTo(hl,{attr:{'stroke-dashoffset':100},strokeDasharray:'100 100'},{attr:{'stroke-dashoffset':0},ease:'none',scrollTrigger:{trigger:'#steps3',start:'top 80%',end:'top 35%',scrub:true}});
+  gsap.from('.step',{y:60,stagger:.15,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'#steps3',start:'top 85%'}});
+  gsap.from('.step .n',{scale:0,rotation:-90,stagger:.15,duration:.7,ease:'back.out(2)',scrollTrigger:{trigger:'#steps3',start:'top 85%'}})}
+
+/* our story */
+var tlEl=$('#tline');tlEl.insertAdjacentHTML('beforeend',D.EVENTS.map(function(e){return '<article class="ev" data-t="'+esc(e.type)+'"><small>'+esc(e.type.toUpperCase())+'</small><h3>'+esc(e.name)+'</h3><div class="pl">'+esc(e.place)+'</div><p>'+esc(e.desc)+'</p></article>'}).join(''));
+$('#filt').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var f=b.dataset.f;$$('#filt button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+  $$('.ev').forEach(function(ev){var on=f==='all'||ev.dataset.t===f;if(hasG&&!RM){if(on&&ev.hidden){ev.hidden=false;gsap.fromTo(ev,{opacity:0,y:16},{opacity:1,y:0,duration:.4})}else if(!on)ev.hidden=true}else ev.hidden=!on});if(hasG)ScrollTrigger.refresh()});
+var evN=D.EVENTS.length;
+if(hasG&&!RM){gsap.to('#rail',{scaleY:1,ease:'none',scrollTrigger:{trigger:'#tline',start:'top 70%',end:'bottom 70%',scrub:true}});
+  $$('.ev').forEach(function(ev){gsap.from(ev,{y:30,duration:.7,ease:'power3.out',scrollTrigger:{trigger:ev,start:'top 88%'}})});
+  var cobj={v:0};ScrollTrigger.create({trigger:'#evCount',start:'top 90%',once:true,onEnter:function(){gsap.to(cobj,{v:evN,duration:1.4,ease:'power2.out',onUpdate:function(){$('#evCount').textContent=Math.round(cobj.v)}})}})}else{$('#evCount').textContent=evN}
+
+/* about */
+if(hasG&&!RM){gsap.to('#aring',{rotation:360,transformOrigin:'50% 50%',ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'bottom top',scrub:1}});
+  gsap.from('.alogo img',{scale:.7,rotation:-20,ease:'none',scrollTrigger:{trigger:'#about',start:'top bottom',end:'center center',scrub:1}});
+  gsap.from('.feats span',{y:20,opacity:0,stagger:.06,duration:.5,scrollTrigger:{trigger:'.feats',start:'top 92%'}})}
+
+/* bundles */
+(function(){var dl=D.DEALS||[],box=$('#offers');
+  if(dl.length){box.hidden=false;box.innerHTML=dl.map(function(o){var lab=o.percent_off?(+o.percent_off)+'%<br>off':o.amount_off?'€'+(+o.amount_off)+'<br>off':'Offer';var until=o.ends_on?new Date(o.ends_on+'T00:00:00'):null;
+    return '<article class="deal"><div class="lab">'+lab+'</div><div><h3>'+esc(o.title)+'</h3>'+(o.details?'<p>'+esc(o.details)+'</p>':'')+(until?'<small>Until '+days[until.getDay()]+' '+until.getDate()+' '+mon[until.getMonth()]+'</small>':'')+'</div></article>'}).join('')}
+  var hs=D.OFFERS.filter(function(o){return o.type==='Hamper'});
+  $('#bintro').textContent='Our favourite combinations at a better price'+(hs.length?', plus the '+hs.map(function(o){return o.title.replace(/^Hamper \d+: /,'')}).join(' and ')+' hamper'+(hs.length>1?'s':''):'')+'.';
+  if(!D.OFFERS.length&&!dl.length)$('#bundles').hidden=true})();
+$('#bgrid').innerHTML=D.OFFERS.map(function(o){var h=o.type==='Hamper';return '<article class="bcard'+(h?' hamper':'')+'"><span class="bt">'+esc(h?'Festive hamper':o.type==='Pack'?'Pack':'Bundle')+'</span>'+(o.badge&&!h?'<span class="save">'+esc(o.badge)+'</span>':'')+'<h3>'+esc(o.title.replace(/^Hamper \d+: /,''))+'</h3><ul>'+o.items.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul><div class="bfoot"><div class="bp">'+(o.was?'<s class="was">'+eur(o.was)+'</s>':'')+eur(o.price)+'</div><button type="button" class="add" data-id="'+esc(o.id)+'">+ Add</button></div></article>'}).join('');
+$('#bgrid').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var o=D.OFFERS.filter(function(x){return x.id===b.dataset.id})[0];addItem('offer|'+o.id,{id:o.id,opt:o.type,name:o.title.replace(/^Hamper \d+: /,''),sub:o.type+' · '+eur(o.price),price:o.price})});
+
+/* taste of dublin gallery */
+var G=['g-1','s-crowd','g-2','g-3','s-tubs','g-4','g-5','g-6','g-7','g-8'],gh=G.map(function(g){return '<img src="img/'+g+'.webp" alt="Taste of Dublin" loading="lazy"'+(/crowd|tubs|g-4|g-7/.test(g)?' class="w"':'')+'>'}).join('');
+$('#galt').innerHTML=gh+gh;
+if(hasG&&!RM){gsap.to('#galt',{xPercent:-50,duration:60,ease:'none',repeat:-1});gsap.fromTo('#galt',{y:40},{y:-40,ease:'none',scrollTrigger:{trigger:'#tod',start:'top bottom',end:'bottom top',scrub:true}})}
+
+/* markets */
+(function(){var act=MK.filter(function(m){return m.status==='active'}),regs=act.filter(function(m){return !m.days.length&&!(m.from&&m.from===m.until)}),wk=act.filter(function(m){return m.days.length})[0];
+  if(D.MARKETS){$('#also').innerHTML=regs.map(function(m){return '<span>'+esc(m.name)+'</span>'}).join('');$('#alsoW').hidden=!regs.length;
+    $('#mkintro').textContent=wk?'Find our stall every '+dayList(wk.days)+' at '+wk.name.replace(/ Food .*$/,'')+(regs.length?', and at markets around Dublin.':'.'):'Find our stall at markets around Dublin.';
+    var soon=MK.filter(function(m){return m.status==='upcoming'}).map(function(m){return {m:m,d:occ(m,1)[0]||(m.from?new Date(m.from+'T00:00:00'):null)}}).sort(function(a,b){return (a.d||9e15)-(b.d||9e15)});
+    if(soon.length){$('#soonW').hidden=false;$('#soon').innerHTML=soon.map(function(v){var x=v.d,m=v.m,to=m.until&&m.until!==m.from?new Date(m.until+'T00:00:00'):null;
+      return '<div class="date"><div class="dd"><div>'+(x?'<b>'+x.getDate()+'</b><small>'+mon[x.getMonth()].toUpperCase()+'</small>':'<b>…</b>')+'</div></div><div><h4>'+esc(m.name)+'</h4><p>'+[x?(to?'From '+days[x.getDay()]+' '+x.getDate()+' '+mon[x.getMonth()]+' to '+to.getDate()+' '+mon[to.getMonth()]:days[x.getDay()]+' '+x.getDate()+' '+mon[x.getMonth()]):'Dates coming soon',m.days.length&&to?dayList(m.days):'',m.start?hm(m.start)+(m.end?'–'+hm(m.end):''):'',m.place].filter(Boolean).map(esc).join(' · ')+'</p></div></div>'}).join('')}}
+  if(!UP.length){$('#next').innerHTML='<span class="eyebrow" style="color:var(--orange)">Next market</span><div class="nomk"><h3 style="margin:0">New dates coming soon</h3><p style="margin:0">Follow us on Instagram for our next market, or message us on WhatsApp to order.</p></div>';$('#dates').innerHTML='';return}
+  var u=UP[0],n=u.d,wa=WA+'?text='+encodeURIComponent("Hi Savor by Sree, I'd like to reserve some bakes for "+days[n.getDay()]+' '+n.getDate()+' '+mon[n.getMonth()]+" at "+u.m.name+".");
+  $('#next').innerHTML='<span class="eyebrow" style="color:var(--orange)">Next market</span><div class="when"><div class="d"><div><b>'+n.getDate()+'</b><small>'+mon[n.getMonth()].toUpperCase()+'</small></div></div><div><h3>'+esc(u.m.name)+'</h3><p>'+days[n.getDay()]+' '+n.getDate()+' '+mon[n.getMonth()]+(u.m.start?' · '+hm(u.m.start)+(u.m.end?'–'+hm(u.m.end):''):'')+(u.m.place?' · '+esc(u.m.place):'')+'</p>'+(u.m.note?'<p style="margin-top:4px;opacity:.85">'+esc(u.m.note)+'</p>':'')+'</div></div><div class="cd" id="cd"></div><div class="btns"><a class="btn btn-orange" href="'+wa+'" target="_blank" rel="noopener">Reserve on WhatsApp</a>'+(u.m.maps?'<a class="btn btn-ghost" href="'+esc(u.m.maps)+'" target="_blank" rel="noopener">Get directions</a>':'')+'</div>';
+  function cd(){var s=opensAt(u);var ms=Math.max(0,s-new Date()),d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);$('#cd').innerHTML='<div><b>'+d+'</b><small>days</small></div><div><b>'+String(h).padStart(2,'0')+'</b><small>hrs</small></div><div><b>'+String(m).padStart(2,'0')+'</b><small>mins</small></div>'}cd();setInterval(cd,30000);
+  $('#dates').innerHTML=UP.slice(1).map(function(v){var x=v.d;return '<div class="date"><div class="dd"><div><b>'+x.getDate()+'</b><small>'+mon[x.getMonth()].toUpperCase()+'</small></div></div><div><h4>'+esc((v.m.place||v.m.name).split(',')[0])+'</h4><p>'+['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][x.getDay()]+(v.m.start?' · '+hm(v.m.start)+(v.m.end?'–'+hm(v.m.end):''):'')+(v.m.note?' · '+esc(v.m.note):'')+'</p></div></div>'}).join('')})();
+
+/* faq */
+var fl=$('#faqList');fl.innerHTML=D.FAQ.map(function(f,i){return '<div class="qa"'+(i>=8?' hidden':'')+'><button type="button" aria-expanded="false" id="q'+i+'" aria-controls="a'+i+'">'+esc(f.q)+'<span class="pm" aria-hidden="true"></span></button><div class="ans" id="a'+i+'" role="region" aria-labelledby="q'+i+'"><div>'+f.a+'</div></div></div>'}).join('');
+fl.addEventListener('click',function(e){var b=e.target.closest('.qa>button');if(!b)return;var q=b.parentNode,a=$('.ans',q),on=!q.classList.contains('open');q.classList.toggle('open',on);b.setAttribute('aria-expanded',on);
+  if(hasG&&!RM)gsap.to(a,{height:on?'auto':0,duration:.45,ease:'power3.inOut',onComplete:function(){ScrollTrigger.refresh()}});else a.style.height=on?'auto':'0'});
+$('#faqMore').addEventListener('click',function(){$$('.qa[hidden]').forEach(function(q){q.hidden=false});this.remove();if(hasG)ScrollTrigger.refresh()});
+
+/* section reveals (content stays visible at rest) */
+if(hasG&&!RM){
+  $$('.ln-r>span').forEach(function(s){gsap.from(s,{yPercent:70,duration:1,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 92%'}})});
+  gsap.from('.bcard',{y:50,stagger:.08,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'#bgrid',start:'top 88%'}});
+  gsap.from('.date',{y:24,stagger:.08,duration:.6,ease:'power3.out',scrollTrigger:{trigger:'#dates',start:'top 90%'}});
+}
+renderCart();renderSum();
+window.addEventListener('load',function(){if(hasG)ScrollTrigger.refresh()});if(hasG)setTimeout(function(){ScrollTrigger.refresh()},300);
+}
+</script>
