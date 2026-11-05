@@ -637,7 +637,6 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
       <div class="paused" id="paused" hidden></div>
       <form id="oform" novalidate>
         <label class="lbl" for="oname"><span>Your name *</span><input id="oname" required autocomplete="name" placeholder="e.g. Aoife"></label>
-        <label class="lbl" for="ophone"><span>Mobile number *</span><input id="ophone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="e.g. 087 123 4567"></label>
         <fieldset class="seg2"><legend>Collection or delivery</legend>
           <label><input type="radio" name="ocd" value="Collection" checked><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></span><span><b>Collection</b><small>Pick up from us</small></span></label>
           <label><input type="radio" name="ocd" value="Delivery"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span><span><b>Delivery</b><small>Across Dublin, fee applies</small></span></label>
@@ -986,8 +985,7 @@ $$('input[name=ocd]').forEach(function(r){r.addEventListener('change',cdMode)});
 ['input','change'].forEach(function(ev){$('#oform').addEventListener(ev,function(){var er=$('#oform .oerr');if(er)er.remove()})});
 $('#oform').addEventListener('submit',function(e){e.preventDefault();var f=e.currentTarget,er=f.querySelector('.oerr');if(er)er.remove();
   var m=$('input[name=ocd]:checked').value,slot=$('#oslot').value?{value:$('#oslot').value}:null;
-  var ph=$('#ophone').value.replace(/[^\d+]/g,'');
-  if(!$('#oname').value.trim()||ph.length<7||!$('#odate').value||!slot||(m==='Delivery'&&!$('#oaddr').value.trim())){f.querySelector('.send').insertAdjacentHTML('beforebegin','<p class="oerr">Please add your name, mobile number, a date and a time slot'+(m==='Delivery'?', and your delivery address':'')+'.</p>');return}
+  if(!$('#oname').value.trim()||!$('#odate').value||!slot||(m==='Delivery'&&!$('#oaddr').value.trim())){f.querySelector('.send').insertAdjacentHTML('beforebegin','<p class="oerr">Please add your name, a date and a time slot'+(m==='Delivery'?', and your delivery address':'')+'.</p>');return}
   if($('#odate').value<$('#odate').min){f.querySelector('.send').insertAdjacentHTML('beforebegin','<p class="oerr">Please choose a date at least '+ND+' day'+(ND===1?'':'s')+' from today.</p>');return}
   if(CLOSED.indexOf($('#odate').value)>=0){f.querySelector('.send').insertAdjacentHTML('beforebegin','<p class="oerr">Sorry, we’re closed on that date. Please choose another day.</p>');return}
   var dd=new Date($('#odate').value+'T00:00:00'),ds=days[dd.getDay()]+' '+dd.getDate()+' '+mon[dd.getMonth()];
@@ -996,7 +994,7 @@ $('#oform').addEventListener('submit',function(e){e.preventDefault();var f=e.cur
   if(keys.length){L.push('Order:');keys.forEach(function(k){L.push('• '+basket[k]+' × '+meta[k].name+' ('+meta[k].sub+')')});L.push('Estimated total: '+$('#dtot').textContent+(m==='Delivery'?' + delivery fee':''))}
   if($('#onotes').value.trim())L.push('Notes: '+$('#onotes').value.trim());
   /* also save the order in the order app, so it appears under "To confirm" */
-  window.SBS_sendOrder({name:$('#oname').value.trim(),phone:$('#ophone').value.trim(),mode:m==='Delivery'?'delivery':'collection',order_date:$('#odate').value,slot:slot.value,
+  window.SBS_sendOrder({name:$('#oname').value.trim(),phone:'',mode:m==='Delivery'?'delivery':'collection',order_date:$('#odate').value,slot:slot.value,
     address:m==='Delivery'?$('#oaddr').value.trim():null,notes:$('#onotes').value.trim()||null,
     items:keys.map(function(k){return {menuId:meta[k].id||null,name:meta[k].name,option:meta[k].opt||'',price:meta[k].price||0,qty:basket[k]}})});
   var a=document.createElement('a');a.href=WA+'?text='+encodeURIComponent(L.join('\n'));a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()});
