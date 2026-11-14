@@ -600,6 +600,24 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 .xorder b{display:block;font-size:1.25rem;font-weight:800;letter-spacing:-.03em}
 .xorder span{color:var(--muted);font-weight:500}
 @media(max-width:600px){.xcard{min-height:260px}}
+.callus{max-width:620px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--deep);color:var(--white);border-radius:22px;padding:18px 22px}
+.callus .eyebrow{color:#FFB84D;display:block}
+.callus b{display:block;font-size:1.05rem;font-weight:700;margin-top:2px}
+.callus .num{display:inline-block;margin-top:4px;font-size:1.7rem;font-weight:800;letter-spacing:-.02em;color:var(--white);text-decoration:none;font-variant-numeric:tabular-nums}
+.callbtns{display:flex;gap:8px;flex-wrap:wrap}
+.btn-line2{background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgba(255,255,255,.6)}
+.galgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;grid-auto-flow:dense;grid-auto-rows:52vw}
+@media(min-width:700px){.galgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;grid-auto-rows:300px}}
+@media(min-width:1100px){.galgrid{grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:320px}}
+.gtile{padding:0;border:0;background:var(--paper);border-radius:18px;overflow:hidden;cursor:zoom-in;display:block;height:100%;width:100%}
+.gtile.w{grid-column:span 2}
+.gtile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.gtile:hover img{transform:scale(1.04)}
+.gtile:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.lbox{position:fixed;inset:0;z-index:200;background:rgba(30,14,0,.92);display:grid;place-items:center;padding:56px 12px}
+.lbox img{max-width:100%;max-height:100%;border-radius:14px;object-fit:contain}
+.lbox button{position:absolute;border:0;background:rgba(255,255,255,.14);color:#fff;width:46px;height:46px;border-radius:50%;font-size:26px;line-height:1;cursor:pointer}
+.lb-x{top:12px;right:12px}.lb-p{left:10px;top:50%;transform:translateY(-50%)}.lb-nx{right:10px;top:50%;transform:translateY(-50%)}
 .xcard::after{background:linear-gradient(180deg,rgba(42,20,0,0) 18%,rgba(42,20,0,.55) 52%,rgba(42,20,0,.94) 100%)}
 .xt .eyebrow,.xt b,.xt span{text-shadow:0 1px 10px rgba(30,14,0,.75)}
 .xt .eyebrow{color:#FFB84D}
@@ -610,12 +628,12 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   <div class="topbar" id="topbar">Handcrafted in small batches · Made fresh to order · Dublin</div>
   <div class="nav-in">
     <a class="brand" href="#top"><img src="logo.jpg" alt="">Savor by Sree</a>
-    <nav class="links" aria-label="Main"><a href="#top">Home</a><a href="#menu">Menu</a><a href="#bundles">Hampers &amp; gifting</a><a href="#markets">Find us</a><a href="#story2">Our story</a><a href="#how">How to order</a></nav>
+    <nav class="links" aria-label="Main"><a href="#top">Home</a><a href="#menu">Menu</a><a href="#bundles">Hampers &amp; gifting</a><a href="#markets">Find us</a><a href="#gallery">Gallery</a><a href="#story2">Our story</a><a href="#how">How to order</a></nav>
     <button class="cartbtn" id="cartTop" type="button" hidden>Order <i id="cnt1">0</i></button>
     <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
-<div class="overlay" id="overlay" aria-hidden="true"><div class="pat"></div><a href="#top">Home</a><a href="#menu">Menu</a><a href="#bundles">Hampers &amp; gifting</a><a href="#markets">Find us</a><a href="#story2">Our story</a><a href="#how">How to order</a><a href="#faq">FAQ</a></div>
+<div class="overlay" id="overlay" aria-hidden="true"><div class="pat"></div><a href="#top">Home</a><a href="#menu">Menu</a><a href="#bundles">Hampers &amp; gifting</a><a href="#markets">Find us</a><a href="#gallery">Gallery</a><a href="#story2">Our story</a><a href="#how">How to order</a><a href="#faq">FAQ</a></div>
 
 <main id="top">
 <section class="hero2" data-page="home" id="hero" aria-label="Savor by Sree">
@@ -689,6 +707,10 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
       <div class="step"><div class="n">2</div><h3>Message us</h3><p>Send quantities, your date and collection or delivery. Allow 48 hours for desserts, cookies and savoury bakes, 24 to 48 hours for regular cakes and 2 weeks for custom cakes.</p></div>
       <div class="step"><div class="n">3</div><h3>We confirm</h3><p>We check availability and confirm everything with you on WhatsApp.</p></div>
     </div>
+    <div class="callus">
+      <div><span class="eyebrow">Prefer to talk?</span><b>Call or message us</b><a class="num" href="tel:+353899669496">089 966 9496</a></div>
+      <div class="callbtns"><a class="btn btn-orange" href="tel:+353899669496">Call us</a><a class="btn btn-ghost" href="https://wa.me/353899669496" target="_blank" rel="noopener">WhatsApp</a></div>
+    </div>
     <div class="oreq">
       <div class="top"><img src="logo.jpg" alt=""><div><h3>Your order request</h3><small>Fill this in and we'll confirm on WhatsApp</small></div></div>
       <div class="obox" id="osum"></div>
@@ -725,10 +747,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
     <div class="tline" id="tline"><div class="rail"><i id="rail"></i></div></div>
   </div>
 </section>
-<section class="sec gal" data-page="story" id="tod">
-  <div class="wrap"><div class="sec-head"><div><span class="eyebrow">Albums · Taste of Dublin</span><h2><span class="ln-r"><span>Our stall, our bakes</span></span></h2></div><p>A few moments from our stall at Taste of Dublin.</p></div></div>
-  <div class="gal-t" id="galt"></div>
+<section class="sec gal" data-page="gallery" id="gallery">
+  <div class="wrap"><div class="sec-head"><div><span class="eyebrow">Gallery</span><h2><span class="ln-r"><span>Our stall, our bakes</span></span></h2></div><p>A few moments from our bakes and our market stalls. Tap a photo to see it larger.</p></div>
+  <div class="galgrid" id="galgrid"></div></div>
 </section>
+<div class="lbox" id="lbox" hidden role="dialog" aria-modal="true" aria-label="Photo"><button class="lb-x" id="lbx" aria-label="Close photo">×</button><button class="lb-n lb-p" id="lbp" aria-label="Previous photo">‹</button><img id="lbimg" alt=""><button class="lb-n lb-nx" id="lbn" aria-label="Next photo">›</button></div>
 
 <section class="sec about" data-page="story" id="about">
   <div class="pat"></div>
@@ -758,7 +781,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   <div class="wrap">
     <div class="fgrid">
       <div class="fbrand"><img src="logo.jpg" alt="Savor by Sree logo"><p>Artisan sweet atelier, handmade in small batches and made fresh to order in Dublin.</p><div class="soc" id="soc"></div></div>
-      <div class="fcol"><h4>Explore</h4><a href="#top">Home</a><a href="#menu">Menu</a><a href="#bundles">Hampers &amp; gifting</a><a href="#markets">Find us</a><a href="#story2">Our story</a><a href="#how">How to order</a><a href="#faq">FAQ</a></div>
+      <div class="fcol"><h4>Explore</h4><a href="#top">Home</a><a href="#menu">Menu</a><a href="#bundles">Hampers &amp; gifting</a><a href="#markets">Find us</a><a href="#gallery">Gallery</a><a href="#story2">Our story</a><a href="#how">How to order</a><a href="#faq">FAQ</a></div>
       <div class="fcol"><h4>Get in touch</h4><span>Dublin, Ireland</span><a id="waFoot" href="#" target="_blank" rel="noopener">WhatsApp +353 89 966 9496</a><span>Saturdays · Meeting House Square, Temple Bar</span><span style="font-weight:500;color:rgba(255,255,255,.7)">Message us on WhatsApp or any of our socials to place an order.</span></div>
     </div>
     <div class="fbot"><span>© 2026 Savor by Sree. All rights reserved.</span><span>Allergens are a guide. All our products are made in the same kitchen and space, so cross-contamination might happen.</span></div>
@@ -804,11 +827,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-05"></script>
-<script charset="utf-8" src="live.js?v=2026-11-05"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-05"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-05"></script>
-<script charset="utf-8" src="social.js?v=2026-11-05"></script>
+<script charset="utf-8" src="data.js?v=2026-11-14"></script>
+<script charset="utf-8" src="live.js?v=2026-11-14"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-14"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-14"></script>
+<script charset="utf-8" src="social.js?v=2026-11-14"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -1110,9 +1133,11 @@ $('#bgrid').innerHTML=D.OFFERS.map(function(o){var h=o.type==='Hamper';return '<
 $('#bgrid').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var o=D.OFFERS.filter(function(x){return x.id===b.dataset.id})[0];addItem('offer|'+o.id,{id:o.id,opt:o.type,name:o.title.replace(/^Hamper \d+: /,''),sub:o.type+' · '+eur(o.price),price:o.price})});
 
 /* taste of dublin gallery */
-var G=['g-1','s-crowd','g-2','g-3','s-tubs','g-4','g-5','g-6','g-7','g-8'],gh=G.map(function(g){return '<img src="img/'+g+'.webp" alt="Taste of Dublin" loading="lazy"'+(/crowd|tubs|g-4|g-7/.test(g)?' class="w"':'')+'>'}).join('');
-$('#galt').innerHTML=gh+gh;
-if(hasG&&!RM){gsap.to('#galt',{xPercent:-50,duration:60,ease:'none',repeat:-1});gsap.fromTo('#galt',{y:40},{y:-40,ease:'none',scrollTrigger:{trigger:'#tod',start:'top bottom',end:'bottom top',scrub:true}})}
+var G=[['g-1','Bakes on the Savor by Sree stall'],['s-crowd','Crowd at the market'],['g-2','Savor by Sree bakes'],['g-3','Savor by Sree bakes'],['s-tubs','Dessert tubs ready for the stall'],['g-4','Our market stall'],['g-5','Savor by Sree bakes'],['g-6','Savor by Sree bakes'],['g-7','Our market stall'],['g-8','Savor by Sree bakes'],['s-team','The team at the stall'],['s-cookies','Chunky NYC cookies']];
+$('#galgrid').innerHTML=G.map(function(g,i){return '<button class="gtile'+(/crowd|tubs|g-4|g-7/.test(g[0])?' w':'')+'" data-g="'+i+'" aria-label="Open photo: '+g[1]+'"><img src="img/'+g[0]+'.webp" alt="'+g[1]+'" loading="lazy"></button>'}).join('');
+(function(){var lb=$('#lbox'),im=$('#lbimg'),cur=0;function show(i){cur=(i+G.length)%G.length;im.src='img/'+G[cur][0]+'.webp';im.alt=G[cur][1];lb.hidden=false;document.documentElement.style.overflow='hidden'}function hide(){lb.hidden=true;document.documentElement.style.overflow=''}
+$('#galgrid').addEventListener('click',function(e){var b=e.target.closest('.gtile');if(b)show(+b.dataset.g)});$('#lbx').onclick=hide;$('#lbp').onclick=function(){show(cur-1)};$('#lbn').onclick=function(){show(cur+1)};lb.addEventListener('click',function(e){if(e.target===lb)hide()});document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)})})();
+
 
 /* markets */
 (function(){var act=MK.filter(function(m){return m.status==='active'}),regs=act.filter(function(m){return !m.days.length&&!(m.from&&m.from===m.until)}),wk=act.filter(function(m){return m.days.length})[0];
