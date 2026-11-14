@@ -63,15 +63,18 @@
         var cake = c[1] === 'cakes';
         var conv = function (r) { return (r.options || []).map(function (o) { return { l: o.label, p: +o.price, d: o.note || '' }; }); };
         var base = conv(rows[0]);
+        if (cake) base = base.map(function (o, i) { return { l: o.l, d: o.d, p: Math.min.apply(null, rows.map(function (r) { var q = conv(r)[i]; return q ? q.p : o.p; })) }; });
         var items = rows.map(function (r) {
           var opts = conv(r), same = JSON.stringify(opts) === JSON.stringify(base), dl = deal(r.id);
           if (dl) opts = opts.map(function (o) { return { l: o.l, p: cut(dl, o.p), d: o.d, was: o.p }; });
           var tags = (r.tags || []).filter(function (x) { return x !== 'Hamper'; });
-          return { id: r.id, name: r.name, a: (r.allergens || []).join(', '), b: dl ? dealLabel(dl) || r.badge || '' : r.badge || '', tag: tags[0] || '', opts: same && !dl ? null : opts, desc: r.description || '' };
+          /* cakes: what this flavour costs on top of the standard size price */
+          var x = cake ? conv(r).map(function (o, i) { return base[i] && o.p > base[i].p ? Math.round((o.p - base[i].p) * 100) / 100 : 0; }) : null;
+          return { id: r.id, name: r.name, a: (r.allergens || []).join(', '), b: dl ? dealLabel(dl) || r.badge || '' : r.badge || '', tag: tags[0] || '', opts: same && !dl ? null : opts, desc: r.description || '', x: x };
         });
         menu.push({ id: c[1], name: L.sections ? c[2] : old.name || c[2], short: c[0], line: c[3] || '', optNote: old.optNote || '', opts: cake ? null : base, sizes: cake, items: items });
         if (cake) {
-          var sizes = conv(rows[0]).filter(function (o) { return o.p > 0; });
+          var sizes = base.filter(function (o) { return o.p > 0; });
           var k = 0; D.CAKE_SIZES.forEach(function (z) { if (!z.custom && sizes[k]) { z.price = sizes[k].p; k++; } });
         }
       });

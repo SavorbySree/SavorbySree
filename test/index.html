@@ -827,11 +827,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-14"></script>
-<script charset="utf-8" src="live.js?v=2026-11-14"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-14"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-14"></script>
-<script charset="utf-8" src="social.js?v=2026-11-14"></script>
+<script charset="utf-8" src="data.js?v=2026-11-14b"></script>
+<script charset="utf-8" src="live.js?v=2026-11-14b"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-14b"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-14b"></script>
+<script charset="utf-8" src="social.js?v=2026-11-14b"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -1034,18 +1034,19 @@ $('#cats').addEventListener('click',function(e){
   else if(act==='-'){basket[k]--;if(basket[k]<=0){delete basket[k];delete meta[k]}}
   renderCart();
   if(hasG&&!RM&&act==='add'){var st=el.querySelector('.stp');if(st)gsap.fromTo(st,{scale:.7},{scale:1,duration:.45,ease:'back.out(2.4)'})}});
-function cakeBuilder(c){var z=D.CAKE_SIZES,st=D.CAKE_STYLES,fl=c.items.map(function(it){return '<option>'+esc(it.name)+'</option>'}).join('');
+function cakeBuilder(c){var z=D.CAKE_SIZES,st=D.CAKE_STYLES,fl=c.items.map(function(it){return '<option value="'+esc(it.name)+'">'+esc(it.name)+'</option>'}).join('');
   return '<div class="cb">'+
   '<fieldset><legend>Flavour</legend><select id="cbfl" aria-label="Cake flavour">'+fl+'</select>'+
   '<label class="two"><input type="checkbox" id="cbtwo"> Make it a two-flavour cake <em>+'+eur(D.TWO_FLAVOUR||5)+'</em></label>'+
   '<div id="cbfl2w" hidden><select id="cbfl2" aria-label="Second flavour">'+fl+'</select></div>'+
-  '<div class="alg" id="cbal" style="margin-top:6px"></div></fieldset>'+
+  '<div class="alg" id="cbal" style="margin-top:6px"></div><div id="cbx" style="margin-top:6px;font-weight:700;color:var(--deep);font-size:.86rem"></div></fieldset>'+
   '<fieldset><legend>Size</legend><div class="opts">'+z.map(function(s,i){return '<label class="opt"><input type="radio" name="cbs" value="'+i+'"'+(i===0?' checked':'')+'><b>'+esc(s.custom?'Custom cake':s.size+(s.detail?', '+s.detail:''))+'</b><small>'+esc(s.custom?'Tell us your idea':s.weight+' · '+s.serves)+'</small><em>'+(s.custom?'Quote':'From '+eur(s.price))+'</em></label>'}).join('')+'</div></fieldset>'+
   '<fieldset><legend>Finish</legend><div class="fins">'+st.map(function(s,i){return '<label class="fin"><input type="radio" name="cbf" value="'+i+'"'+(i===0?' checked':'')+'>'+(FIMG[s.id]?'<img src="'+FIMG[s.id]+'" alt="" loading="lazy">':'')+'<b>'+esc(s.name.replace(/ cake$/i,''))+'</b><small>'+(s.id==='fondant'?'+'+eur(D.FONDANT||5)+' per 0.5 kg':'&nbsp;')+'</small></label>'}).join('')+'</div></fieldset>'+
   '<fieldset><legend>Add-ons</legend><div class="checks">'+D.CAKE_ADDONS.map(function(a){return '<label><input type="checkbox" id="cba_'+a.id+'"> '+esc(a.name)+' +'+eur(a.price)+'</label>'}).join('')+'</div></fieldset>'+
   '<div class="cbtotal"><div><small>Estimated price</small><b id="cbp">€35</b></div><button type="button" class="add" id="cbadd" style="background:var(--orange);color:var(--ink)">+ Add cake</button></div></div>'}
-function initBuilder(c){var mb=$('#cakeB');function alg(n){var it=c.items.filter(function(x){return x.name===n})[0];return it?it.a.split(',').map(function(s){return s.trim()}):[]}
-  function calc(){var s=D.CAKE_SIZES[+$('input[name=cbs]:checked',mb).value],f=D.CAKE_STYLES[+$('input[name=cbf]:checked',mb).value],two=$('#cbtwo').checked,p=s.custom?0:s.price;$('#cbfl2w').hidden=!two;
+function initBuilder(c){var mb=$('#cakeB');function xt(n,i){var it=c.items.filter(function(x){return x.name===n})[0];return it&&it.x&&it.x[i]?it.x[i]:0}function alg(n){var it=c.items.filter(function(x){return x.name===n})[0];return it?it.a.split(',').map(function(s){return s.trim()}):[]}
+  function calc(){var s=D.CAKE_SIZES[+$('input[name=cbs]:checked',mb).value],f=D.CAKE_STYLES[+$('input[name=cbf]:checked',mb).value],two=$('#cbtwo').checked,p=s.custom?0:s.price,si=+$('input[name=cbs]:checked',mb).value,ex=s.custom?0:Math.max(xt($('#cbfl').value,si),two?xt($('#cbfl2').value,si):0);p+=ex;$('#cbfl2w').hidden=!two;
+    $$('#cbfl option,#cbfl2 option',mb).forEach(function(o){var e=s.custom?0:xt(o.value,si);o.textContent=o.value+(e?' (+'+eur(e)+')':'')});$('#cbx').textContent=ex?'Premium flavour: +'+eur(ex)+' for this size':'';
     if(!s.custom&&f.id==='fondant')p+=(D.FONDANT||5)*Math.round(s.kg/.5);if(two)p+=(D.TWO_FLAVOUR||5);D.CAKE_ADDONS.forEach(function(a){if($('#cba_'+a.id).checked)p+=a.price});
     var fl=$('#cbfl').value+(two?' + '+$('#cbfl2').value:''),al=alg($('#cbfl').value);if(two)alg($('#cbfl2').value).forEach(function(x){if(al.indexOf(x)<0)al.push(x)});
     $('#cbal').textContent='Contains: '+al.join(' · ');$('#cbp').textContent=s.custom?'Quote':eur(p);return {s:s,f:f,p:p,fl:fl}}
