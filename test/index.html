@@ -319,6 +319,15 @@ h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.045em;line-height:1.02;font
 .catbar{position:sticky;top:calc(64px + env(safe-area-inset-top,0px));z-index:30;background:var(--cream);border-bottom:1px solid var(--hair);margin-top:22px}
 .cat-in{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;max-width:1140px;margin:0 auto;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
 .cat-in::-webkit-scrollbar{display:none}
+/* shows that the category row scrolls sideways: a fade and an arrow on whichever side has more */
+.cat-arrow{position:absolute;top:0;bottom:0;z-index:3;width:54px;border:0;padding:0;font-size:1.7rem;font-weight:700;line-height:1;color:var(--deep);cursor:pointer;display:flex;align-items:center}
+.cat-arrow[hidden]{display:none}
+.cat-arrow.r{right:0;justify-content:flex-end;padding-right:10px;background:linear-gradient(90deg,rgba(251,243,232,0),var(--cream) 55%)}
+.cat-arrow.l{left:0;justify-content:flex-start;padding-left:10px;background:linear-gradient(270deg,rgba(251,243,232,0),var(--cream) 55%)}
+.cat-arrow span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--orange);color:var(--ink);box-shadow:0 4px 10px -4px rgba(42,20,0,.5)}
+.cat-arrow.r.nudge span{animation:catNudge 1.1s ease-in-out 3}
+@keyframes catNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@media (prefers-reduced-motion: reduce){.cat-arrow.r.nudge span{animation:none}}
 .cat-in button{position:relative;z-index:1;flex:none;border:0;background:transparent;border-radius:99px;padding:9px 15px;font-weight:700;font-size:.88rem;color:var(--ink);white-space:nowrap}
 .cat-ind{position:absolute;z-index:0;top:10px;left:0;height:calc(100% - 20px);width:0;border-radius:99px;background:var(--orange);transition:transform .35s var(--ease),width .35s var(--ease)}
 .mcat{padding-top:30px;scroll-margin-top:136px}
@@ -710,7 +719,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 
 <section class="menu2" data-page="menu" id="menu">
   <div class="wrap mhead2"><span class="eyebrow">The menu</span><h2>Made by hand. Made for you.</h2><p>Everything is handmade and made fresh to order. Add what you like, then send your order to us on WhatsApp.</p></div>
-  <nav class="catbar" id="catbar" aria-label="Menu categories"><div class="cat-in" id="catIn"><span class="cat-ind" id="catInd"></span></div></nav>
+  <nav class="catbar" id="catbar" aria-label="Menu categories"><button type="button" class="cat-arrow l" id="catL" aria-label="Show earlier categories" hidden>‹</button><div class="cat-in" id="catIn"><span class="cat-ind" id="catInd"></span></div><button type="button" class="cat-arrow r" id="catR" aria-label="Show more categories" hidden>›</button></nav>
   <div class="wrap" id="cats"></div>
 </section>
 
@@ -876,17 +885,18 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
       setTimeout(function(){if(cur===pg&&!near(el)){try{el.scrollIntoView({behavior:'auto',block:'start'})}catch(e){el.scrollIntoView(true)}}spy()},smooth?1300:200);
     }
     if(window.ScrollTrigger)setTimeout(function(){ScrollTrigger.refresh()},60);
+    if(window.SBS_catArrows)setTimeout(window.SBS_catArrows,90);
   };
   var tick=0;window.addEventListener('scroll',function(){if(tick)return;tick=requestAnimationFrame(function(){tick=0;spy()})},{passive:true});
   window.addEventListener('popstate',function(){window.SBS_route(location.hash.slice(1),false)});
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15k"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15k"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15k"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15k"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15k"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15l"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15l"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15l"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15l"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15l"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -1067,6 +1077,13 @@ function catOf(id){return D.MENU.filter(function(x){return x.id===id})[0]}
 function itemOf(c,n){return c.items.filter(function(x){return x.name===n})[0]}
 function keyOf(c,it){var o=optsOf(c,it),i=o.length===1?0:sel[it.name];return i==null?null:it.name+'|'+o[i].l}
 var catIn=$('#catIn'),ind=$('#catInd');
+/* arrows for the category row: only shown on a side that has more to see */
+(function(){var L=$('#catL'),R=$('#catR');L.innerHTML='<span aria-hidden="true">‹</span>';R.innerHTML='<span aria-hidden="true">›</span>';
+  function upd(){var max=catIn.scrollWidth-catIn.clientWidth;L.hidden=catIn.scrollLeft<8;R.hidden=max<8||catIn.scrollLeft>max-8}
+  function by(d){catIn.scrollBy({left:d*Math.max(160,catIn.clientWidth*.7),behavior:RM?'auto':'smooth'})}
+  L.addEventListener('click',function(){by(-1)});R.addEventListener('click',function(){by(1)});
+  catIn.addEventListener('scroll',function(){R.classList.remove('nudge');upd()},{passive:true});window.addEventListener('resize',upd);
+  window.SBS_catArrows=function(){upd();if(!R.hidden)R.classList.add('nudge')};setTimeout(window.SBS_catArrows,400)})();
 catIn.insertAdjacentHTML('beforeend',D.MENU.map(function(c){return '<button type="button" data-c="'+c.id+'">'+esc(c.short)+'</button>'}).join(''));
 var ILL={cookies:'cookie',brownies:'brownie',cheesecakes:'cheese',basque:'cheese',tiramisu:'tiramisu',tresleches:'tres',savoury:'savoury',cakes:'cake'};
 $('#cats').innerHTML=D.MENU.map(function(c,ci){var SV=window.SBS_SVG||{};
