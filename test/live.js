@@ -102,18 +102,6 @@
   };
 
   /* Sends a website order into the order app ("To confirm"). Never blocks WhatsApp. */
-  /* Customer's cake reference photo: stored in Supabase Storage (bucket "order-photos") so it travels with the order.
-     The website can only ADD a photo. It cannot list, change or delete photos. Returns the photo's link. */
-  window.SBS_uploadPhoto = function (blob) {
-    var path = new Date().toISOString().slice(0, 10) + '/' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 10) + '.jpg';
-    var ctl = typeof AbortController !== 'undefined' ? new AbortController() : null, t = setTimeout(function () { if (ctl) ctl.abort(); }, 30000);
-    return fetch(DB_URL + '/storage/v1/object/order-photos/' + path, {
-      method: 'POST', signal: ctl ? ctl.signal : undefined,
-      headers: { apikey: DB_KEY, Authorization: 'Bearer ' + DB_KEY, 'Content-Type': 'image/jpeg', 'x-upsert': 'false' }, body: blob
-    }).then(function (r) { clearTimeout(t); if (!r.ok) throw new Error('upload ' + r.status); return DB_URL + '/storage/v1/object/public/order-photos/' + path; },
-      function (e) { clearTimeout(t); throw e; });
-  };
-
   window.SBS_sendOrder = function (row) {
     try {
       row.source = 'website';
