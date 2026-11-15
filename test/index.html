@@ -580,6 +580,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 @media (min-width:760px){.deals{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* pages */
 [data-page]:not(.pg-on){display:none!important}
+[data-page]{scroll-margin-top:96px}
 .pg-first{padding-top:calc(clamp(72px,10vw,120px) + 64px)}
 .menu2.pg-first{padding-top:calc(clamp(40px,6vw,72px) + 64px)}
 .links a.cur{background:var(--deep);color:var(--white)}
@@ -805,25 +806,44 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 </aside>
 
 <script>
-/* Pages: Home, Menu, Hampers & gifting, Find us, Our story, How to order. One file, so the order basket is kept while moving between pages. */
+/* Pages: Home (one long scroll with every section), Menu and Gallery. One file, so the order basket is kept while moving between pages. */
 (function(){
-  var cur=null;
+  var cur=null,lockUntil=0,links=[].slice.call(document.querySelectorAll('.links a,.overlay a'));
   function pageOf(el){var s=el&&el.closest('[data-page]');return s?s.getAttribute('data-page'):'home'}
+  function target(a){var t=a.getAttribute('href').slice(1);return t==='top'?null:document.getElementById(t)}
+  /* Which menu link is "current": on Menu and Gallery it is that page; on Home it is the section being read. */
+  function mark(id){links.forEach(function(a){var on=a.getAttribute('href').slice(1)===id;a.classList.toggle('cur',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')})}
+  function spy(){
+    if(cur!=='home'||Date.now()<lockUntil)return;
+    var best='top',bestTop=-1e9;
+    links.forEach(function(a){var el=target(a);if(!el||pageOf(el)!=='home')return;var t=el.getBoundingClientRect().top;if(t<=160&&t>bestTop){bestTop=t;best=a.getAttribute('href').slice(1)}});
+    mark(best);
+  }
   function show(pg){
     var first=null;
     document.querySelectorAll('[data-page]').forEach(function(s){var on=s.getAttribute('data-page')===pg;s.classList.toggle('pg-on',on);s.classList.remove('pg-first');if(on&&!first)first=s});
     if(first&&pg!=='home')first.classList.add('pg-first');
     document.body.setAttribute('data-pg',pg);
-    document.querySelectorAll('.links a,.overlay a').forEach(function(a){var t=a.getAttribute('href').slice(1),el=t==='top'?null:document.getElementById(t);a.classList.toggle('cur',pageOf(el)===pg);if(pageOf(el)===pg)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
   }
+  function near(el){var t=el.getBoundingClientRect().top;return t>-8&&t<170}
   window.SBS_route=function(id,push){
     var el=id&&id!=='top'?document.getElementById(id):null,pg=el?pageOf(el):'home',changed=pg!==cur;cur=pg;show(pg);
     if(push!==false)try{history.pushState(null,'',el?'#'+id:location.pathname+location.search)}catch(e){}
-    var first=document.querySelector('[data-page="'+pg+'"]');
-    var top=!el||el===first?0:el.getBoundingClientRect().top+scrollY-96;
-    window.scrollTo({top:top,behavior:changed?'auto':'smooth'});
+    var first=document.querySelector('[data-page="'+pg+'"]'),toTop=!el||(el===first&&pg!=='home')||(pg==='home'&&!el);
+    var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,smooth=!changed&&!reduce;
+    /* mark the link that was chosen straight away, and hold it while the page is moving */
+    var linked=links.some(function(a){return a.getAttribute('href').slice(1)===(el?id:'top')});
+    if(pg==='home'){lockUntil=Date.now()+(smooth?1200:150);if(linked)mark(el?id:'top');else{lockUntil=0}}else mark((links.filter(function(a){var t=target(a);return t&&pageOf(t)===pg})[0]||links[0]).getAttribute('href').slice(1));
+    if(toTop){window.scrollTo({top:0,behavior:smooth?'smooth':'auto'});try{document.documentElement.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'})}catch(e){}}
+    else{
+      /* scrollIntoView also works when the site is shown inside another page's frame; the CSS scroll-margin keeps the heading clear of the top bar */
+      try{el.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'})}catch(e){el.scrollIntoView(true)}
+      /* safety net: if the smooth scroll was interrupted, jump there */
+      setTimeout(function(){if(cur===pg&&!near(el)){try{el.scrollIntoView({behavior:'auto',block:'start'})}catch(e){el.scrollIntoView(true)}}spy()},smooth?1300:200);
+    }
     if(window.ScrollTrigger)setTimeout(function(){ScrollTrigger.refresh()},60);
   };
+  var tick=0;window.addEventListener('scroll',function(){if(tick)return;tick=requestAnimationFrame(function(){tick=0;spy()})},{passive:true});
   window.addEventListener('popstate',function(){window.SBS_route(location.hash.slice(1),false)});
   window.SBS_route(location.hash.slice(1),false);
 })();
