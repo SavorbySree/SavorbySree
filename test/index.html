@@ -612,7 +612,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 .callus{max-width:620px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--deep);color:var(--white);border-radius:22px;padding:18px 22px}
 .callus .eyebrow{color:#FFB84D;display:block}
 .chip{width:104px}
-.chip .tk-body{animation:tkBob 2.6s ease-in-out infinite;transform-origin:85px 92px}
+.chip .tk{display:block;width:100%;height:auto;animation:tkBob 2.6s ease-in-out infinite;filter:drop-shadow(0 8px 10px rgba(42,20,0,.35))}
 .chip .tk-flag{transform-box:fill-box;transform-origin:left center;animation:tkFlag 1.6s ease-in-out infinite}
 .chip.wave .tk-wheel{animation:tkSpin .6s linear 5}
 @keyframes tkBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
@@ -625,7 +625,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 .htop .hlogo{position:relative;z-index:2;margin-bottom:6px}
 .htruck{position:relative;z-index:2;width:clamp(150px,34vw,330px);margin-bottom:-6px;animation:tkPark 1.8s cubic-bezier(.2,.8,.2,1) .2s both}
 .htruck .tk{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 16px rgba(0,0,0,.35))}
-.htruck .tk-body{animation:tkBob 2.6s ease-in-out 2s infinite;transform-origin:85px 92px}
+.htruck .tk{animation:tkBob 2.6s ease-in-out 2s infinite}
 .htruck .tk-wheel{animation:tkSpin .6s linear 3}
 @keyframes tkPark{from{transform:translateX(60vw);opacity:0}30%{opacity:1}to{transform:none;opacity:1}}
 @media(max-width:700px){.htop .hlogo{width:min(34vw,140px)}}
@@ -641,10 +641,10 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 .road{position:relative;height:96px;overflow:hidden;background:var(--paper,#EFDDBB)}
 .road::before{content:"";position:absolute;left:0;right:0;bottom:14px;height:18px;background:#6D3B00}
 .road::after{content:"";position:absolute;left:0;right:0;bottom:22px;height:2px;background:repeating-linear-gradient(90deg,#FFD38A 0 22px,transparent 22px 44px)}
-.road .tk{position:absolute;bottom:20px;left:0;width:118px;height:auto;z-index:1;animation:tkDrive 16s linear infinite}
+.road .tk{position:absolute;bottom:14px;left:0;width:112px;height:auto;z-index:1;animation:tkDrive 16s linear infinite}
 .road .tk .tk-wheel{animation:tkSpin .7s linear infinite}
-.road .rsign{position:absolute;right:max(16px,6vw);bottom:34px;font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--deep,#6D3B00);background:#fff;border-radius:99px;padding:6px 14px;box-shadow:0 6px 14px -8px rgba(42,20,0,.5)}
-@keyframes tkDrive{from{transform:translateX(-130px)}to{transform:translateX(100vw)}}
+.road .rsign{position:absolute;left:max(16px,6vw);bottom:34px;font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--deep,#6D3B00);background:#fff;border-radius:99px;padding:6px 14px;box-shadow:0 6px 14px -8px rgba(42,20,0,.5)}
+@keyframes tkDrive{from{transform:translateX(100vw)}to{transform:translateX(-130px)}}
 .trk-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
 .trk-head .tk{width:132px;height:auto;flex:none}
 @media (prefers-reduced-motion: reduce){.chip .tk-body,.chip .tk-flag,.chip.wave .tk-wheel,.road .tk,.road .tk .tk-wheel{animation:none}.road .tk{left:8%}}
@@ -933,11 +933,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15h"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15h"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15h"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15h"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15h"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15i"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15i"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15i"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15i"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15i"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
