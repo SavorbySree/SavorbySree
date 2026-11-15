@@ -797,9 +797,9 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
         </div>
         <label class="lbl" for="oaddr" id="oaddrW" hidden><span>Delivery address or Eircode *</span><input id="oaddr" autocomplete="street-address" placeholder="e.g. D08 XY12 or street and area"></label>
         <label class="lbl" for="onotes"><span>Notes</span><textarea id="onotes" rows="2" placeholder="Allergies, occasion, message on the cake…"></textarea></label>
-        <button class="send" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Continue on WhatsApp</button>
+        <button class="send" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg><span id="sendlbl">Send order</span></button>
         <span class="fine">Opens WhatsApp with your order written out. Nothing is sent until you press send.</span>
-        <span class="fine privacy"><b>Your privacy:</b> we only ask for what we need for your order: your name, a phone number if you'd like us to call you, the date and, for delivery, your address. We use it only to make and deliver your order, keep it safely in our order book, and never sell it or use it for marketing. Message us any time to see or delete your details.</span>
+        <span class="fine privacy"><b>Your privacy:</b> we only ask for what we need for your order: your name, a phone number if you'd like us to call you, the date and, for delivery, your address, plus a cake photo if you add one. We use it only to make and deliver your order, keep it safely in our order book, and never sell it or use it for marketing. Message us any time to see or delete your details.</span>
       </form>
     </div>
   </div>
@@ -883,11 +883,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15e"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15e"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15e"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15e"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15e"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15f"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15f"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15f"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15f"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15f"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -1106,7 +1106,7 @@ function cakeBuilder(c){var z=D.CAKE_SIZES,st=D.CAKE_STYLES,prem=function(it){re
   '<fieldset><legend>Add-ons</legend><div class="checks">'+D.CAKE_ADDONS.map(function(a){return '<label><input type="checkbox" id="cba_'+a.id+'"> '+esc(a.name)+' +'+eur(a.price)+'</label>'}).join('')+'</div></fieldset>'+
   '<fieldset><legend>Reference photo <small>optional</small></legend><label class="cbup" for="cbfile"><input type="file" id="cbfile" accept="image/*"><b>Upload a reference photo</b><span>Seen a cake you like? Add the photo here.</span></label>'+
   '<div class="cbprev" id="cbprev" hidden><img id="cbprevimg" alt="Your reference photo"><span id="cbprevname"></span><button type="button" id="cbprevx">Remove</button></div>'+
-  '<p class="cbnote" id="cbuperr" role="status"></p><p class="cbnote">We can\'t copy a cake exactly from a picture, but we\'ll get as close as we can. You send the photo to us on WhatsApp in the last step.</p></fieldset>'+
+  '<p class="cbnote" id="cbuperr" role="status"></p><p class="cbnote">We can\'t copy a cake exactly from a picture, but we\'ll get as close as we can. Your photo is sent to us with your order.</p></fieldset>'+
   '<div class="cbtotal"><div><small>Estimated price</small><b id="cbp">€35</b></div><button type="button" class="add" id="cbadd" style="background:var(--orange);color:var(--ink)">+ Add cake</button></div></div>'}
 function initBuilder(c){var mb=$('#cakeB');function xt(n,i){var it=c.items.filter(function(x){return x.name===n})[0];return it&&it.x&&it.x[i]?it.x[i]:0}function alg(n){var it=c.items.filter(function(x){return x.name===n})[0];return it?it.a.split(',').map(function(s){return s.trim()}):[]}
   function calc(){var s=D.CAKE_SIZES[+$('input[name=cbs]:checked',mb).value],f=D.CAKE_STYLES[+$('input[name=cbf]:checked',mb).value],two=$('#cbtwo').checked,p=s.custom?0:s.price,si=+$('input[name=cbs]:checked',mb).value,ex=s.custom?0:Math.max(xt($('#cbfl').value,si),two?xt($('#cbfl2').value,si):0);p+=ex;$('#cbfl2w').hidden=!two;
@@ -1118,7 +1118,7 @@ function initBuilder(c){var mb=$('#cakeB');function xt(n,i){var it=c.items.filte
   $('#cbfile').addEventListener('change',function(e){e.stopPropagation();var f=this.files[0];if(!f)return;if(!/^image\//.test(f.type)){setPhoto(null);$('#cbuperr').textContent='Please choose a photo (JPG or PNG).';return}if(f.size>15*1024*1024){setPhoto(null);$('#cbuperr').textContent='That photo is over 15 MB. Please choose a smaller one.';return}setPhoto(f)});
   $('#cbprevx').addEventListener('click',function(){setPhoto(null)});
   mb.addEventListener('change',calc);calc();
-  $('#cbadd').addEventListener('click',function(e){var x=calc(),k='cake|'+Date.now();basket[k]=1;meta[k]={id:null,opt:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name,name:x.fl.replace(/ Cake\b/g,'')+' cake',sub:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name+(x.s.custom?' · to be quoted':' · from '+eur(x.p)),price:x.p,from:true};if(photo){meta[k].file=photo;meta[k].sub+=' · reference photo to follow';photo=null;purl='';$('#cbprev').hidden=true}bump();renderCart();var b=e.currentTarget;b.textContent='✓ Added';setTimeout(function(){b.textContent='+ Add another cake'},1200)})}
+  $('#cbadd').addEventListener('click',function(e){var x=calc(),k='cake|'+Date.now();basket[k]=1;meta[k]={id:null,opt:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name,name:x.fl.replace(/ Cake\b/g,'')+' cake',sub:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name+(x.s.custom?' · to be quoted':' · from '+eur(x.p)),price:x.p,from:true};if(photo){meta[k].file=photo;meta[k].sub+=' · with reference photo';photo=null;purl='';$('#cbprev').hidden=true}bump();renderCart();var b=e.currentTarget;b.textContent='✓ Added';setTimeout(function(){b.textContent='+ Add another cake'},1200)})}
 if(catOf('cakes'))initBuilder(catOf('cakes'));
 /* category bar: tap to jump, highlight while scrolling */
 function setCat(id){var b=catIn.querySelector('[data-c="'+id+'"]');if(!b)return;$$('button',catIn).forEach(function(x){x.setAttribute('aria-current',x===b?'true':'false')});
@@ -1168,15 +1168,30 @@ $('#oform').addEventListener('submit',function(e){e.preventDefault();var f=e.cur
   if(m==='Delivery')L.push('Delivery address: '+$('#oaddr').value.trim());
   var files=keys.map(function(k){return meta[k].file}).filter(Boolean);
   if(keys.length){L.push('Order:');keys.forEach(function(k){L.push('• '+basket[k]+' × '+meta[k].name+' ('+meta[k].sub+')')});L.push('Estimated total: '+$('#dtot').textContent+(m==='Delivery'?' + delivery fee':''))}
-  if(files.length)L.push('Reference photo: yes, I\'ll send it in this chat');
-  if($('#onotes').value.trim())L.push('Notes: '+$('#onotes').value.trim());
-  /* also save the order in the order app, so it appears under "To confirm" */
-  window.SBS_sendOrder({name:$('#oname').value.trim(),phone:$('#ophone').value.trim(),mode:m==='Delivery'?'delivery':'collection',order_date:$('#odate').value,slot:slot.value,
-    address:m==='Delivery'?$('#oaddr').value.trim():null,notes:[$('#onotes').value.trim(),files.length?'Reference photo to follow on WhatsApp':''].filter(Boolean).join(' · ')||null,
-    items:keys.map(function(k){return {menuId:meta[k].id||null,name:meta[k].name,option:meta[k].opt||'',price:meta[k].price||0,qty:basket[k]}})});
-  var url=WA+'?text='+encodeURIComponent(L.join('\n'));
-  if(files.length){showSend(url,files);return}
-  var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()});
+  var note=$('#onotes').value.trim();
+  function finish(photoLines,appNote,win){
+    var M=L.concat(photoLines);if(note)M.push('Notes: '+note);
+    /* also save the order in the order app, so it appears under "To confirm" */
+    window.SBS_sendOrder({name:$('#oname').value.trim(),phone:$('#ophone').value.trim(),mode:m==='Delivery'?'delivery':'collection',order_date:$('#odate').value,slot:slot.value,
+      address:m==='Delivery'?$('#oaddr').value.trim():null,notes:[note,appNote].filter(Boolean).join(' · ')||null,
+      items:keys.map(function(k){return {menuId:meta[k].id||null,name:meta[k].name,option:meta[k].opt||'',price:meta[k].price||0,qty:basket[k]}})});
+    return WA+'?text='+encodeURIComponent(M.join('\n'))}
+  function openWA(url,win){if(win&&!win.closed){win.location.href=url;return}var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
+  if(!files.length){openWA(finish([],''));return}
+  /* With a reference photo: store the photo first, then put its link in the order so one tap sends everything. */
+  var btn=f.querySelector('.send'),lbl=$('#sendlbl'),touch=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent),win=null;
+  if(btn.disabled)return;if(!touch){try{win=window.open('','_blank')}catch(e2){win=null}if(win)try{win.document.title='Opening WhatsApp…';win.document.body.textContent='Sending your photo, then opening WhatsApp…'}catch(e3){}}
+  btn.disabled=true;lbl.textContent='Sending your photo…';
+  function done(){btn.disabled=false;lbl.textContent='Send order'}
+  Promise.all(files.map(function(x){return shrink(x).then(window.SBS_uploadPhoto)})).then(function(urls){
+    var url=finish(urls.map(function(u,i2){return 'Reference photo'+(urls.length>1?' '+(i2+1):'')+': '+u}),urls.map(function(u){return 'Reference photo: '+u}).join(' · '));done();
+    if(touch)location.href=url;else openWA(url,win);
+  },function(){ /* photo could not be stored: fall back to sending it by hand in the chat */
+    if(win&&!win.closed)win.close();done();showSend(finish(['Reference photo: yes, I\'ll send it in this chat'],'Reference photo to follow on WhatsApp'),files)})});
+/* Shrinks a phone photo before sending (quicker on mobile data). Falls back to the original file if the browser cannot read it. */
+function shrink(file){return new Promise(function(res){var u=URL.createObjectURL(file),im=new Image();
+  im.onload=function(){try{var k=Math.min(1,1600/Math.max(im.naturalWidth,im.naturalHeight)),c=document.createElement('canvas');c.width=Math.round(im.naturalWidth*k);c.height=Math.round(im.naturalHeight*k);var x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(function(b){res(b||file)},'image/jpeg',.85)}catch(e){res(file)}};
+  im.onerror=function(){URL.revokeObjectURL(u);res(file)};im.src=u})}
 /* Orders with a reference photo: WhatsApp links can only carry text, so the photo is sent in a second step. */
 function showSend(url,files){var d=$('#sdlg'),th=$('#sdthumbs');$('#sdopen').href=url;th.innerHTML='';
   files.forEach(function(f,i){var u=URL.createObjectURL(f),a=document.createElement('a');a.href=u;a.download=f.name||('cake-reference-'+(i+1)+'.jpg');var im=document.createElement('img');im.src=u;im.alt='Reference photo '+(i+1);var sp=document.createElement('span');sp.textContent='Save photo';a.appendChild(im);a.appendChild(sp);th.appendChild(a)});
