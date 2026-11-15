@@ -603,6 +603,29 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 @media(max-width:600px){.xcard{min-height:260px}}
 .callus{max-width:620px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--deep);color:var(--white);border-radius:22px;padding:18px 22px}
 .callus .eyebrow{color:#FFB84D;display:block}
+.cbup{position:relative;display:block;border:2px dashed rgba(109,59,0,.3);border-radius:18px;padding:18px;text-align:center;cursor:pointer;background:var(--cream,#FBF3E8)}
+.cbup:hover,.cbup:focus-within{border-color:var(--orange)}
+.cbup input{position:absolute;width:1px;height:1px;opacity:0}
+.cbup b{display:block;font-size:.98rem}.cbup span{font-size:.82rem;font-weight:500}
+.cbprev{display:flex;align-items:center;gap:12px;margin-top:10px;padding:8px;border-radius:14px;background:var(--cream,#FBF3E8)}
+.cbprev[hidden]{display:none}
+.cbprev img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex:none}
+.cbprev span{flex:1;font-size:.86rem;font-weight:700}
+.cbprev button{border:0;background:none;color:inherit;font:inherit;font-size:.84rem;font-weight:700;text-decoration:underline;cursor:pointer;min-height:44px;padding:0 8px}
+#cbuperr{color:#b3261e;font-weight:700}#cbuperr:empty{display:none}
+.cb legend small{font-weight:600;letter-spacing:.04em;text-transform:none;opacity:.7}
+.sdlg{position:fixed;inset:0;z-index:210;background:rgba(30,14,0,.72);display:grid;place-items:center;padding:16px;overflow:auto}
+.sdlg[hidden]{display:none}
+.sdcard{width:100%;max-width:460px;background:#fff;color:#2A1400;border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.sdcard h3{margin:0;font-size:1.3rem}.sdcard p{margin:0;font-size:.92rem;line-height:1.5}
+.sdcard ol{margin:0;padding-left:20px;font-size:.92rem;line-height:1.5;display:grid;gap:6px}
+.sdthumbs{display:flex;gap:10px;flex-wrap:wrap}
+.sdthumbs a{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:.78rem;font-weight:700;color:inherit}
+.sdthumbs img{width:76px;height:76px;border-radius:12px;object-fit:cover}
+.sdcard .btn{justify-content:center;text-align:center}
+.sdcard .sdsh{color:#2A1400;border-color:rgba(42,20,0,.3);background:transparent}
+.sdx{border:0;background:none;font:inherit;font-weight:700;text-decoration:underline;color:inherit;min-height:44px;cursor:pointer}
+.cbnote{margin:8px 0 0;font-size:.84rem;line-height:1.45;color:var(--ink2,#6B4C2C)}
 .callus .mail{display:block;margin-top:2px;font-size:.92rem;font-weight:600;color:#FFD9A0;text-decoration:underline;text-underline-offset:3px;word-break:break-all}
 .callus b{display:block;font-size:1.05rem;font-weight:700;margin-top:2px}
 .callus .num{display:inline-block;margin-top:4px;font-size:1.7rem;font-weight:800;letter-spacing:-.02em;color:var(--white);text-decoration:none;font-variant-numeric:tabular-nums}
@@ -716,6 +739,14 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   <div class="wrap"><div class="sec-head"><div><span class="eyebrow">Gallery</span><h2><span class="ln-r"><span>Our stall, our bakes</span></span></h2></div><p>A few moments from our bakes and our market stalls. Tap a photo to see it larger.</p></div>
   <div class="galgrid" id="galgrid"></div></div>
 </section>
+<div class="sdlg" id="sdlg" hidden role="dialog" aria-modal="true" aria-labelledby="sdt"><div class="sdcard">
+  <h3 id="sdt">Your order is ready to send</h3>
+  <p>WhatsApp links can only carry text, so your reference photo needs one extra step.</p>
+  <ol><li>Tap <b>Open WhatsApp</b> and press send on the order message.</li><li>Then send your photo to the same chat. On a phone, tap <b>Send photo</b>, choose WhatsApp, then our chat. Otherwise, use the + or paperclip in the chat to attach it.</li></ol>
+  <div class="sdthumbs" id="sdthumbs"></div>
+  <a class="btn btn-orange" id="sdopen" href="#" target="_blank" rel="noopener">Open WhatsApp</a>
+  <button class="btn btn-ghost sdsh" id="sdshare" type="button" hidden>Send photo</button>
+  <button class="sdx" id="sdclose" type="button">Close</button></div></div>
 <div class="lbox" id="lbox" hidden role="dialog" aria-modal="true" aria-label="Photo"><button class="lb-x" id="lbx" aria-label="Close photo">×</button><button class="lb-n lb-p" id="lbp" aria-label="Previous photo">‹</button><img id="lbimg" alt=""><button class="lb-n lb-nx" id="lbn" aria-label="Next photo">›</button></div>
 
 <section class="sec about" data-page="home" id="about">
@@ -849,11 +880,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15a"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15a"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15a"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15a"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15a"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15c"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15c"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15c"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15c"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15c"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -1056,15 +1087,18 @@ $('#cats').addEventListener('click',function(e){
   else if(act==='-'){basket[k]--;if(basket[k]<=0){delete basket[k];delete meta[k]}}
   renderCart();
   if(hasG&&!RM&&act==='add'){var st=el.querySelector('.stp');if(st)gsap.fromTo(st,{scale:.7},{scale:1,duration:.45,ease:'back.out(2.4)'})}});
-function cakeBuilder(c){var z=D.CAKE_SIZES,st=D.CAKE_STYLES,fl=c.items.map(function(it){return '<option value="'+esc(it.name)+'">'+esc(it.name)+'</option>'}).join('');
+function cakeBuilder(c){var z=D.CAKE_SIZES,st=D.CAKE_STYLES,prem=function(it){return !!(it.x&&(it.x[0]||it.x[1]))},op=function(it){return '<option value="'+esc(it.name)+'">'+esc(it.name)+'</option>'},cl=c.items.filter(function(it){return !prem(it)}),pr=c.items.filter(prem),fl=pr.length&&cl.length?'<optgroup label="Classic flavours">'+cl.map(op).join('')+'</optgroup><optgroup label="Premium flavours">'+pr.map(op).join('')+'</optgroup>':c.items.map(op).join('');
   return '<div class="cb">'+
   '<fieldset><legend>Flavour</legend><select id="cbfl" aria-label="Cake flavour">'+fl+'</select>'+
   '<label class="two"><input type="checkbox" id="cbtwo"> Make it a two-flavour cake <em>+'+eur(D.TWO_FLAVOUR||5)+'</em></label>'+
   '<div id="cbfl2w" hidden><select id="cbfl2" aria-label="Second flavour">'+fl+'</select></div>'+
-  '<div class="alg" id="cbal" style="margin-top:6px"></div><div id="cbx" style="margin-top:6px;font-weight:700;color:var(--deep);font-size:.86rem"></div></fieldset>'+
+  (pr.length&&cl.length?'<p class="cbnote">Classic flavours are the listed price. Premium flavours cost a little more, shown beside each one.</p>':'')+'<div class="alg" id="cbal" style="margin-top:6px"></div><div id="cbx" style="margin-top:6px;font-weight:700;color:var(--deep);font-size:.86rem"></div></fieldset>'+
   '<fieldset><legend>Size</legend><div class="opts">'+z.map(function(s,i){return '<label class="opt"><input type="radio" name="cbs" value="'+i+'"'+(i===0?' checked':'')+'><b>'+esc(s.custom?'Custom cake':s.size+(s.detail?', '+s.detail:''))+'</b><small>'+esc(s.custom?'Tell us your idea':s.weight+' · '+s.serves)+'</small><em>'+(s.custom?'Quote':'From '+eur(s.price))+'</em></label>'}).join('')+'</div></fieldset>'+
   '<fieldset><legend>Finish</legend><div class="fins">'+st.map(function(s,i){return '<label class="fin"><input type="radio" name="cbf" value="'+i+'"'+(i===0?' checked':'')+'>'+(FIMG[s.id]?'<img src="'+FIMG[s.id]+'" alt="" loading="lazy">':'')+'<b>'+esc(s.name.replace(/ cake$/i,''))+'</b><small>'+(s.id==='fondant'?'+'+eur(D.FONDANT||5)+' per 0.5 kg':'&nbsp;')+'</small></label>'}).join('')+'</div></fieldset>'+
   '<fieldset><legend>Add-ons</legend><div class="checks">'+D.CAKE_ADDONS.map(function(a){return '<label><input type="checkbox" id="cba_'+a.id+'"> '+esc(a.name)+' +'+eur(a.price)+'</label>'}).join('')+'</div></fieldset>'+
+  '<fieldset><legend>Reference photo <small>optional</small></legend><label class="cbup" for="cbfile"><input type="file" id="cbfile" accept="image/*"><b>Upload a reference photo</b><span>Seen a cake you like? Add the photo here.</span></label>'+
+  '<div class="cbprev" id="cbprev" hidden><img id="cbprevimg" alt="Your reference photo"><span id="cbprevname"></span><button type="button" id="cbprevx">Remove</button></div>'+
+  '<p class="cbnote" id="cbuperr" role="status"></p><p class="cbnote">We can\'t copy a cake exactly from a picture, but we\'ll get as close as we can. You send the photo to us on WhatsApp in the last step.</p></fieldset>'+
   '<div class="cbtotal"><div><small>Estimated price</small><b id="cbp">€35</b></div><button type="button" class="add" id="cbadd" style="background:var(--orange);color:var(--ink)">+ Add cake</button></div></div>'}
 function initBuilder(c){var mb=$('#cakeB');function xt(n,i){var it=c.items.filter(function(x){return x.name===n})[0];return it&&it.x&&it.x[i]?it.x[i]:0}function alg(n){var it=c.items.filter(function(x){return x.name===n})[0];return it?it.a.split(',').map(function(s){return s.trim()}):[]}
   function calc(){var s=D.CAKE_SIZES[+$('input[name=cbs]:checked',mb).value],f=D.CAKE_STYLES[+$('input[name=cbf]:checked',mb).value],two=$('#cbtwo').checked,p=s.custom?0:s.price,si=+$('input[name=cbs]:checked',mb).value,ex=s.custom?0:Math.max(xt($('#cbfl').value,si),two?xt($('#cbfl2').value,si):0);p+=ex;$('#cbfl2w').hidden=!two;
@@ -1072,8 +1106,11 @@ function initBuilder(c){var mb=$('#cakeB');function xt(n,i){var it=c.items.filte
     if(!s.custom&&f.id==='fondant')p+=(D.FONDANT||5)*Math.round(s.kg/.5);if(two)p+=(D.TWO_FLAVOUR||5);D.CAKE_ADDONS.forEach(function(a){if($('#cba_'+a.id).checked)p+=a.price});
     var fl=$('#cbfl').value+(two?' + '+$('#cbfl2').value:''),al=alg($('#cbfl').value);if(two)alg($('#cbfl2').value).forEach(function(x){if(al.indexOf(x)<0)al.push(x)});
     $('#cbal').textContent='Contains: '+al.join(' · ');$('#cbp').textContent=s.custom?'Quote':eur(p);return {s:s,f:f,p:p,fl:fl}}
+  var photo=null,purl='';function setPhoto(f){if(purl){URL.revokeObjectURL(purl);purl=''}photo=f||null;$('#cbprev').hidden=!photo;$('#cbuperr').textContent='';if(photo){purl=URL.createObjectURL(photo);$('#cbprevimg').src=purl;$('#cbprevname').textContent='Reference photo ready'}$('#cbfile').value=''}
+  $('#cbfile').addEventListener('change',function(e){e.stopPropagation();var f=this.files[0];if(!f)return;if(!/^image\//.test(f.type)){setPhoto(null);$('#cbuperr').textContent='Please choose a photo (JPG or PNG).';return}if(f.size>15*1024*1024){setPhoto(null);$('#cbuperr').textContent='That photo is over 15 MB. Please choose a smaller one.';return}setPhoto(f)});
+  $('#cbprevx').addEventListener('click',function(){setPhoto(null)});
   mb.addEventListener('change',calc);calc();
-  $('#cbadd').addEventListener('click',function(e){var x=calc(),k='cake|'+Date.now();basket[k]=1;meta[k]={id:null,opt:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name,name:x.fl+' cake',sub:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name+(x.s.custom?' · to be quoted':' · from '+eur(x.p)),price:x.p,from:true};bump();renderCart();var b=e.currentTarget;b.textContent='✓ Added';setTimeout(function(){b.textContent='+ Add another cake'},1200)})}
+  $('#cbadd').addEventListener('click',function(e){var x=calc(),k='cake|'+Date.now();basket[k]=1;meta[k]={id:null,opt:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name,name:x.fl.replace(/ Cake\b/g,'')+' cake',sub:(x.s.custom?'Custom cake':x.s.size+(x.s.detail?', '+x.s.detail:''))+' · '+x.f.name+(x.s.custom?' · to be quoted':' · from '+eur(x.p)),price:x.p,from:true};if(photo){meta[k].file=photo;meta[k].sub+=' · reference photo to follow';photo=null;purl='';$('#cbprev').hidden=true}bump();renderCart();var b=e.currentTarget;b.textContent='✓ Added';setTimeout(function(){b.textContent='+ Add another cake'},1200)})}
 if(catOf('cakes'))initBuilder(catOf('cakes'));
 /* category bar: tap to jump, highlight while scrolling */
 function setCat(id){var b=catIn.querySelector('[data-c="'+id+'"]');if(!b)return;$$('button',catIn).forEach(function(x){x.setAttribute('aria-current',x===b?'true':'false')});
@@ -1121,13 +1158,24 @@ $('#oform').addEventListener('submit',function(e){e.preventDefault();var f=e.cur
   var keys=Object.keys(basket),L=['Hi Savor by Sree, I\'d like to place an order.','Name: '+$('#oname').value.trim(),m+': '+ds+', '+slot.value];
   if($('#ophone').value.trim())L.splice(2,0,'Phone: '+$('#ophone').value.trim());
   if(m==='Delivery')L.push('Delivery address: '+$('#oaddr').value.trim());
+  var files=keys.map(function(k){return meta[k].file}).filter(Boolean);
   if(keys.length){L.push('Order:');keys.forEach(function(k){L.push('• '+basket[k]+' × '+meta[k].name+' ('+meta[k].sub+')')});L.push('Estimated total: '+$('#dtot').textContent+(m==='Delivery'?' + delivery fee':''))}
+  if(files.length)L.push('Reference photo: yes, I\'ll send it in this chat');
   if($('#onotes').value.trim())L.push('Notes: '+$('#onotes').value.trim());
   /* also save the order in the order app, so it appears under "To confirm" */
   window.SBS_sendOrder({name:$('#oname').value.trim(),phone:$('#ophone').value.trim(),mode:m==='Delivery'?'delivery':'collection',order_date:$('#odate').value,slot:slot.value,
-    address:m==='Delivery'?$('#oaddr').value.trim():null,notes:$('#onotes').value.trim()||null,
+    address:m==='Delivery'?$('#oaddr').value.trim():null,notes:[$('#onotes').value.trim(),files.length?'Reference photo to follow on WhatsApp':''].filter(Boolean).join(' · ')||null,
     items:keys.map(function(k){return {menuId:meta[k].id||null,name:meta[k].name,option:meta[k].opt||'',price:meta[k].price||0,qty:basket[k]}})});
-  var a=document.createElement('a');a.href=WA+'?text='+encodeURIComponent(L.join('\n'));a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()});
+  var url=WA+'?text='+encodeURIComponent(L.join('\n'));
+  if(files.length){showSend(url,files);return}
+  var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()});
+/* Orders with a reference photo: WhatsApp links can only carry text, so the photo is sent in a second step. */
+function showSend(url,files){var d=$('#sdlg'),th=$('#sdthumbs');$('#sdopen').href=url;th.innerHTML='';
+  files.forEach(function(f,i){var u=URL.createObjectURL(f),a=document.createElement('a');a.href=u;a.download=f.name||('cake-reference-'+(i+1)+'.jpg');var im=document.createElement('img');im.src=u;im.alt='Reference photo '+(i+1);var sp=document.createElement('span');sp.textContent='Save photo';a.appendChild(im);a.appendChild(sp);th.appendChild(a)});
+  var can=false;try{can=!!(navigator.canShare&&navigator.canShare({files:files}))}catch(e){}
+  var sh=$('#sdshare');sh.hidden=!can;sh.onclick=function(){navigator.share({files:files,text:'Reference photo for my cake order (Savor by Sree)'}).catch(function(){})};
+  d.hidden=false;document.documentElement.style.overflow='hidden';$('#sdopen').focus()}
+(function(){var d=$('#sdlg');function close(){d.hidden=true;document.documentElement.style.overflow=''}$('#sdclose').addEventListener('click',close);d.addEventListener('click',function(e){if(e.target===d)close()});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!d.hidden)close()})})();
 if(hasG&&!RM){var hl=$('#hline');gsap.fromTo(hl,{attr:{'stroke-dashoffset':100},strokeDasharray:'100 100'},{attr:{'stroke-dashoffset':0},ease:'none',scrollTrigger:{trigger:'#steps3',start:'top 80%',end:'top 35%',scrub:true}});
   gsap.from('.step',{y:60,stagger:.15,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'#steps3',start:'top 85%'}});
   gsap.from('.step .n',{scale:0,rotation:-90,stagger:.15,duration:.7,ease:'back.out(2)',scrollTrigger:{trigger:'#steps3',start:'top 85%'}})}
