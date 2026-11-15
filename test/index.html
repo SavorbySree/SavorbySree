@@ -849,11 +849,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15a"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15a"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15a"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15a"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15a"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15b"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15b"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15b"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15b"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15b"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -1021,7 +1021,12 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeCart()
 
 /* menu */
 var FIMG={cream:'img/f-fresh.webp',buttercream:'img/f-buttercream.webp',naked:'img/f-naked.webp',ganache:'img/f-ganache.webp',fondant:'img/f-fondant.webp'};
+/* Pictures chosen in the order app (Website > Photos). Anything not changed there keeps its built-in picture. */
+var PT=(D.PHOTOS&&D.PHOTOS.tiles)||{};function okPic(u){return typeof u==='string'&&/^(https:\/\/|img\/)/.test(u)}
+Object.keys(FIMG).forEach(function(k){if(okPic(PT['fin-'+k]))FIMG[k]=PT['fin-'+k]});
 var PH={cookies:'img/c-cookies.webp',brownies:'img/c-brownies.webp',tiramisu:'img/c-tiramisu.webp',tresleches:'img/c-tres.webp',cakes:'img/c-cakes.webp',savoury:'img/c-savoury.webp'};
+Object.keys(PH).forEach(function(k){if(okPic(PT['cat-'+k]))PH[k]=PT['cat-'+k]});
+[['#menu','home-menu'],['#bundles','home-hampers'],['#markets','home-findus'],['#story2','home-story']].forEach(function(t){var im=document.querySelector('.xcard[href="'+t[0]+'"] img');if(im&&okPic(PT[t[1]]))im.src=PT[t[1]]});
 var LINE={cookies:'Gooey in the middle, crisp at the edges.',brownies:'Fudgy, rich and made to order.',cheesecakes:'Creamy, baked fresh, never from a shelf.',basque:'Burnt on top, silky inside.',tiramisu:'Layered by hand and set overnight.',tresleches:'Soaked in three milks, topped with fruit.',savoury:'Savoury bakes with an Indian and global twist.',cakes:'Celebration cakes, made your way.'};
 var sel={};
 function optsOf(c,it){return it.opts||c.opts||[]}
@@ -1157,9 +1162,13 @@ $('#bgrid').innerHTML=D.OFFERS.map(function(o){var h=o.type==='Hamper';return '<
 $('#bgrid').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var o=D.OFFERS.filter(function(x){return x.id===b.dataset.id})[0];addItem('offer|'+o.id,{id:o.id,opt:o.type,name:o.title.replace(/^Hamper \d+: /,''),sub:o.type+' · '+eur(o.price),price:o.price})});
 
 /* taste of dublin gallery */
-var G=[['g-1','Bakes on the Savor by Sree stall'],['s-crowd','Crowd at the market'],['g-2','Savor by Sree bakes'],['g-3','Savor by Sree bakes'],['s-tubs','Dessert tubs ready for the stall'],['g-4','Our market stall'],['g-5','Savor by Sree bakes'],['g-6','Savor by Sree bakes'],['g-7','Our market stall'],['g-8','Savor by Sree bakes'],['s-team','The team at the stall'],['s-cookies','Chunky NYC cookies']];
-$('#galgrid').innerHTML=G.map(function(g,i){return '<button class="gtile'+(/crowd|tubs|g-4|g-7/.test(g[0])?' w':'')+'" data-g="'+i+'" aria-label="Open photo: '+g[1]+'"><img src="img/'+g[0]+'.webp" alt="'+g[1]+'" loading="lazy"></button>'}).join('');
-(function(){var lb=$('#lbox'),im=$('#lbimg'),cur=0;function show(i){cur=(i+G.length)%G.length;im.src='img/'+G[cur][0]+'.webp';im.alt=G[cur][1];lb.hidden=false;document.documentElement.style.overflow='hidden'}function hide(){lb.hidden=true;document.documentElement.style.overflow=''}
+var G=[['g-1','Bakes on the Savor by Sree stall'],['s-crowd','Crowd at the market'],['g-2','Savor by Sree bakes'],['g-3','Savor by Sree bakes'],['s-tubs','Dessert tubs ready for the stall'],['g-4','Our market stall'],['g-5','Savor by Sree bakes'],['g-6','Savor by Sree bakes'],['g-7','Our market stall'],['g-8','Savor by Sree bakes'],['s-team','The team at the stall'],['s-cookies','Chunky NYC cookies']].map(function(g){return ['img/'+g[0]+'.webp',g[1]]});
+/* Gallery album from the order app (Website > Photos), when one has been set there */
+(function(){var L=D.PHOTOS&&D.PHOTOS.gallery;if(!Array.isArray(L))return;G=L.filter(function(g){return g&&okPic(g.src)}).map(function(g){return [g.src,String(g.alt||'Savor by Sree bakes')]});
+  if(!G.length){$$('a[href="#gallery"]').forEach(function(a){a.hidden=true;a.style.display='none'});var gs=$('#gallery');if(gs){gs.removeAttribute('data-page');gs.hidden=true}}})();
+function gEsc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+$('#galgrid').innerHTML=G.map(function(g,i){return '<button class="gtile'+(/crowd|tubs|g-4|g-7/.test(g[0])?' w':'')+'" data-g="'+i+'" aria-label="Open photo: '+gEsc(g[1])+'"><img src="'+gEsc(g[0])+'" alt="'+gEsc(g[1])+'" loading="lazy"></button>'}).join('');
+(function(){var lb=$('#lbox'),im=$('#lbimg'),cur=0;function show(i){cur=(i+G.length)%G.length;im.src=G[cur][0];im.alt=G[cur][1];lb.hidden=false;document.documentElement.style.overflow='hidden'}function hide(){lb.hidden=true;document.documentElement.style.overflow=''}
 $('#galgrid').addEventListener('click',function(e){var b=e.target.closest('.gtile');if(b)show(+b.dataset.g)});$('#lbx').onclick=hide;$('#lbp').onclick=function(){show(cur-1)};$('#lbn').onclick=function(){show(cur+1)};lb.addEventListener('click',function(e){if(e.target===lb)hide()});document.addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')hide();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)})})();
 
 

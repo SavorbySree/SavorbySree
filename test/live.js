@@ -35,15 +35,15 @@
       get('markets?select=*&order=sort.asc'),
       get('site_content?select=key,value')
     ]).then(function (r) {
-      var n = {}, sec = null; r[3].forEach(function (x) { if (x.key === 'notices') n = x.value || {}; if (x.key === 'sections' && Array.isArray(x.value)) sec = x.value; });
-      return { menu: r[0], offers: r[1], markets: r[2], notices: n, sections: sec };
+      var n = {}, sec = null, ph = null; r[3].forEach(function (x) { if (x.key === 'notices') n = x.value || {}; if (x.key === 'sections' && Array.isArray(x.value)) sec = x.value; if (x.key === 'photos' && x.value) ph = x.value; });
+      return { menu: r[0], offers: r[1], markets: r[2], notices: n, sections: sec, photos: ph };
     });
   };
 
   /* Turns live rows into the same shape as data.js (F). L is null when loading failed. */
   window.SBS_merge = function (F, L) {
     var D = JSON.parse(JSON.stringify(F));
-    D.DEALS = []; D.MARKETS = null; D.NOTICES = {}; D.LIVE = !!L;
+    D.DEALS = []; D.MARKETS = null; D.NOTICES = {}; D.PHOTOS = (L && L.photos) || {}; D.LIVE = !!L;
     if (!L) return D;
     var t = today();
     D.DEALS = (L.offers || []).filter(function (o) { return liveOn(o, t); });
