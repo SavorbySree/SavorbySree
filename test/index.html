@@ -150,7 +150,9 @@ h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.045em;line-height:1.02;font
 .bcard li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--orange);margin-top:7px}
 .bcard.hamper li::before{background:var(--deep)}
 .bcard .bfoot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
-.bcard .bp{font-weight:800;font-size:2.6rem;letter-spacing:-.04em;line-height:1}
+.bcard .bp{font-weight:800;font-size:1.5rem;letter-spacing:-.02em;line-height:1.1}
+.bcard .bp.sm{font-size:1rem;font-weight:700;opacity:.85}.bcard .bp.sm::before{content:"Bundle price ";font-weight:600}
+.bcard .bsave{display:block;font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--orange);margin-bottom:4px}
 .bcard .save{position:absolute;right:18px;top:18px;background:var(--orange);color:var(--ink);border-radius:99px;padding:4px 11px;font-weight:800;font-size:.72rem}
 .bcard .add{background:var(--white);color:var(--ink)}
 .bcard .add.on{background:var(--orange)}
@@ -341,6 +343,8 @@ h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.045em;line-height:1.02;font
 .sz button{border:0;border-radius:99px;background:var(--paper);color:var(--ink);padding:7px 12px;font-weight:700;font-size:.76rem}
 .sz button[aria-pressed="true"]{background:var(--deep);color:#fff}
 .addb{min-width:92px;height:44px;border:0;border-radius:99px;background:var(--deep);color:#fff;font-weight:800;font-size:.82rem;padding:0 16px;white-space:nowrap}
+.addb.plus{min-width:0;width:44px;padding:0;font-size:1.5rem;line-height:1;font-weight:600}
+.ipr{font-size:.86rem;font-weight:700;color:var(--deep);margin-top:2px}
 .addb.need{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1.5px var(--hair)}
 .stp{display:inline-flex;align-items:center;height:44px;border-radius:99px;background:var(--orange)}
 .stp button{width:44px;height:44px;border:0;background:transparent;font-weight:900;font-size:1.15rem;color:var(--ink)}
@@ -527,7 +531,8 @@ body.has-bar .foot{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
 .dh{display:flex;justify-content:space-between;align-items:center}
 .x{width:40px;height:40px;border-radius:50%;border:0;background:var(--paper);color:var(--ink);font-size:1.3rem}
 .dlist{list-style:none;padding:0;margin:18px 0;overflow:auto;flex:1;display:grid;align-content:start;gap:10px}
-.dlist li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--white)}
+.dlist li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 12px;align-items:center;padding:12px 14px;border-radius:16px;background:var(--white)}
+.dlist .lp{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
 .dlist small{color:var(--muted);font-weight:600;display:block}
 .qty{display:flex;align-items:center;gap:6px}
 .qty button{width:30px;height:30px;border-radius:50%;border:0;background:var(--paper);color:var(--ink);font-weight:800}
@@ -606,6 +611,24 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 @media(max-width:600px){.xcard{min-height:260px}}
 .callus{max-width:620px;margin:0 auto 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--deep);color:var(--white);border-radius:22px;padding:18px 22px}
 .callus .eyebrow{color:#FFB84D;display:block}
+.chip{width:104px}
+.chip .tk-body{animation:tkBob 2.6s ease-in-out infinite;transform-origin:85px 92px}
+.chip .tk-flag{transform-box:fill-box;transform-origin:left center;animation:tkFlag 1.6s ease-in-out infinite}
+.chip.wave .tk-wheel{animation:tkSpin .6s linear 5}
+@keyframes tkBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes tkFlag{0%,100%{transform:skewY(0)}50%{transform:skewY(-9deg)}}
+@keyframes tkSpin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.chip{width:74px}.chip-b{left:calc(max(12px,env(safe-area-inset-left,0px)) + 80px)}}
+.road{position:relative;height:96px;overflow:hidden;background:var(--paper,#EFDDBB)}
+.road::before{content:"";position:absolute;left:0;right:0;bottom:14px;height:18px;background:#6D3B00}
+.road::after{content:"";position:absolute;left:0;right:0;bottom:22px;height:2px;background:repeating-linear-gradient(90deg,#FFD38A 0 22px,transparent 22px 44px)}
+.road .tk{position:absolute;bottom:20px;left:0;width:118px;height:auto;z-index:1;animation:tkDrive 16s linear infinite}
+.road .tk .tk-wheel{animation:tkSpin .7s linear infinite}
+.road .rsign{position:absolute;right:max(16px,6vw);bottom:34px;font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--deep,#6D3B00);background:#fff;border-radius:99px;padding:6px 14px;box-shadow:0 6px 14px -8px rgba(42,20,0,.5)}
+@keyframes tkDrive{from{transform:translateX(-130px)}to{transform:translateX(100vw)}}
+.trk-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.trk-head .tk{width:132px;height:auto;flex:none}
+@media (prefers-reduced-motion: reduce){.chip .tk-body,.chip .tk-flag,.chip.wave .tk-wheel,.road .tk,.road .tk .tk-wheel{animation:none}.road .tk{left:8%}}
 .cbup{position:relative;display:block;border:2px dashed rgba(109,59,0,.3);border-radius:18px;padding:18px;text-align:center;cursor:pointer;background:var(--cream,#FBF3E8)}
 .cbup:hover,.cbup:focus-within{border-color:var(--orange)}
 .cbup input{position:absolute;width:1px;height:1px;opacity:0}
@@ -715,6 +738,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
     <p class="gnote">Corporate, table and catering orders need extra notice, so please message us as early as you can. Pricing is quoted for each event.</p>
   </div>
 </section>
+<div class="road" data-page="home" aria-hidden="true"><span class="rsign">Next stop: find us</span></div>
 <section class="sec mk" data-page="home" id="markets">
   <div class="pat" style="opacity:.16;mix-blend-mode:multiply"></div>
   <div class="wrap" style="position:relative">
@@ -766,6 +790,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
     </div>
   </div>
 </section>
+<div class="road" data-page="home" aria-hidden="true"><span class="rsign">Next stop: your order</span></div>
 <section class="sec how" data-page="home" id="how">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">How to order</span><h2><span class="ln-r"><span>Three simple steps</span></span></h2></div><p>Choose, message, confirm. We take it from there.</p></div>
@@ -825,7 +850,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   </div>
 </footer>
 
-<button class="chip" id="chip" type="button" aria-label="Chip, our cookie helper. Ask a question" aria-expanded="false" aria-controls="help"></button>
+<button class="chip" id="chip" type="button" aria-label="Our food truck helper. Ask a question" aria-expanded="false" aria-controls="help"></button>
 <div class="chip-b" id="chipB">Hi! How can I help you? 👋</div>
 <div class="help" id="help" role="dialog" aria-label="Ask Chip">
   <div class="hh"><img src="logo.jpg" alt=""><div><b>Chip from Savor by Sree</b><small>Quick answers from our site</small></div><button type="button" id="helpX" aria-label="Close">×</button></div>
@@ -883,11 +908,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15f"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15f"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15f"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15f"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15f"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15g"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15g"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15g"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15g"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15g"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -903,7 +928,7 @@ if(hasG)gsap.registerPlugin(ScrollTrigger);
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function eur(n){return '€'+(Math.round(n*100)%100===0?String(Math.round(n)):n.toFixed(2))}
 var WA='https://wa.me/'+D.WHATSAPP;
-$('#chip').innerHTML=window.SBS_MASCOT||'';
+$('#chip').innerHTML=window.SBS_MASCOT||'';$$('.road').forEach(function(r,i){r.insertAdjacentHTML('afterbegin',window.SBS_TRUCK||'');var t=r.querySelector('.tk');if(t&&i)t.style.animationDelay='-7s'});
 
 var lenis=null;
 function go(t,off){window.scrollTo({top:(typeof t==='number'?t:t.getBoundingClientRect().top+scrollY-(off==null?96:off)),behavior:RM?'auto':'smooth'})}
@@ -1041,7 +1066,7 @@ var basket={},meta={};
 function count(){var n=0;for(var k in basket)n+=basket[k];return n}
 function total(){var t=0;for(var k in basket)t+=(meta[k].price||0)*basket[k];return t}
 function renderCart(){var n=count();$('#cnt1').textContent=n;$('#cartTop').hidden=n===0;$('#cnt2').textContent=n;$('#obar').classList.toggle('show',n>0);document.body.classList.toggle('has-bar',n>0);var keys=Object.keys(basket);
-  $('#dlist').innerHTML=keys.length?keys.map(function(k){var m=meta[k];return '<li><div><b>'+esc(m.name)+'</b><small>'+esc(m.sub)+'</small></div><div class="qty"><button type="button" data-k="'+esc(k)+'" data-d="-1" aria-label="Fewer">−</button><span>'+basket[k]+'</span><button type="button" data-k="'+esc(k)+'" data-d="1" aria-label="More">+</button></div></li>'}).join(''):'<li style="background:none;color:var(--muted);font-weight:600">Nothing here yet. Add a few treats from the menu.</li>';
+  $('#dlist').innerHTML=keys.length?keys.map(function(k){var m=meta[k];return '<li><div><b>'+esc(m.name)+'</b><small>'+esc(m.sub)+'</small></div><b class="lp">'+(m.price?eur(m.price*basket[k])+(m.from?'+':''):'Quote')+'</b><div class="qty"><button type="button" data-k="'+esc(k)+'" data-d="-1" aria-label="Fewer">−</button><span>'+basket[k]+'</span><button type="button" data-k="'+esc(k)+'" data-d="1" aria-label="More">+</button></div></li>'}).join(''):'<li style="background:none;color:var(--muted);font-weight:600">Nothing here yet. Add a few treats from the menu.</li>';
   var tt=eur(total())+(keys.some(function(k){return meta[k].from})?'+':'');$('#dtot').textContent=tt;$('#obarTot').textContent=tt;
   var L=['Hi Savor by Sree, I\'d like to order:'];keys.forEach(function(k){L.push('• '+basket[k]+' × '+meta[k].name+' ('+meta[k].sub+')')});L.push('Estimated total: '+tt);
   syncAdds();if(window.__renderSum)window.__renderSum()}
@@ -1061,7 +1086,7 @@ Object.keys(FIMG).forEach(function(k){if(okPic(PT['fin-'+k]))FIMG[k]=PT['fin-'+k
 var PH={cookies:'img/c-cookies.webp',brownies:'img/c-brownies.webp',tiramisu:'img/c-tiramisu.webp',tresleches:'img/c-tres.webp',cakes:'img/c-cakes.webp',savoury:'img/c-savoury.webp'};
 Object.keys(PH).forEach(function(k){if(okPic(PT['cat-'+k]))PH[k]=PT['cat-'+k]});
 [['#menu','home-menu'],['#bundles','home-hampers'],['#markets','home-findus'],['#story2','home-story']].forEach(function(t){var im=document.querySelector('.xcard[href="'+t[0]+'"] img');if(im&&okPic(PT[t[1]]))im.src=PT[t[1]]});
-var LINE={cookies:'Gooey in the middle, crisp at the edges.',brownies:'Fudgy, rich and made to order.',cheesecakes:'Creamy, baked fresh, never from a shelf.',basque:'Burnt on top, silky inside.',tiramisu:'Layered by hand and set overnight.',tresleches:'Soaked in three milks, topped with fruit.',savoury:'Savoury bakes with an Indian and global twist.',cakes:'Celebration cakes, made your way.'};
+var LINE={cookies:'Gooey in the middle, crisp at the edges.',brownies:'Fudgy, rich and made to order.',cheesecakes:'Creamy, chilled and set, made fresh to order.',basque:'Burnt on top, silky inside.',tiramisu:'Layered by hand and set overnight.',tresleches:'Soaked in three milks, topped with fruit.',savoury:'Savoury bakes with an Indian and global twist.',cakes:'Celebration cakes, made your way.'};
 var sel={};
 function optsOf(c,it){return it.opts||c.opts||[]}
 function catOf(id){return D.MENU.filter(function(x){return x.id===id})[0]}
@@ -1075,14 +1100,14 @@ $('#cats').innerHTML=D.MENU.map(function(c,ci){var SV=window.SBS_SVG||{};
   if(c.sizes)return '<section class="mcat" id="cat-'+c.id+'">'+ban+'<div class="cakebox" id="cakeB">'+cakeBuilder(c)+'</div></section>';
   var pr='<div class="prices">'+(c.opts||[]).map(function(o){return '<span>'+esc(o.l)+' · '+eur(o.p)+'</span>'}).join('')+'</div>';
   return '<section class="mcat" id="cat-'+c.id+'">'+ban+pr+'<div class="ilist">'+c.items.map(function(it){var io=optsOf(c,it);
-    return '<div class="irow"><div><h4>'+esc(it.name)+(it.b?'<span class="badge">'+esc(it.b)+'</span>':'')+(it.tag?'<span class="badge al">'+esc(it.tag)+'</span>':'')+'</h4><div class="alg">'+esc(it.a.split(',').map(function(x){return x.trim()}).join(' · '))+'</div>'+
+    return '<div class="irow"><div><h4>'+esc(it.name)+(it.b?'<span class="badge">'+esc(it.b)+'</span>':'')+(it.tag?'<span class="badge al">'+esc(it.tag)+'</span>':'')+'</h4><div class="ipr">'+(io.length>1?'from '+eur(Math.min.apply(null,io.map(function(x){return x.p}))):(io[0]?(io[0].was?'<s class="was">'+eur(io[0].was)+'</s> ':'')+eur(io[0].p):''))+'</div><div class="alg">'+esc(it.a.split(',').map(function(x){return x.trim()}).join(' · '))+'</div>'+
       (io.length>1?'<div class="sz" role="group" aria-label="Size for '+esc(it.name)+'">'+io.map(function(x,i){return '<button type="button" data-c="'+c.id+'" data-item="'+esc(it.name)+'" data-i="'+i+'" aria-pressed="false">'+esc(x.l.replace(/ tray$/i,''))+' · '+(x.was?'<s class="was">'+eur(x.was)+'</s>':'')+eur(x.p)+'</button>'}).join('')+'</div>':'')+
       '</div><div class="ctl" data-c="'+c.id+'" data-item="'+esc(it.name)+'"></div></div>'}).join('')+'</div></section>'}).join('');
 function syncAdds(){
   $$('.ctl').forEach(function(el){var c=catOf(el.dataset.c),it=itemOf(c,el.dataset.item),o=optsOf(c,it),k=keyOf(c,it),h;
     if(!k)h='<button type="button" class="addb need" data-act="need">Pick a size</button>';
     else if(basket[k])h='<div class="stp"><button type="button" data-act="-" aria-label="One fewer '+esc(it.name)+'">−</button><span>'+basket[k]+'</span><button type="button" data-act="+" aria-label="One more '+esc(it.name)+'">+</button></div>';
-    else{var i=o.length===1?0:sel[it.name];h='<button type="button" class="addb" data-act="add">Add · '+(o[i].was?'<s class="was">'+eur(o[i].was)+'</s>':'')+eur(o[i].p)+'</button>'}
+    else{var i=o.length===1?0:sel[it.name];h='<button type="button" class="addb plus" data-act="add" aria-label="Add '+esc(it.name)+', '+eur(o[i].p)+'"><span aria-hidden="true">+</span></button>'}
     if(el.innerHTML!==h)el.innerHTML=h});
   $$('.bcard .add').forEach(function(b){var k='offer|'+b.dataset.id;b.classList.toggle('on',!!basket[k]);b.textContent=basket[k]?'✓ Added':'+ Add'})}
 $('#cats').addEventListener('click',function(e){
@@ -1224,7 +1249,7 @@ if(hasG&&!RM){gsap.to('#aring',{rotation:360,transformOrigin:'50% 50%',ease:'non
   var hs=D.OFFERS.filter(function(o){return o.type==='Hamper'});
   $('#bintro').textContent='Our favourite combinations at a better price'+(hs.length?', plus the '+hs.map(function(o){return o.title.replace(/^Hamper \d+: /,'').replace(/\s+hamper$/i,'')}).join(' and ')+' hamper'+(hs.length>1?'s':''):'')+'.';
   if(!D.OFFERS.length&&!dl.length)$('#bundles').hidden=true})();
-$('#bgrid').innerHTML=D.OFFERS.map(function(o){var h=o.type==='Hamper';return '<article class="bcard'+(h?' hamper':'')+'"><span class="bt">'+esc(h?'Festive hamper':o.type==='Pack'?'Pack':'Bundle')+'</span>'+(o.badge&&!h?'<span class="save">'+esc(o.badge)+'</span>':'')+'<h3>'+esc(o.title.replace(/^Hamper \d+: /,''))+'</h3><ul>'+o.items.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul><div class="bfoot"><div class="bp">'+(o.was?'<s class="was">'+eur(o.was)+'</s>':'')+eur(o.price)+'</div><button type="button" class="add" data-id="'+esc(o.id)+'">+ Add</button></div></article>'}).join('');
+$('#bgrid').innerHTML=D.OFFERS.map(function(o){var h=o.type==='Hamper';return '<article class="bcard'+(h?' hamper':'')+'"><span class="bt">'+esc(h?'Festive hamper':o.type==='Pack'?'Pack':'Bundle')+'</span>'+'<h3>'+esc(o.title.replace(/^Hamper \d+: /,''))+'</h3><ul>'+o.items.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul><div class="bfoot"><div class="bpw">'+(o.badge&&!h?'<b class="bsave">'+esc(o.badge)+'</b>':'')+'<div class="bp'+(o.badge&&!h?' sm':'')+'">'+(o.was?'<s class="was">'+eur(o.was)+'</s>':'')+eur(o.price)+'</div></div><button type="button" class="add" data-id="'+esc(o.id)+'">+ Add</button></div></article>'}).join('');
 $('#bgrid').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var o=D.OFFERS.filter(function(x){return x.id===b.dataset.id})[0];addItem('offer|'+o.id,{id:o.id,opt:o.type,name:o.title.replace(/^Hamper \d+: /,''),sub:o.type+' · '+eur(o.price),price:o.price})});
 
 /* taste of dublin gallery */
