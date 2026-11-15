@@ -21,8 +21,8 @@
 <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<style>@font-face{font-family:Montserrat;font-style:normal;font-weight:400;font-display:swap;src:url(fonts/montserrat-latin-400-normal.woff2) format("woff2")}@font-face{font-family:Montserrat;font-style:normal;font-weight:500;font-display:swap;src:url(fonts/montserrat-latin-500-normal.woff2) format("woff2")}@font-face{font-family:Montserrat;font-style:normal;font-weight:600;font-display:swap;src:url(fonts/montserrat-latin-600-normal.woff2) format("woff2")}@font-face{font-family:Montserrat;font-style:normal;font-weight:700;font-display:swap;src:url(fonts/montserrat-latin-700-normal.woff2) format("woff2")}@font-face{font-family:Montserrat;font-style:normal;font-weight:800;font-display:swap;src:url(fonts/montserrat-latin-800-normal.woff2) format("woff2")}@font-face{font-family:Montserrat;font-style:normal;font-weight:900;font-display:swap;src:url(fonts/montserrat-latin-900-normal.woff2) format("woff2")}</style>
 <style>
 /* Layout: the Savor by Sree site theme (deep brown hero, orange pattern bands, cream sections, Montserrat).
    A pinned "film" opens from the brand video circle into full-screen Taste of Dublin shots, then returns to the brand. */
@@ -877,14 +877,16 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
     /* mark the link that was chosen straight away, and hold it while the page is moving */
     var linked=links.some(function(a){return a.getAttribute('href').slice(1)===(el?id:'top')});
     if(pg==='home'){lockUntil=Date.now()+(smooth?1200:150);if(linked)mark(el?id:'top');else{lockUntil=0}}else mark((links.filter(function(a){var t=target(a);return t&&pageOf(t)===pg})[0]||links[0]).getAttribute('href').slice(1));
-    if(toTop){window.scrollTo({top:0,behavior:smooth?'smooth':'auto'});try{document.documentElement.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'})}catch(e){}}
+    if(toTop){window.scrollTo({top:0,behavior:smooth?'smooth':'auto'});try{document.documentElement.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'})}catch(e){}
+      setTimeout(function(){if(cur===pg&&(window.scrollY||document.documentElement.scrollTop)>6)window.scrollTo(0,0);spy()},smooth?1500:200)}
     else{
       /* scrollIntoView also works when the site is shown inside another page's frame; the CSS scroll-margin keeps the heading clear of the top bar */
       try{el.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'})}catch(e){el.scrollIntoView(true)}
       /* safety net: if the smooth scroll was interrupted, jump there */
       setTimeout(function(){if(cur===pg&&!near(el)){try{el.scrollIntoView({behavior:'auto',block:'start'})}catch(e){el.scrollIntoView(true)}}spy()},smooth?1300:200);
     }
-    if(window.ScrollTrigger)setTimeout(function(){ScrollTrigger.refresh()},60);
+    /* only after a page switch: refreshing while a smooth scroll is under way cancels the scroll */
+    if(window.ScrollTrigger&&changed)setTimeout(function(){ScrollTrigger.refresh()},60);
     if(window.SBS_catArrows)setTimeout(window.SBS_catArrows,90);
   };
   var tick=0;window.addEventListener('scroll',function(){if(tick)return;tick=requestAnimationFrame(function(){tick=0;spy()})},{passive:true});
@@ -892,13 +894,13 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15l"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15l"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15l"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15l"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15l"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15m"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15m"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15m"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15m"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15m"></script>
+<script src="gsap.min.js?v=3.12.5"></script>
+<script src="ScrollTrigger.min.js?v=3.12.5"></script>
 <script>
 /* Wait (up to 2.5 s) for the live menu, offers, markets and notices from the order app, then build the page.
    If they don't arrive in time, the built-in copy in data.js is used. */
