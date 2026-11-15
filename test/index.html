@@ -619,16 +619,6 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 @keyframes tkFlag{0%,100%{transform:skewY(0)}50%{transform:skewY(-9deg)}}
 @keyframes tkSpin{to{transform:rotate(360deg)}}
 @media(max-width:700px){.chip{width:74px}.chip-b{left:calc(max(12px,env(safe-area-inset-left,0px)) + 80px)}}
-.htop{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:clamp(8px,3vw,28px);width:100%;padding-bottom:14px}
-.htop::after{content:"";position:absolute;left:50%;bottom:0;width:min(100%,640px);transform:translateX(-50%);height:10px;border-radius:6px;background:#3A1E00;box-shadow:inset 0 -4px 0 -2px rgba(255,211,138,.0)}
-.htop::before{content:"";position:absolute;left:50%;bottom:4px;width:min(96%,600px);transform:translateX(-50%);height:2px;z-index:1;background:repeating-linear-gradient(90deg,#FFD38A 0 18px,transparent 18px 36px)}
-.htop .hlogo{position:relative;z-index:2;margin-bottom:6px}
-.htruck{position:relative;z-index:2;width:clamp(150px,34vw,330px);margin-bottom:-6px;animation:tkPark 1.8s cubic-bezier(.2,.8,.2,1) .2s both}
-.htruck .tk{display:block;width:100%;height:auto;filter:drop-shadow(0 14px 16px rgba(0,0,0,.35))}
-.htruck .tk{animation:tkBob 2.6s ease-in-out 2s infinite}
-.htruck .tk-wheel{animation:tkSpin .6s linear 3}
-@keyframes tkPark{from{transform:translateX(60vw);opacity:0}30%{opacity:1}to{transform:none;opacity:1}}
-@media(max-width:700px){.htop .hlogo{width:min(34vw,140px)}}
 .roll{position:relative;overflow:hidden;padding:18px 0 14px;background:var(--cream,#FBF3E8);display:grid;gap:10px}
 .roll-row{display:flex;gap:10px;width:max-content;animation:rollL 60s linear infinite}
 .roll-row.rev{animation-name:rollR}
@@ -637,17 +627,8 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 .roll-more{justify-self:center;margin-top:4px;font-weight:800;font-size:.9rem;color:var(--deep);text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
 @keyframes rollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes rollR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-@media (prefers-reduced-motion: reduce){.htruck,.htruck .tk-body,.htruck .tk-wheel,.roll-row{animation:none}.roll{overflow-x:auto}}
-.road{position:relative;height:96px;overflow:hidden;background:var(--paper,#EFDDBB)}
-.road::before{content:"";position:absolute;left:0;right:0;bottom:14px;height:18px;background:#6D3B00}
-.road::after{content:"";position:absolute;left:0;right:0;bottom:22px;height:2px;background:repeating-linear-gradient(90deg,#FFD38A 0 22px,transparent 22px 44px)}
-.road .tk{position:absolute;bottom:14px;left:0;width:112px;height:auto;z-index:1;animation:tkDrive 16s linear infinite}
-.road .tk .tk-wheel{animation:tkSpin .7s linear infinite}
-.road .rsign{position:absolute;left:max(16px,6vw);bottom:34px;font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--deep,#6D3B00);background:#fff;border-radius:99px;padding:6px 14px;box-shadow:0 6px 14px -8px rgba(42,20,0,.5)}
-@keyframes tkDrive{from{transform:translateX(100vw)}to{transform:translateX(-130px)}}
-.trk-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
-.trk-head .tk{width:132px;height:auto;flex:none}
-@media (prefers-reduced-motion: reduce){.chip .tk-body,.chip .tk-flag,.chip.wave .tk-wheel,.road .tk,.road .tk .tk-wheel{animation:none}.road .tk{left:8%}}
+@media (prefers-reduced-motion: reduce){.roll-row{animation:none}.roll{overflow-x:auto}}
+@media (prefers-reduced-motion: reduce){.chip .tk{animation:none}}
 .cbup{position:relative;display:block;border:2px dashed rgba(109,59,0,.3);border-radius:18px;padding:18px;text-align:center;cursor:pointer;background:var(--cream,#FBF3E8)}
 .cbup:hover,.cbup:focus-within{border-color:var(--orange)}
 .cbup input{position:absolute;width:1px;height:1px;opacity:0}
@@ -710,7 +691,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   <div class="pat"></div>
   <div class="spr" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wrap hero2-in">
-    <div class="htop"><img class="hlogo" src="logo.jpg" alt="Savor by Sree, Sweet Atelier logo"><div class="htruck" id="htruck" role="img" aria-label="The Savor by Sree food truck"></div></div>
+    <img class="hlogo" src="logo.jpg" alt="Savor by Sree, Sweet Atelier logo">
     <span class="hchips">ARTISAN · HANDMADE · SMALL BATCHES · DUBLIN</span>
     <h1>Bakes made <em>fresh,</em> just for you.</h1>
     <p>A Dublin-based artisan sweet atelier, where creativity meets indulgence. From handcrafted cakes and decadent desserts to chunky cookies and savoury delights, we bring together timeless classics and globally inspired flavours with a modern twist.</p>
@@ -763,7 +744,6 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
     <p class="gnote">Corporate, table and catering orders need extra notice, so please message us as early as you can. Pricing is quoted for each event.</p>
   </div>
 </section>
-<div class="road" data-page="home" aria-hidden="true"><span class="rsign">Next stop: find us</span></div>
 <section class="sec mk" data-page="home" id="markets">
   <div class="pat" style="opacity:.16;mix-blend-mode:multiply"></div>
   <div class="wrap" style="position:relative">
@@ -815,7 +795,6 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
     </div>
   </div>
 </section>
-<div class="road" data-page="home" aria-hidden="true"><span class="rsign">Next stop: your order</span></div>
 <section class="sec how" data-page="home" id="how">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">How to order</span><h2><span class="ln-r"><span>Three simple steps</span></span></h2></div><p>Choose, message, confirm. We take it from there.</p></div>
@@ -875,10 +854,10 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   </div>
 </footer>
 
-<button class="chip" id="chip" type="button" aria-label="Our food truck helper. Ask a question" aria-expanded="false" aria-controls="help"></button>
-<div class="chip-b" id="chipB">Hi! How can I help you? 👋</div>
-<div class="help" id="help" role="dialog" aria-label="Ask Chip">
-  <div class="hh"><img src="logo.jpg" alt=""><div><b>Chip from Savor by Sree</b><small>Quick answers from our site</small></div><button type="button" id="helpX" aria-label="Close">×</button></div>
+<button class="chip" id="chip" type="button" aria-label="Truffle, our food truck helper. Ask a question" aria-expanded="false" aria-controls="help"></button>
+<div class="chip-b" id="chipB">Hi, I'm Truffle! How can I help? 👋</div>
+<div class="help" id="help" role="dialog" aria-label="Ask Truffle">
+  <div class="hh"><img src="logo.jpg" alt=""><div><b>Truffle from Savor by Sree</b><small>Quick answers from our site</small></div><button type="button" id="helpX" aria-label="Close">×</button></div>
   <div class="hb" id="hb" aria-live="polite"></div>
   <form id="hf"><input id="hq" placeholder="Ask about delivery, cakes, allergies…" aria-label="Your question" autocomplete="off"><button type="submit">Ask</button></form>
 </div>
@@ -933,11 +912,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15i"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15i"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15i"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15i"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15i"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15j"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15j"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15j"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15j"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15j"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -953,7 +932,7 @@ if(hasG)gsap.registerPlugin(ScrollTrigger);
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function eur(n){return '€'+(Math.round(n*100)%100===0?String(Math.round(n)):n.toFixed(2))}
 var WA='https://wa.me/'+D.WHATSAPP;
-$('#chip').innerHTML=window.SBS_MASCOT||'';$('#htruck').innerHTML=window.SBS_TRUCK||'';$$('.road').forEach(function(r,i){r.insertAdjacentHTML('afterbegin',window.SBS_TRUCK||'');var t=r.querySelector('.tk');if(t&&i)t.style.animationDelay='-7s'});
+$('#chip').innerHTML=window.SBS_MASCOT||'';
 
 var lenis=null;
 function go(t,off){window.scrollTo({top:(typeof t==='number'?t:t.getBoundingClientRect().top+scrollY-(off==null?96:off)),behavior:RM?'auto':'smooth'})}
@@ -985,7 +964,7 @@ function opensAt(u){var s=new Date(u.d),p=(u.m.start||'10:00').split(':');s.setH
 $('#waHero').href=WA+'?text='+encodeURIComponent("Hi Savor by Sree, I'd like to place an order.");
 (function(){var h=$('#hstrip');if(!UP.length){h.remove();return}var u=UP[0],n=u.d;h.outerHTML='<a class="hstrip" id="hstrip" href="#markets"><div class="d"><div><b>'+n.getDate()+'</b><small>'+mon[n.getMonth()].toUpperCase()+'</small></div></div><div class="t"><small>NEXT MARKET</small><b>'+esc(u.m.name)+'</b><span>'+days[n.getDay()]+' '+n.getDate()+' '+mon[n.getMonth()]+(u.m.start?' · '+hm(u.m.start):'')+'</span></div><div class="cdn" id="hcd"></div></a>';
   function cd(){var s=opensAt(u);var ms=Math.max(0,s-new Date()),d=Math.floor(ms/864e5),hh=Math.floor(ms%864e5/36e5);$('#hcd').textContent=d+'d '+hh+'h'}cd();setInterval(cd,60000)})();
-if(hasG&&!RM){gsap.from('.hlogo',{scale:.7,rotation:-12,opacity:0,duration:1,ease:'back.out(1.6)'});gsap.from('.hero2-in>*:not(.htop)',{y:24,opacity:0,stagger:.08,duration:.7,delay:.25,ease:'power3.out'})}
+if(hasG&&!RM){gsap.from('.hlogo',{scale:.7,rotation:-12,opacity:0,duration:1,ease:'back.out(1.6)'});gsap.from('.hero2-in>*:not(.hlogo)',{y:24,opacity:0,stagger:.08,duration:.7,delay:.25,ease:'power3.out'})}
 $('#waFoot').href=WA;
 $('#soc').innerHTML=(window.SBS_SOC||[]).map(function(x){return '<a href="'+x[0]+'" target="_blank" rel="noopener" aria-label="'+esc(x[1])+'">'+x[2]+'</a>'}).join('');
 /* brand pattern on cream sections */
@@ -1045,7 +1024,7 @@ $('#soc').innerHTML=(window.SBS_SOC||[]).map(function(x){return '<a href="'+x[0]
   if(N.topbar&&(!N.topbarUntil||N.topbarUntil>=isoD(new Date())))tb.textContent=N.topbar;
   if(!D.DEALS.length)$$('#topbar a[href="#offers"]').forEach(function(a){a.setAttribute('href','#bundles')})})();
 
-/* ---------- Chip the mascot helper ---------- */
+/* ---------- Truffle the food truck helper ---------- */
 (function(){
 var chip=$('#chip'),bub=$('#chipB'),help=$('#help'),hb=$('#hb'),started=false;
 function wave(){chip.classList.remove('wave');void chip.offsetWidth;chip.classList.add('wave')}
@@ -1066,7 +1045,7 @@ function chips(){var w=document.createElement('div');w.className='qs';if(started
 function showFrom(el){var top=hb.scrollTop+el.getBoundingClientRect().top-hb.getBoundingClientRect().top-10;if(hb.scrollTo)hb.scrollTo({top:top,behavior:RM?'auto':'smooth'});else hb.scrollTop=top}
 function answer(x){var me=add('me',esc(x.q));setTimeout(function(){add('bot',(x.a()||'<p>Message us on WhatsApp and we will help.</p>')+(x.go?'<a class="go2" href="'+x.go+'" data-close="1">'+esc(x.btn)+' →</a>':''));var old=hb.querySelector('.qs');if(old)old.remove();chips();showFrom(me)},350)}
 function open(){help.classList.add('open');chip.setAttribute('aria-expanded','true');bub.classList.remove('on');wave();
-  if(!started){started=true;add('bot','<p>Hi, I\'m Chip! 👋 How can I help you? Pick a question or type your own.</p>');chips()}setTimeout(function(){$('#hq').focus({preventScroll:true})},300)}
+  if(!started){started=true;add('bot','<p>Hi, I\'m Truffle, the Savor by Sree truck! 👋 How can I help you? Pick a question or type your own.</p>');chips()}setTimeout(function(){$('#hq').focus({preventScroll:true})},300)}
 function close(){help.classList.remove('open');chip.setAttribute('aria-expanded','false')}
 chip.addEventListener('click',function(){help.classList.contains('open')?close():open()});bub.addEventListener('click',open);$('#helpX').addEventListener('click',close);
 hb.addEventListener('click',function(e){var b=e.target.closest('[data-q]');if(b){answer(Q[+b.dataset.q]);return}var a=e.target.closest('[data-close]');if(a){close()}});
@@ -1077,7 +1056,7 @@ $('#hf').addEventListener('submit',function(e){e.preventDefault();var t=$('#hq')
   var best=null,bs=0;D.FAQ.forEach(function(f,i){var h=(f.q+' '+f.a.replace(/<[^>]+>/g,' ')).toLowerCase(),sc=0;words.forEach(function(w){if(f.q.toLowerCase().indexOf(w)>=0)sc+=3;else if(h.indexOf(w)>=0)sc+=1});if(sc>bs){bs=sc;best=i}});
   setTimeout(function(){if(best!=null&&bs>=2){var f=D.FAQ[best];add('bot','<p><b>'+esc(f.q)+'</b></p>'+f.a+'<a class="go2" href="#faq" data-close="1" data-faq="'+best+'">Open in FAQ →</a>')}
     else add('bot','<p>I couldn\'t find that on our site. Message us on WhatsApp and we\'ll answer you directly.</p><a class="go2" target="_blank" rel="noopener" href="'+WA+'?text='+encodeURIComponent(t)+'">Ask on WhatsApp →</a>');showFrom(me2)},350)});
-/* opening a FAQ answer from Chip */
+/* opening a FAQ answer from Truffle */
 document.addEventListener('click',function(e){var a=e.target.closest('[data-faq]');if(!a)return;var q=$('#q'+a.dataset.faq);if(q){var w=q.closest('.qa');if(w.hidden)w.hidden=false;setTimeout(function(){if(!w.classList.contains('open'))q.click();go(w,120)},700)}});
 })();
 
