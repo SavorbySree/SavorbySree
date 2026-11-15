@@ -439,7 +439,7 @@ body.has-bar .foot{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
 @media(max-width:480px){.row2{grid-template-columns:1fr}}
 .oreq .lbl{display:grid;gap:6px}
 .oreq .lbl>span,.seg2 legend{font-size:.76rem;font-weight:800;letter-spacing:.06em;color:var(--deep)}
-.oreq input[type=text],.oreq input:not([type]),.oreq input[type=date],.oreq textarea{width:100%;font:inherit;font-weight:600;font-size:.95rem;padding:13px 14px;border-radius:14px;border:1.5px solid var(--hair);background:var(--cream);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
+.oreq input[type=text],.oreq input[type=tel],.oreq input:not([type]),.oreq input[type=date],.oreq textarea{width:100%;font:inherit;font-weight:600;font-size:.95rem;padding:13px 14px;border-radius:14px;border:1.5px solid var(--hair);background:var(--cream);color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s}
 .oreq input:focus,.oreq textarea:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(255,153,0,.18)}
 .oreq textarea{resize:vertical;min-height:62px}
 .oreq select{width:100%;font:inherit;font-weight:600;font-size:.95rem;padding:13px 40px 13px 14px;border-radius:14px;border:1.5px solid var(--hair);background:var(--cream) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236d3b00' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center/18px;color:var(--ink);appearance:none;-webkit-appearance:none;outline:none}
@@ -664,7 +664,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   </div>
 </section>
 
-<section class="sec bund" data-page="hampers" id="bundles">
+<section class="sec bund" data-page="home" id="bundles">
   <div class="pat"></div>
   <div class="wrap" style="position:relative">
     <div class="sec-head"><div><span class="eyebrow">Bundles &amp; hampers</span><h2><span class="ln-r"><span>Better together</span></span></h2></div><p id="bintro">Our favourite combinations at a better price, plus the Diwali Delights hamper.</p></div>
@@ -679,7 +679,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   <div class="wrap" id="cats"></div>
 </section>
 
-<section class="sec gift" data-page="hampers" id="gifting">
+<section class="sec gift" data-page="home" id="gifting">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">For teams and events</span><h2><span class="ln-r"><span>Corporate gifting, dessert</span></span><span class="ln-r"><span>tables &amp; catering</span></span></h2></div><p>Handmade, small-batch desserts for offices, weddings, parties and celebrations of every size.</p></div>
     <div class="gbanner"><img src="img/s-tubs.webp" alt="Savor by Sree dessert tubs at Taste of Dublin" id="gimg"></div>
@@ -687,7 +687,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
     <p class="gnote">Corporate, table and catering orders need extra notice, so please message us as early as you can. Pricing is quoted for each event.</p>
   </div>
 </section>
-<section class="sec mk" data-page="findus" id="markets">
+<section class="sec mk" data-page="home" id="markets">
   <div class="pat" style="opacity:.16;mix-blend-mode:multiply"></div>
   <div class="wrap" style="position:relative">
     <div class="sec-head"><div><span class="eyebrow">Where we're trading</span><h2><span class="ln-r"><span>Come say hi</span></span></h2></div><p id="mkintro">Find our stall every Saturday in Temple Bar, and at the We Love Market markets around Dublin.</p></div>
@@ -698,7 +698,39 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   </div>
 </section>
 
-<section class="sec how" data-page="order" id="how">
+<section class="sec story2" data-page="home" id="story2">
+  <div class="wrap tgrid">
+    <div style="position:sticky;top:100px">
+      <span class="eyebrow" style="color:var(--deep)">From our first stall to today</span>
+      <h2 style="font-size:clamp(2.4rem,6vw,4.2rem);margin:10px 0 16px"><span class="ln-r"><span>Our story</span></span></h2>
+      <p style="color:var(--muted);font-weight:500;margin:0 0 22px">Every market and festival has been a chapter. Here is where we have set up the stall so far.</p>
+      <div class="count"><b id="evCount">0</b><span>markets, festivals and events so far</span></div>
+      <div class="filt" id="filt"><button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="Festival" aria-pressed="false">Festivals</button><button type="button" data-f="Market" aria-pressed="false">Markets</button><button type="button" data-f="Community" aria-pressed="false">Community</button></div>
+    </div>
+    <div class="tline" id="tline"><div class="rail"><i id="rail"></i></div></div>
+  </div>
+</section>
+<section class="sec gal" data-page="gallery" id="gallery">
+  <div class="wrap"><div class="sec-head"><div><span class="eyebrow">Gallery</span><h2><span class="ln-r"><span>Our stall, our bakes</span></span></h2></div><p>A few moments from our bakes and our market stalls. Tap a photo to see it larger.</p></div>
+  <div class="galgrid" id="galgrid"></div></div>
+</section>
+<div class="lbox" id="lbox" hidden role="dialog" aria-modal="true" aria-label="Photo"><button class="lb-x" id="lbx" aria-label="Close photo">×</button><button class="lb-n lb-p" id="lbp" aria-label="Previous photo">‹</button><img id="lbimg" alt=""><button class="lb-n lb-nx" id="lbn" aria-label="Next photo">›</button></div>
+
+<section class="sec about" data-page="home" id="about">
+  <div class="pat"></div>
+  <div class="wrap agrid">
+    <div class="alogo"><svg viewBox="0 0 300 300" aria-hidden="true" id="aring"><defs><path id="acirc" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs><text><textPath href="#acirc">Sweet atelier · Dublin · Handmade · Small batches · Fusion flavours ·</textPath></text></svg><img src="logo.jpg" alt="Savor by Sree logo"></div>
+    <div>
+      <span class="eyebrow">About us</span>
+      <h2><span class="ln-r"><span>A sweet atelier with a</span></span><span class="ln-r"><span>little extra spice</span></span></h2>
+      <p>Savor by Sree is a Dublin-based artisan sweet atelier, where creativity meets indulgence. From handcrafted cakes and decadent desserts to chunky cookies and savoury delights, we bring together timeless classics and globally inspired flavours with a modern twist.</p>
+      <p>Everything is made fresh to order, in small batches, so your bakes are made for you and not for a shelf.</p>
+      <p><b style="color:var(--orange)">Our journey.</b> Savor by Sree began as a small home kitchen with a simple idea: take the desserts people love and give them the flavours we grew up with. From our first market stall to Taste of Dublin and our regular Saturday spot at Meeting House Square, every bake has been made by hand and shared with people who became regulars, and then friends.</p>
+      <div class="feats"><span>Artisan</span><span>Handmade</span><span>Small batches</span><span>Dublin</span><span>Fusion flavours</span></div>
+    </div>
+  </div>
+</section>
+<section class="sec how" data-page="home" id="how">
   <div class="wrap">
     <div class="sec-head"><div><span class="eyebrow">How to order</span><h2><span class="ln-r"><span>Three simple steps</span></span></h2></div><p>Choose, message, confirm. We take it from there.</p></div>
     <div class="steps3" id="steps3">
@@ -717,6 +749,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
       <div class="paused" id="paused" hidden></div>
       <form id="oform" novalidate>
         <label class="lbl" for="oname"><span>Your name *</span><input id="oname" required autocomplete="name" placeholder="e.g. Aoife"></label>
+        <label class="lbl" for="ophone"><span>Phone number</span><input id="ophone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 087 123 4567"></label>
         <fieldset class="seg2"><legend>Collection or delivery</legend>
           <label><input type="radio" name="ocd" value="Collection" checked><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg></span><span><b>Collection</b><small>Pick up from us</small></span></label>
           <label><input type="radio" name="ocd" value="Delivery"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span><span><b>Delivery</b><small>Across Dublin, fee applies</small></span></label>
@@ -730,44 +763,12 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
         <label class="lbl" for="onotes"><span>Notes</span><textarea id="onotes" rows="2" placeholder="Allergies, occasion, message on the cake…"></textarea></label>
         <button class="send" type="submit"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 13.9c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg>Continue on WhatsApp</button>
         <span class="fine">Opens WhatsApp with your order written out. Nothing is sent until you press send.</span>
-        <span class="fine privacy"><b>Your privacy:</b> we only ask for what we need for your order: your name, the date and, for delivery, your address. We use it only to make and deliver your order, keep it safely in our order book, and never sell it or use it for marketing. Message us any time to see or delete your details.</span>
+        <span class="fine privacy"><b>Your privacy:</b> we only ask for what we need for your order: your name, a phone number if you'd like us to call you, the date and, for delivery, your address. We use it only to make and deliver your order, keep it safely in our order book, and never sell it or use it for marketing. Message us any time to see or delete your details.</span>
       </form>
     </div>
   </div>
 </section>
-<section class="sec story2" data-page="story" id="story2">
-  <div class="wrap tgrid">
-    <div style="position:sticky;top:100px">
-      <span class="eyebrow" style="color:var(--deep)">From our first stall to today</span>
-      <h2 style="font-size:clamp(2.4rem,6vw,4.2rem);margin:10px 0 16px"><span class="ln-r"><span>Our story</span></span></h2>
-      <p style="color:var(--muted);font-weight:500;margin:0 0 22px">Every market and festival has been a chapter. Here is where we have set up the stall so far.</p>
-      <div class="count"><b id="evCount">0</b><span>markets, festivals and events so far</span></div>
-      <div class="filt" id="filt"><button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="Festival" aria-pressed="false">Festivals</button><button type="button" data-f="Market" aria-pressed="false">Markets</button><button type="button" data-f="Community" aria-pressed="false">Community</button></div>
-    </div>
-    <div class="tline" id="tline"><div class="rail"><i id="rail"></i></div></div>
-  </div>
-</section>
-<section class="sec gal" data-page="gallery" id="gallery">
-  <div class="wrap"><div class="sec-head"><div><span class="eyebrow">Gallery</span><h2><span class="ln-r"><span>Our stall, our bakes</span></span></h2></div><p>A few moments from our bakes and our market stalls. Tap a photo to see it larger.</p></div>
-  <div class="galgrid" id="galgrid"></div></div>
-</section>
-<div class="lbox" id="lbox" hidden role="dialog" aria-modal="true" aria-label="Photo"><button class="lb-x" id="lbx" aria-label="Close photo">×</button><button class="lb-n lb-p" id="lbp" aria-label="Previous photo">‹</button><img id="lbimg" alt=""><button class="lb-n lb-nx" id="lbn" aria-label="Next photo">›</button></div>
-
-<section class="sec about" data-page="story" id="about">
-  <div class="pat"></div>
-  <div class="wrap agrid">
-    <div class="alogo"><svg viewBox="0 0 300 300" aria-hidden="true" id="aring"><defs><path id="acirc" d="M150,150 m-128,0 a128,128 0 1,1 256,0 a128,128 0 1,1 -256,0"/></defs><text><textPath href="#acirc">Sweet atelier · Dublin · Handmade · Small batches · Fusion flavours ·</textPath></text></svg><img src="logo.jpg" alt="Savor by Sree logo"></div>
-    <div>
-      <span class="eyebrow">About us</span>
-      <h2><span class="ln-r"><span>A sweet atelier with a</span></span><span class="ln-r"><span>little extra spice</span></span></h2>
-      <p>Savor by Sree is a Dublin-based artisan sweet atelier, where creativity meets indulgence. From handcrafted cakes and decadent desserts to chunky cookies and savoury delights, we bring together timeless classics and globally inspired flavours with a modern twist.</p>
-      <p>Everything is made fresh to order, in small batches, so your bakes are made for you and not for a shelf.</p>
-      <p><b style="color:var(--orange)">Our journey.</b> Savor by Sree began as a small home kitchen with a simple idea: take the desserts people love and give them the flavours we grew up with. From our first market stall to Taste of Dublin and our regular Saturday spot at Meeting House Square, every bake has been made by hand and shared with people who became regulars, and then friends.</p>
-      <div class="feats"><span>Artisan</span><span>Handmade</span><span>Small batches</span><span>Dublin</span><span>Fusion flavours</span></div>
-    </div>
-  </div>
-</section>
-<section class="sec" data-page="order" id="faq">
+<section class="sec" data-page="home" id="faq">
   <div class="wrap">
     <div class="sec-head" style="justify-content:center;text-align:center"><div><span class="eyebrow">FAQ</span><h2><span class="ln-r"><span>Good to know</span></span></h2></div></div>
     <div class="faq" id="faqList"></div>
@@ -827,11 +828,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-14b"></script>
-<script charset="utf-8" src="live.js?v=2026-11-14b"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-14b"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-14b"></script>
-<script charset="utf-8" src="social.js?v=2026-11-14b"></script>
+<script charset="utf-8" src="data.js?v=2026-11-15a"></script>
+<script charset="utf-8" src="live.js?v=2026-11-15a"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-15a"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-15a"></script>
+<script charset="utf-8" src="social.js?v=2026-11-15a"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
@@ -1097,11 +1098,12 @@ $('#oform').addEventListener('submit',function(e){e.preventDefault();var f=e.cur
   if(CLOSED.indexOf($('#odate').value)>=0){f.querySelector('.send').insertAdjacentHTML('beforebegin','<p class="oerr">Sorry, we’re closed on that date. Please choose another day.</p>');return}
   var dd=new Date($('#odate').value+'T00:00:00'),ds=days[dd.getDay()]+' '+dd.getDate()+' '+mon[dd.getMonth()];
   var keys=Object.keys(basket),L=['Hi Savor by Sree, I\'d like to place an order.','Name: '+$('#oname').value.trim(),m+': '+ds+', '+slot.value];
+  if($('#ophone').value.trim())L.splice(2,0,'Phone: '+$('#ophone').value.trim());
   if(m==='Delivery')L.push('Delivery address: '+$('#oaddr').value.trim());
   if(keys.length){L.push('Order:');keys.forEach(function(k){L.push('• '+basket[k]+' × '+meta[k].name+' ('+meta[k].sub+')')});L.push('Estimated total: '+$('#dtot').textContent+(m==='Delivery'?' + delivery fee':''))}
   if($('#onotes').value.trim())L.push('Notes: '+$('#onotes').value.trim());
   /* also save the order in the order app, so it appears under "To confirm" */
-  window.SBS_sendOrder({name:$('#oname').value.trim(),phone:'',mode:m==='Delivery'?'delivery':'collection',order_date:$('#odate').value,slot:slot.value,
+  window.SBS_sendOrder({name:$('#oname').value.trim(),phone:$('#ophone').value.trim(),mode:m==='Delivery'?'delivery':'collection',order_date:$('#odate').value,slot:slot.value,
     address:m==='Delivery'?$('#oaddr').value.trim():null,notes:$('#onotes').value.trim()||null,
     items:keys.map(function(k){return {menuId:meta[k].id||null,name:meta[k].name,option:meta[k].opt||'',price:meta[k].price||0,qty:basket[k]}})});
   var a=document.createElement('a');a.href=WA+'?text='+encodeURIComponent(L.join('\n'));a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()});
@@ -1128,7 +1130,7 @@ if(hasG&&!RM){gsap.to('#aring',{rotation:360,transformOrigin:'50% 50%',ease:'non
   if(dl.length){box.hidden=false;box.innerHTML=dl.map(function(o){var lab=o.percent_off?(+o.percent_off)+'%<br>off':o.amount_off?'€'+(+o.amount_off)+'<br>off':'Offer';var until=o.ends_on?new Date(o.ends_on+'T00:00:00'):null;
     return '<article class="deal"><div class="lab">'+lab+'</div><div><h3>'+esc(o.title)+'</h3>'+(o.details?'<p>'+esc(o.details)+'</p>':'')+(until?'<small>Until '+days[until.getDay()]+' '+until.getDate()+' '+mon[until.getMonth()]+'</small>':'')+'</div></article>'}).join('')}
   var hs=D.OFFERS.filter(function(o){return o.type==='Hamper'});
-  $('#bintro').textContent='Our favourite combinations at a better price'+(hs.length?', plus the '+hs.map(function(o){return o.title.replace(/^Hamper \d+: /,'')}).join(' and ')+' hamper'+(hs.length>1?'s':''):'')+'.';
+  $('#bintro').textContent='Our favourite combinations at a better price'+(hs.length?', plus the '+hs.map(function(o){return o.title.replace(/^Hamper \d+: /,'').replace(/\s+hamper$/i,'')}).join(' and ')+' hamper'+(hs.length>1?'s':''):'')+'.';
   if(!D.OFFERS.length&&!dl.length)$('#bundles').hidden=true})();
 $('#bgrid').innerHTML=D.OFFERS.map(function(o){var h=o.type==='Hamper';return '<article class="bcard'+(h?' hamper':'')+'"><span class="bt">'+esc(h?'Festive hamper':o.type==='Pack'?'Pack':'Bundle')+'</span>'+(o.badge&&!h?'<span class="save">'+esc(o.badge)+'</span>':'')+'<h3>'+esc(o.title.replace(/^Hamper \d+: /,''))+'</h3><ul>'+o.items.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul><div class="bfoot"><div class="bp">'+(o.was?'<s class="was">'+eur(o.was)+'</s>':'')+eur(o.price)+'</div><button type="button" class="add" data-id="'+esc(o.id)+'">+ Add</button></div></article>'}).join('');
 $('#bgrid').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var o=D.OFFERS.filter(function(x){return x.id===b.dataset.id})[0];addItem('offer|'+o.id,{id:o.id,opt:o.type,name:o.title.replace(/^Hamper \d+: /,''),sub:o.type+' · '+eur(o.price),price:o.price})});
