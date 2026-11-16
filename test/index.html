@@ -629,15 +629,18 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 @keyframes tkFlag{0%,100%{transform:skewY(0)}50%{transform:skewY(-9deg)}}
 @keyframes tkSpin{to{transform:rotate(360deg)}}
 @media(max-width:700px){.chip{width:74px}.chip-b{left:calc(max(12px,env(safe-area-inset-left,0px)) + 80px)}}
-.roll{position:relative;overflow:hidden;padding:18px 0 14px;background:var(--cream,#FBF3E8);display:grid;gap:10px}
-.roll-row{display:flex;gap:10px;width:max-content;animation:rollL 60s linear infinite}
-.roll-row.rev{animation-name:rollR}
-.roll-row img{width:clamp(150px,22vw,250px);aspect-ratio:4/3;object-fit:cover;border-radius:18px;flex:none;background:#EADCC8}
-.roll:hover .roll-row,.roll:focus-within .roll-row{animation-play-state:paused}
-.roll-more{justify-self:center;margin-top:4px;font-weight:800;font-size:.9rem;color:var(--deep);text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
-@keyframes rollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes rollR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-@media (prefers-reduced-motion: reduce){.roll-row{animation:none}.roll{overflow-x:auto}}
+.hshow{width:100%;max-width:820px;display:grid;gap:4px}
+.hero2 .hlogo{width:clamp(84px,22vw,120px)}
+@media(max-width:700px){.hero2{padding-top:calc(64px + 22px)}.hero2-in{gap:12px}}
+.hs-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:22px;-webkit-overflow-scrolling:touch}
+.hs-track::-webkit-scrollbar{display:none}
+.hs-slide{flex:0 0 100%;scroll-snap-align:start;border-radius:22px;overflow:hidden;background:rgba(255,255,255,.08);aspect-ratio:16/10}
+.hs-slide img{width:100%;height:100%;object-fit:cover;display:block;user-select:none}
+@media(min-width:760px){.hs-slide{flex-basis:calc((100% - 24px)/3);aspect-ratio:4/3}.hero2{padding-top:calc(96px + 22px)}}
+.hs-dots{display:flex;justify-content:center;flex-wrap:wrap}
+.hs-dots button{width:24px;height:24px;border:0;padding:0;background:none;cursor:pointer;display:grid;place-items:center}
+.hs-dots button::before{content:"";width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);transition:width .25s,background .25s}
+.hs-dots button.on::before{width:20px;border-radius:5px;background:var(--orange)}
 @media (prefers-reduced-motion: reduce){.chip .tk{animation:none}}
 .cbnote{margin:8px 0 0;font-size:.84rem;line-height:1.45;color:var(--ink2,#6B4C2C)}
 .callus .mail{display:block;margin-top:2px;font-size:.92rem;font-weight:600;color:#FFD9A0;text-decoration:underline;text-underline-offset:3px;word-break:break-all}
@@ -680,6 +683,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   <div class="spr" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="wrap hero2-in">
     <img class="hlogo" src="logo.jpg" alt="Savor by Sree, Sweet Atelier logo">
+    <div class="hshow" id="hshow" role="region" aria-roledescription="carousel" aria-label="Photos of our bakes and markets"><div class="hs-track" id="hsTrack" tabindex="0"></div><div class="hs-dots" id="hsDots"></div></div>
     <span class="hchips">ARTISAN · HANDMADE · SMALL BATCHES · DUBLIN</span>
     <h1>Bakes made <em>fresh,</em> just for you.</h1>
     <p>A Dublin-based artisan sweet atelier, where creativity meets indulgence. From handcrafted cakes and decadent desserts to chunky cookies and savoury delights, we bring together timeless classics and globally inspired flavours with a modern twist.</p>
@@ -689,12 +693,6 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 </section>
 
 <div class="marq" data-page="home" aria-hidden="true"><div class="pat" style="opacity:.18;mix-blend-mode:multiply"></div><div class="marq-t" id="marq"></div></div>
-
-<section class="roll" data-page="home" id="roll" aria-label="Photos of our bakes and markets">
-  <div class="roll-row" id="rollA"></div>
-  <div class="roll-row rev" id="rollB"></div>
-  <a class="roll-more" href="#gallery">See the gallery →</a>
-</section>
 
 <section class="sec explore" data-page="home" id="explore">
   <div class="wrap">
@@ -895,11 +893,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-16a"></script>
-<script charset="utf-8" src="live.js?v=2026-11-16a"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-16a"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-16a"></script>
-<script charset="utf-8" src="social.js?v=2026-11-16a"></script>
+<script charset="utf-8" src="data.js?v=2026-11-16b"></script>
+<script charset="utf-8" src="live.js?v=2026-11-16b"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-16b"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-16b"></script>
+<script charset="utf-8" src="social.js?v=2026-11-16b"></script>
 <script src="gsap.min.js?v=3.12.5"></script>
 <script src="ScrollTrigger.min.js?v=3.12.5"></script>
 <script>
@@ -1219,10 +1217,23 @@ var G=[['g-1','Bakes on the Savor by Sree stall'],['s-crowd','Crowd at the marke
 /* Gallery album from the order app (Website > Photos), when one has been set there */
 (function(){var L=D.PHOTOS&&D.PHOTOS.gallery;if(!Array.isArray(L))return;G=L.filter(function(g){return g&&okPic(g.src)}).map(function(g){return [g.src,String(g.alt||'Savor by Sree bakes')]});
   if(!G.length){$$('a[href="#gallery"]').forEach(function(a){a.hidden=true;a.style.display='none'});var gs=$('#gallery');if(gs){gs.removeAttribute('data-page');gs.hidden=true}}})();
-(function(){var sec=$('#roll');if(!sec)return;if(G.length<4){sec.removeAttribute('data-page');sec.hidden=true;return}
-  var a=G.filter(function(g,i){return i%2===0}),b=G.filter(function(g,i){return i%2===1});
-  function row(el,list){while(list.length<6)list=list.concat(list);var h=list.map(function(g){return '<img src="'+String(g[0]).replace(/"/g,'&quot;')+'" alt="" loading="lazy" decoding="async">'}).join('');el.innerHTML=h+h}
-  row($('#rollA'),a);row($('#rollB'),b)})();
+/* Photo slideshow at the bottom of the home page's first screen. Uses the gallery album, so photos added in the order app appear here too. */
+(function(){var box=$('#hshow'),tr=$('#hsTrack'),dots=$('#hsDots');if(!box)return;var L=G.slice(0,10);if(L.length<2){box.remove();return}
+  tr.innerHTML=L.map(function(g,i){return '<div class="hs-slide" role="group" aria-roledescription="slide" aria-label="Photo '+(i+1)+' of '+L.length+'"><img src="'+String(g[0]).replace(/"/g,'&quot;')+'" alt="'+String(g[1]).replace(/[&<>"]/g,'')+'"'+(i>2?' loading="lazy"':'')+' decoding="async" draggable="false"></div>'}).join('');
+  var slides=$$('.hs-slide',tr),timer=0,hold=false;
+  function step(){return slides[0].getBoundingClientRect().width+12}
+  function per(){return Math.max(1,Math.round((tr.clientWidth+12)/step()))}
+  function pages(){return Math.max(1,slides.length-per()+1)}
+  function cur(){return Math.round(tr.scrollLeft/step())}
+  function go(i,jump){var n=pages();i=(i%n+n)%n;tr.scrollTo({left:i*step(),behavior:jump||RM?'auto':'smooth'})}
+  function draw(){var n=pages(),c=Math.min(cur(),n-1);if(dots.children.length!==n)dots.innerHTML=Array.apply(null,Array(n)).map(function(_,i){return '<button type="button" aria-label="Show photo '+(i+1)+'"></button>'}).join('');[].forEach.call(dots.children,function(d,i){d.classList.toggle('on',i===c);if(i===c)d.setAttribute('aria-current','true');else d.removeAttribute('aria-current')})}
+  dots.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;go([].indexOf.call(dots.children,b));restart()});
+  var st=0;tr.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(draw,80)},{passive:true});window.addEventListener('resize',draw);
+  function tick(){if(hold||document.hidden||document.body.getAttribute('data-pg')!=='home')return;var r=box.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;go(cur()+1)}
+  function restart(){clearInterval(timer);if(!RM)timer=setInterval(tick,3500)}
+  ['pointerdown','mouseenter','focusin','touchstart'].forEach(function(ev){box.addEventListener(ev,function(){hold=true},{passive:true})});
+  ['mouseleave','focusout','touchend','pointerup'].forEach(function(ev){box.addEventListener(ev,function(){setTimeout(function(){hold=false},ev==='mouseleave'?0:2500)},{passive:true})});
+  draw();restart();window.SBS_show={go:go,cur:cur,pages:pages}})();
 function gEsc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 $('#galgrid').innerHTML=G.map(function(g,i){return '<button class="gtile'+(/crowd|tubs|g-4|g-7/.test(g[0])?' w':'')+'" data-g="'+i+'" aria-label="Open photo: '+gEsc(g[1])+'"><img src="'+gEsc(g[0])+'" alt="'+gEsc(g[1])+'" loading="lazy"></button>'}).join('');
 (function(){var lb=$('#lbox'),im=$('#lbimg'),cur=0;function show(i){cur=(i+G.length)%G.length;im.src=G[cur][0];im.alt=G[cur][1];lb.hidden=false;document.documentElement.style.overflow='hidden'}function hide(){lb.hidden=true;document.documentElement.style.overflow=''}
