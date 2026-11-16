@@ -147,6 +147,7 @@ h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.045em;line-height:1.02;font
 .bcard h3{font-size:1.8rem}
 .bcard ul{list-style:none;padding:0;margin:0;display:grid;gap:7px;font-weight:600;font-size:.88rem}
 .bcard li{display:flex;gap:10px}
+.bcard .bnote{margin:0;font-size:.8rem;line-height:1.45;font-weight:500;opacity:.82}
 .bcard li::before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--orange);margin-top:7px}
 .bcard.hamper li::before{background:var(--deep)}
 .bcard .bfoot{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between;gap:12px}
@@ -894,11 +895,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-15m"></script>
-<script charset="utf-8" src="live.js?v=2026-11-15m"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-15m"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-15m"></script>
-<script charset="utf-8" src="social.js?v=2026-11-15m"></script>
+<script charset="utf-8" src="data.js?v=2026-11-16a"></script>
+<script charset="utf-8" src="live.js?v=2026-11-16a"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-16a"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-16a"></script>
+<script charset="utf-8" src="social.js?v=2026-11-16a"></script>
 <script src="gsap.min.js?v=3.12.5"></script>
 <script src="ScrollTrigger.min.js?v=3.12.5"></script>
 <script>
@@ -1210,7 +1211,7 @@ if(hasG&&!RM){gsap.to('#aring',{rotation:360,transformOrigin:'50% 50%',ease:'non
   var hs=D.OFFERS.filter(function(o){return o.type==='Hamper'});
   $('#bintro').textContent='Our favourite combinations at a better price'+(hs.length?', plus the '+hs.map(function(o){return o.title.replace(/^Hamper \d+: /,'').replace(/\s+hamper$/i,'')}).join(' and ')+' hamper'+(hs.length>1?'s':''):'')+'.';
   if(!D.OFFERS.length&&!dl.length)$('#bundles').hidden=true})();
-$('#bgrid').innerHTML=D.OFFERS.map(function(o){var h=o.type==='Hamper';return '<article class="bcard'+(h?' hamper':'')+'"><span class="bt">'+esc(h?'Festive hamper':o.type==='Pack'?'Pack':'Bundle')+'</span>'+'<h3>'+esc(o.title.replace(/^Hamper \d+: /,''))+'</h3><ul>'+o.items.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul><div class="bfoot"><div class="bpw">'+(o.badge&&!h?'<b class="bsave">'+esc(o.badge)+'</b>':'')+'<div class="bp'+(o.badge&&!h?' sm':'')+'">'+(o.was?'<s class="was">'+eur(o.was)+'</s>':'')+eur(o.price)+'</div></div><button type="button" class="add" data-id="'+esc(o.id)+'">+ Add</button></div></article>'}).join('');
+$('#bgrid').innerHTML=D.OFFERS.map(function(o){var h=o.type==='Hamper';return '<article class="bcard'+(h?' hamper':'')+'"><span class="bt">'+esc(h?'Festive hamper':o.type==='Pack'?'Pack':'Bundle')+'</span>'+'<h3>'+esc(o.title.replace(/^Hamper \d+: /,''))+'</h3><ul>'+o.items.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul>'+(o.desc?'<p class="bnote">'+esc(o.desc)+'</p>':'')+'<div class="bfoot"><div class="bpw">'+(o.badge&&!h?'<b class="bsave">'+esc(o.badge)+'</b>':'')+'<div class="bp'+(o.badge&&!h?' sm':'')+'">'+(o.was?'<s class="was">'+eur(o.was)+'</s>':'')+eur(o.price)+'</div></div><button type="button" class="add" data-id="'+esc(o.id)+'">+ Add</button></div></article>'}).join('');
 $('#bgrid').addEventListener('click',function(e){var b=e.target.closest('.add');if(!b)return;var o=D.OFFERS.filter(function(x){return x.id===b.dataset.id})[0];addItem('offer|'+o.id,{id:o.id,opt:o.type,name:o.title.replace(/^Hamper \d+: /,''),sub:o.type+' · '+eur(o.price),price:o.price})});
 
 /* taste of dublin gallery */
