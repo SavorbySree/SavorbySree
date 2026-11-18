@@ -140,8 +140,8 @@ h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.045em;line-height:1.02;font
 .bund .sec-head p{color:rgba(255,255,255,.75)}
 .bund .sec-head .eyebrow{color:var(--orange)}
 .bgrid{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.bcard{position:relative;border-radius:26px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);padding:22px;display:flex;flex-direction:column;gap:12px;min-height:290px;transition:transform .4s var(--ease),background .4s}
-.bcard:hover{transform:translateY(-6px);background:rgba(255,255,255,.12)}
+.bcard{position:relative;border-radius:26px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);padding:22px;display:flex;flex-direction:column;gap:12px;min-height:290px;transition:translate .4s var(--ease),background .4s}
+.bcard:hover{translate:0 -6px;background:rgba(255,255,255,.12)}
 .bcard.hamper{background:var(--orange);color:var(--ink);box-shadow:none}
 .bcard .bt{font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;opacity:.75}
 .bcard h3{font-size:1.8rem}
@@ -893,11 +893,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-16b"></script>
-<script charset="utf-8" src="live.js?v=2026-11-16b"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-16b"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-16b"></script>
-<script charset="utf-8" src="social.js?v=2026-11-16b"></script>
+<script charset="utf-8" src="data.js?v=2026-11-18a"></script>
+<script charset="utf-8" src="live.js?v=2026-11-18a"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-18a"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-18a"></script>
+<script charset="utf-8" src="social.js?v=2026-11-18a"></script>
 <script src="gsap.min.js?v=3.12.5"></script>
 <script src="ScrollTrigger.min.js?v=3.12.5"></script>
 <script>
@@ -1262,7 +1262,7 @@ $('#faqMore').addEventListener('click',function(){$$('.qa[hidden]').forEach(func
 /* section reveals (content stays visible at rest) */
 if(hasG&&!RM){
   $$('.ln-r>span').forEach(function(s){gsap.from(s,{yPercent:70,duration:1,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 92%'}})});
-  gsap.from('.bcard',{y:50,stagger:.08,duration:.7,ease:'power3.out',scrollTrigger:{trigger:'#bgrid',start:'top 88%'}});
+  gsap.from('.bcard',{y:50,stagger:.08,duration:.7,ease:'power3.out',clearProps:'transform',scrollTrigger:{trigger:'#bgrid',start:'top 88%'}});
   gsap.from('.date',{y:24,stagger:.08,duration:.6,ease:'power3.out',scrollTrigger:{trigger:'#dates',start:'top 90%'}});
 }
 renderCart();renderSum();
