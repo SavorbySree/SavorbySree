@@ -895,11 +895,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-18f"></script>
-<script charset="utf-8" src="live.js?v=2026-11-18f"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-18f"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-18f"></script>
-<script charset="utf-8" src="social.js?v=2026-11-18f"></script>
+<script charset="utf-8" src="data.js?v=2026-11-19a"></script>
+<script charset="utf-8" src="live.js?v=2026-11-19a"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-19a"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-19a"></script>
+<script charset="utf-8" src="social.js?v=2026-11-19a"></script>
 <script src="gsap.min.js?v=3.12.5"></script>
 <script src="ScrollTrigger.min.js?v=3.12.5"></script>
 <script>
@@ -987,11 +987,13 @@ $('#soc').innerHTML=(window.SBS_SOC||[]).map(function(x){return '<a href="'+x[0]
   var G={
     halloween:{text:'Happy Halloween',a:['ghost','float'],b:['bat',''],g1:'#3b1d5e',g2:'#e8700a',bar:'🎃 Happy Halloween · <a href="#offers">See our offers</a>'},
     diwali:{text:'Happy Diwali',a:['chakram','spin'],b:['rocket','float'],g1:'#a8102c',g2:'#ff9900',bar:'🪔 Happy Diwali · <a href="#offers">See our offers</a>'},
-    christmas:{text:'Merry Christmas',a:['tree','float'],b:['flake','slow'],g1:'#b71c1c',g2:'#2e7d32',bar:'🎄 Merry Christmas · <a href="#offers">See our offers</a>'},
+    christmas:{text:'Jingle bells are on the way',a:['tree','float'],b:['flake','slow'],g1:'#b71c1c',g2:'#2e7d32',bar:'🔔 Jingle bells are on the way · <a href="#offers">See our offers</a>'},
     newyear:{text:'Happy New Year '+yr,a:['burst','pulse'],b:['balloon','float'],g1:'#283593',g2:'#8e24aa',bar:'🎆 Happy New Year '+yr+' · <a href="#offers">See our offers</a>'},
     sankranti:{text:'Happy Makar Sankranti',a:['kite','sway'],b:['pot',''],g1:'#1b5e20',g2:'#f9a825',bar:'🪁 Happy Makar Sankranti · <a href="#offers">See our offers</a>'}
   };
   var c=G[th];if(!c)return;
+  /* Christmas Eve to St Stephen's Day the greeting becomes Merry Christmas */
+  if(th==='christmas'){var md=('0'+(new Date().getMonth()+1)).slice(-2)+'-'+('0'+new Date().getDate()).slice(-2);if(md>='12-24'&&md<='12-26')c=Object.assign({},c,{text:'Merry Christmas',bar:'🎄 Merry Christmas · <a href="#offers">See our offers</a>'})}
   var wrap=document.querySelector('.hero2-in');
   if(wrap&&!wrap.querySelector('.greet')){
     var g=document.createElement('div');g.className='greet';g.setAttribute('role','text');g.style.setProperty('--g1',c.g1);g.style.setProperty('--g2',c.g2);
