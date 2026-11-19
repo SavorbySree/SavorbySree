@@ -631,9 +631,9 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 @keyframes tkSpin{to{transform:rotate(360deg)}}
 @media(max-width:700px){.chip{width:74px}.chip-b{left:calc(max(12px,env(safe-area-inset-left,0px)) + 80px)}}
 .roll{position:relative;overflow:hidden;padding:18px 0 14px;background:var(--cream,#FBF3E8);display:grid;gap:10px}
-.roll-row{display:flex;gap:10px;width:max-content;animation:rollL 60s linear infinite}
+.roll-row{display:flex;gap:12px;width:max-content;animation:rollL 70s linear infinite}
 .roll-row.rev{animation-name:rollR}
-.roll-row img{width:clamp(150px,22vw,250px);aspect-ratio:4/3;object-fit:cover;border-radius:18px;flex:none;background:#EADCC8}
+.roll-row img{width:clamp(230px,30vw,340px);aspect-ratio:4/3;object-fit:cover;border-radius:18px;flex:none;background:#EADCC8}
 .roll:hover .roll-row,.roll:focus-within .roll-row{animation-play-state:paused}
 .roll-more{justify-self:center;margin-top:4px;font-weight:800;font-size:.9rem;color:var(--deep);text-decoration:underline;text-underline-offset:4px;min-height:44px;display:inline-flex;align-items:center}
 @keyframes rollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -693,7 +693,6 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 
 <section class="roll" data-page="home" id="roll" aria-label="Photos of our bakes and markets">
   <div class="roll-row" id="rollA"></div>
-  <div class="roll-row rev" id="rollB"></div>
   <a class="roll-more" href="#gallery">See the gallery →</a>
 </section>
 
@@ -896,11 +895,11 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-19b"></script>
-<script charset="utf-8" src="live.js?v=2026-11-19b"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-19b"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-19b"></script>
-<script charset="utf-8" src="social.js?v=2026-11-19b"></script>
+<script charset="utf-8" src="data.js?v=2026-11-19c"></script>
+<script charset="utf-8" src="live.js?v=2026-11-19c"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-19c"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-19c"></script>
+<script charset="utf-8" src="social.js?v=2026-11-19c"></script>
 <script src="gsap.min.js?v=3.12.5"></script>
 <script src="ScrollTrigger.min.js?v=3.12.5"></script>
 <script>
@@ -1225,7 +1224,7 @@ var G=[['g-1','Bakes on the Savor by Sree stall'],['s-crowd','Crowd at the marke
 (function(){var sec=$('#roll');if(!sec)return;if(G.length<4){sec.removeAttribute('data-page');sec.hidden=true;return}
   var a=G.filter(function(g,i){return i%2===0}),b=G.filter(function(g,i){return i%2===1});
   function row(el,list){while(list.length<6)list=list.concat(list);var h=list.map(function(g){return '<img src="'+String(g[0]).replace(/"/g,'&quot;')+'" alt="" loading="lazy" decoding="async">'}).join('');el.innerHTML=h+h}
-  row($('#rollA'),a);row($('#rollB'),b)})();
+  row($('#rollA'),G.slice())})();
 function gEsc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 $('#galgrid').innerHTML=G.map(function(g,i){return '<button class="gtile'+(/crowd|tubs|g-4|g-7/.test(g[0])?' w':'')+'" data-g="'+i+'" aria-label="Open photo: '+gEsc(g[1])+'"><img src="'+gEsc(g[0])+'" alt="'+gEsc(g[1])+'" loading="lazy"></button>'}).join('');
 (function(){var lb=$('#lbox'),im=$('#lbimg'),cur=0;function show(i){cur=(i+G.length)%G.length;im.src=G[cur][0];im.alt=G[cur][1];lb.hidden=false;document.documentElement.style.overflow='hidden'}function hide(){lb.hidden=true;document.documentElement.style.overflow=''}
