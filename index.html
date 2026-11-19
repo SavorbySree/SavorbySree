@@ -600,6 +600,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 /* pages */
 [data-page]:not(.pg-on){display:none!important}
 [data-page]{scroll-margin-top:96px}
+#order{scroll-margin-top:108px}
 .pg-first{padding-top:calc(clamp(72px,10vw,120px) + 64px)}
 .menu2.pg-first{padding-top:calc(clamp(40px,6vw,72px) + 64px)}
 .links a.cur{background:var(--deep);color:var(--white)}
@@ -788,7 +789,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
       <div><span class="eyebrow">Prefer to talk?</span><b>Call, message or email us</b><a class="num" href="tel:+353899669496">089 966 9496</a><a class="mail" href="mailto:info@savorbysree.com">info@savorbysree.com</a></div>
       <div class="callbtns"><a class="btn btn-orange" href="tel:+353899669496">Call us</a><a class="btn btn-ghost" href="https://wa.me/353899669496" target="_blank" rel="noopener">WhatsApp</a><a class="btn btn-ghost" href="mailto:info@savorbysree.com?subject=Order%20enquiry">Email us</a></div>
     </div>
-    <div class="oreq">
+    <div class="oreq" id="order">
       <div class="top"><img src="logo.jpg" alt=""><div><h3>Your order request</h3><small>Fill this in and we'll confirm on WhatsApp</small></div></div>
       <div class="obox" id="osum"></div>
       <div class="paused" id="paused" hidden></div>
@@ -846,7 +847,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 <aside class="drawer" id="drawer" aria-label="Your order" aria-hidden="true">
   <div class="dh"><h3>Your order</h3><button class="x" id="dclose" type="button" aria-label="Close">×</button></div>
   <ul class="dlist" id="dlist"></ul>
-  <div class="dfoot"><div class="dtot"><span>Estimated total</span><span id="dtot">€0</span></div><small>Next, add your name, date and collection or delivery. We confirm the final price on WhatsApp.</small><a class="btn btn-orange" id="wa" href="#how">Continue to your details</a></div>
+  <div class="dfoot"><div class="dtot"><span>Estimated total</span><span id="dtot">€0</span></div><small>Next, add your name, date and collection or delivery. We confirm the final price on WhatsApp.</small><a class="btn btn-orange" id="wa" href="#order">Continue to your details</a></div>
 </aside>
 
 <script>
@@ -889,17 +890,19 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
     /* only after a page switch: refreshing while a smooth scroll is under way cancels the scroll */
     if(window.ScrollTrigger&&changed)setTimeout(function(){ScrollTrigger.refresh()},60);
     if(window.SBS_catArrows)setTimeout(window.SBS_catArrows,90);
+    /* going to the order form: on a computer, put the cursor in the name box (not on phones, where it would pop the keyboard up over the form) */
+    if(id==='order'&&!(window.matchMedia&&matchMedia('(pointer:coarse)').matches))setTimeout(function(){var n=document.getElementById('oname');if(n&&!n.value)try{n.focus({preventScroll:true})}catch(e){}},smooth?1000:150);
   };
   var tick=0;window.addEventListener('scroll',function(){if(tick)return;tick=requestAnimationFrame(function(){tick=0;spy()})},{passive:true});
   window.addEventListener('popstate',function(){window.SBS_route(location.hash.slice(1),false)});
   window.SBS_route(location.hash.slice(1),false);
 })();
 </script>
-<script charset="utf-8" src="data.js?v=2026-11-19c"></script>
-<script charset="utf-8" src="live.js?v=2026-11-19c"></script>
-<script charset="utf-8" src="mascot.js?v=2026-11-19c"></script>
-<script charset="utf-8" src="svgs.js?v=2026-11-19c"></script>
-<script charset="utf-8" src="social.js?v=2026-11-19c"></script>
+<script charset="utf-8" src="data.js?v=2026-11-19e"></script>
+<script charset="utf-8" src="live.js?v=2026-11-19e"></script>
+<script charset="utf-8" src="mascot.js?v=2026-11-19e"></script>
+<script charset="utf-8" src="svgs.js?v=2026-11-19e"></script>
+<script charset="utf-8" src="social.js?v=2026-11-19e"></script>
 <script src="gsap.min.js?v=3.12.5"></script>
 <script src="ScrollTrigger.min.js?v=3.12.5"></script>
 <script>
