@@ -503,6 +503,8 @@ body.has-bar .foot{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
 .greet{display:flex;width:fit-content;max-width:100%;align-items:center;gap:12px;margin:0 0 18px;padding:7px 22px 7px 14px;border-radius:999px;font-weight:800;font-size:clamp(1rem,2.3vw,1.5rem);letter-spacing:.01em;line-height:1.2;color:#fff;background:linear-gradient(90deg,var(--g1,#d62828),var(--g2,#ff9900));box-shadow:0 8px 22px rgba(0,0,0,.28),0 0 0 3px rgba(255,255,255,.26);position:relative;overflow:hidden;animation:gIn .8s cubic-bezier(.2,1.4,.4,1) both}
 .greet::after{content:"";position:absolute;top:0;bottom:0;width:38%;left:-50%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);animation:gShine 4.2s ease-in-out 1.4s infinite}
 .greet b{font-weight:800;white-space:nowrap}
+@media(max-width:480px){.greet{gap:7px;padding:6px 12px 6px 10px;font-size:.88rem}.greet .gi{width:28px;height:28px;flex:none}.greet .gi svg{width:100%;height:100%}}
+@media(max-width:359px){.greet b{white-space:normal;text-align:center}.topbar{font-size:.7rem;letter-spacing:0;padding:0 6px}}
 .gi{display:inline-flex;flex:none;width:38px;height:38px;position:relative;z-index:1}
 .gi svg{display:block;width:100%;height:100%;overflow:visible}
 @keyframes gIn{from{opacity:0;transform:translateY(-12px) scale(.85)}to{opacity:1;transform:none}}
@@ -660,7 +662,7 @@ s.was{opacity:.6;font-weight:600;margin-right:4px}
 .xcard::after{background:linear-gradient(180deg,rgba(42,20,0,0) 18%,rgba(42,20,0,.55) 52%,rgba(42,20,0,.94) 100%)}
 .xt .eyebrow,.xt b,.xt span{text-shadow:0 1px 10px rgba(30,14,0,.75)}
 .xt .eyebrow{color:#FFB84D}
-@media(max-width:700px){.hlogo{width:min(40vw,170px)}.hero2{padding-top:calc(96px + 14px)}.hero2-in>p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}}
+@media(max-width:700px){.hlogo{width:min(40vw,170px)}.hero2{padding-top:calc(96px + 14px)}.hero2-in>p{font-size:.95rem;line-height:1.55}}
 </style>
 
 <header class="nav">
